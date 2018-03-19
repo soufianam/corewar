@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 14:34:58 by blefeuvr          #+#    #+#             */
-/*   Updated: 2017/12/20 19:42:52 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/19 16:54:29 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int				x(t_adj *adj, va_list ap);
 int				p(t_adj *adj, va_list ap);
 int				c(t_adj *adj, va_list ap);
 int				s(t_adj *adj, va_list ap);
-char			*pf_itoa(intmax_t n);
-char			*pf_itoa_base(intmax_t n, char *base);
+char			*pf_itoa(uintmax_t n);
+char			*pf_itoa_base(uintmax_t n, char *base);
 char			*wchar_to_char(wchar_t wchar, int *csize);
 intmax_t		max_wchar(void);
 
