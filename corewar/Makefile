@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/19 16:56:18 by blefeuvr         ###   ########.fr        #
+#    Updated: 2018/03/19 18:36:36 by cmaxime          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ CPPFLAGS = -Iinclude -I$(LIB_DIR)/libft/include
 CFLAGS = -Werror -Wall -Wextra
 
 # Sources #
-SRC_NAME = main.c
+SRC_NAME =	main.c \
+			cw_setting_init.c \
+			cw_setting_utils.c
 SRC = $(addprefix /,$(SRC_NAME))
 
 # Objects #
