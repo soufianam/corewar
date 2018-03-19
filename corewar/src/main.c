@@ -6,8 +6,13 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/19 16:56:31 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/19 17:32:33 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "corewar.h"
 
+int		main(int ac, char **av)
+{
+	return (0);
+}
