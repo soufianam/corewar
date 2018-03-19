@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/19 17:11:42 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/19 17:39:31 by blefeuvr         ###   ########.fr        #
+#    Updated: 2018/03/19 17:59:58 by blefeuvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ fclean:
 	$(MAKE) fclean -C asm
 
 coffee:
-	@printf "\e]1337;File=inline=1;height=7:" && base64 < ".media/coffee.gif" && printf "\a"
+	@printf "\e]1337;File=inline=1;height=15:" && base64 < ".media/coffee.gif" && printf "\a"
+	@afplay -t 10 .media/coffee.mp3 &
 
 .SUFFIXES:
 .PHONY: all clean fclean re
