@@ -6,11 +6,12 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 14:47:51 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/16 15:18:58 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/16 15:33:08 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #define COREWAR_EXEC_MAGIC		0xea83f3
@@ -84,8 +85,10 @@ int		main(int ac, char **av)
 		strcpy(header.prog_name, av[2]);
 		header.prog_size = 2048;
 		strcpy(header.comment, av[3]);
-		fd = open(av[1], O_WRONLY, O_CREAT, O_APPEND);
-		cw_write_header(header, fd);
+		fd = open(av[1], O_CREAT | O_RDWR, 777);
+		if (fd > 0)
+			cw_write_header(header, fd);
+		printf("%d\n", fd);
 	}
 	return (0);
 }
