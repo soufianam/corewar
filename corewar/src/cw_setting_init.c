@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/20 09:23:09 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:24:52 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		cw_init_dump(t_setting *setting, int ac, char **av, int i)
 	if (i < ac && ft_strcmp(av[i], "-dump") == 0)
 	{
 		i++;
-		if (i < ac && ft_isnum(tab[i]))
+		if (i < ac && cw_stridig(tab[i]))
 		{
 			setting->nbr_cycle = (int)ft_atoi_base_max(tab[i], 10);
 			i++;
@@ -34,14 +34,15 @@ int		cw_init_dump(t_setting *setting, int ac, char **av, int i)
 
 int		cw_init_champion(t_setting *setting, int ac, char **av, int i)
 {
+	int		id;
+
 	if (i < ac && ft_strcmp(tab[i], "-n") == 0)
 	{
 		i++;
-		if (i < ac && cw_strisdig(tab[i])
-				&& setting->nbr_champion < MAX_PLAYERS)
+		if (i < ac && cw_strisdig(tab[i]))
 		{
 			i++;
-			// AJOUTER UN CHAMPION
+			id = 1;
 			setting->nbr_champion++;
 		}
 	}

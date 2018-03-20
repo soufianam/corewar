@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:49:39 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/20 12:45:42 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/20 16:07:36 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include "op.h"
-# include "struct_corewar.h"
+//# include "struct_corewar.h"
 
 // A commenter //
 # define L(x) ft_putendl_fd(x, 1)
