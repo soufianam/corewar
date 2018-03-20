@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/20 11:09:11 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:24:12 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int		main(int ac, char **av)
 {
-	ac = 0;
-	av = 0;
+	t_vm	vm;
+
+	//cw_load_settings(&(vm.setting), ac, av);
+		
 	return (0);
 }
