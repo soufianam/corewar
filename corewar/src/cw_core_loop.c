@@ -6,10 +6,13 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 09:11:00 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/20 09:17:30 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/20 11:41:22 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	cw_core_loop
+void	cw_core_loop()
+{
+
+}

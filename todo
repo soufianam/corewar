@@ -7,13 +7,28 @@
 
 [ ] corewar
 
-	[ ] Init new fresh memory VM
-	[ ] Handle argv in coreware initiation
-		[ ] Handle options
-			[ ] Check syntax
-				[ ] Check conflicts
-		[ ] Handle champions
-			[ ] Parse champions
-				[ ] IF not enough data (prog missing / too large) return error
-				[ ] ELSE put champion at the right place in VM
-	[ ] Destroy memory VM
+[ ] verif makefile dependencies
+	[ ] libft
+	[ ] asm
+	[ ] corewar
+
+## ASM ##
+Parthing
+Writing
+
+
+## Corewar ##
+
+Initialisation:
+	Init new fresh memory VM
+	Handle argv in coreware initiation
+		Handle options
+		Check syntax
+			Check conflicts
+	Handle champions
+		Parse champions
+			IF not enough data (prog missing / too large) return error
+			ELSE put champion at the right place in VM
+	Destroy memory VM
+
+Boucle:
