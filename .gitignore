@@ -1,4 +1,4 @@
-lem-in
+./corewar/corewar
 sites
 *.d
 
@@ -66,3 +66,4 @@ Session.vim
 *~
 # Auto-generated tag files
 tags
+.DS_store
