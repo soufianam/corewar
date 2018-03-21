@@ -6,19 +6,13 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 10:53:07 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/21 15:17:56 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/21 18:16:46 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 
-typedef struct		s_param
-{
-	int 			p1;
-	int				p2;
-	int				p3;
-	int				p4;
-}					t_param;
+
 
 typedef struct		s_op
 {

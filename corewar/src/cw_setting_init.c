@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/20 17:24:52 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/21 19:04:00 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,45 @@ int		cw_init_dump(t_setting *setting, int ac, char **av, int i)
 	if (i < ac && ft_strcmp(av[i], "-dump") == 0)
 	{
 		i++;
-		if (i < ac && cw_stridig(tab[i]))
+		if (i < ac && cw_stridig(av[i]))
 		{
-			setting->nbr_cycle = (int)ft_atoi_base_max(tab[i], 10);
+			setting->nbr_cycle = (int)ft_atoi(av[i]);
 			i++;
 		}
 	}
 	return (i);
 }
 
+int		cw_load_champion(t_setting *setting, char *file, int i, int id)
+{
+	int		fd;
+	int		size_bin;
+	char	*bin;
+
+	fd = open(file, O_RDONLY);
+	bin = cw_read_champion_data(fd, &size_bin);
+	if (cw_check_bin_champion(bin, size_bin) == 0)
+		return (-1);
+	setting->nbr_champion++;
+	return (i++);
+}
+
 int		cw_init_champion(t_setting *setting, int ac, char **av, int i)
 {
 	int		id;
 
-	if (i < ac && ft_strcmp(tab[i], "-n") == 0)
+	if (i < ac && ft_strcmp(av[i], "-n") == 0)
 	{
-		i++;
-		if (i < ac && cw_strisdig(tab[i]))
-		{
-			i++;
-			id = 1;
-			setting->nbr_champion++;
-		}
+		i += 2;
+		if (i < ac && cw_strisdig(av[i - 1]))
+			i = cw_load_champion(setting, av[i], i, ft_atoi(av[i - 1]));
+		else
+			return (-1);
 	}
+	else if (i < ac)
+		i = cw_load_champion(setting, av[i], i, cw_get_champion_id(setting));
+	else
+		return (-1);
 	return (i);
 }
 
