@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 09:11:00 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 11:15:22 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/21 11:29:55 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	cw_core_loop(t_vm vm)
 		}
 		if (cycle == vm.setting.nbr_cycle)
 			; //cw_game_over();
-		//cw_exec_process();
+		cw_process_process(vm.process, vm.vm, cycle);
 		cycle++;
 	}
 }

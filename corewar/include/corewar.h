@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 10:39:31 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/21 11:29:54 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct		s_setting
 
 typedef struct		s_loop
 {
-	int				cycle_to-die;
+	int				cycle_to_die;
 	int				next_cycle_to_die;
 	int				next_max_check;
 }					t_loop;
@@ -76,5 +76,6 @@ int		cw_load_settings(t_setting *setting, int ac, char **av);
 void	cw_vm_init(t_vm *vm);
 void    cw_error(int err);
 void    cw_core_loop(t_vm vm);
+void    cw_process_process(t_process *process, int *vm);
 
 #endif
