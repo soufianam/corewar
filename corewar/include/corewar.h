@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 15:16:05 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/21 18:04:13 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct		s_setting
 typedef struct		s_live
 {
 	int				index; //init -1
-	unsigned int	cycle; //init -1l
+	unsigned int	cycle; //init -1
 }					t_live;
 
 typedef struct		s_loop
@@ -80,9 +80,10 @@ typedef enum	e_err
 
 int					cw_strisdig(char *str); // a supprimer ?
 int		cw_load_settings(t_setting *setting, int ac, char **av);
-void	cw_vm_init(t_vm *vm);
+void	cw_vm_init(t_vm *vm, int ac, char **av);
 void    cw_error(int err);
 void    cw_core_loop(t_vm vm);
-void    cw_process_process(t_process *process, int *vm);
+void    cw_process_process(t_list *process, int *vm, int cycle);
+void    cw_check_process(t_vm *vm);
 
 #endif
