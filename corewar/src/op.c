@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 10:53:07 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/20 11:27:31 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/21 12:54:05 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 typedef struct		s_op
 {
-	char			*cmd_name; //Non de l'instruction
-	int				nb_registre_index;  // Nombre de registre + index == "equivaux au maximmum;
+	char			*cmd_name; //Nom de l'instruction
+	int				nb_registre_index;  // Nombre de parametre + index == "equivaux au maximmum;
 	int				stuct_registre_schem; // Decription des structures acceptables.
 	int				opcode; //Opcode de l'option == index de l'optab
 	int				nb_cycle; //nombre de cycle qu'une operation met pour s'executé
 	char			*description; //Descriptif...
 	t_bool			octet_de_codage; //Indique si il y a un octet de codage
-	t_bool			cary_state; // SUPPOSITION: valeur du carry pour l'instruction (operateur logique pour y répondre???)...
+	t_bool			cary_state; // valeur du carry pour l'instruction a tester avec operateur logique
 }					t_op;
 
 t_op    op_tab[17] =
