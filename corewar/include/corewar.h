@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/20 17:29:52 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/21 10:39:31 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "op.h"
 //# include "struct_corewar.h"
 
-// A commenter //
+// ---------- //
 # define L(x) ft_putendl_fd(x, 1)
 # define S(x) ft_putstr_fd(x, 1)
 # define N(x) ft_putnbr_fd(x, 1)
@@ -39,6 +39,7 @@ typedef struct		s_process
 	int				pc; //init a 0
 	int				carry; //init a 0
 	int				next_cycle; //init a 0
+	int				live; //init a 0
 }					t_process;
 
 typedef struct		s_setting
@@ -48,15 +49,32 @@ typedef struct		s_setting
 	t_champion		champion_tab[MAX_PLAYERS];
 }					t_setting;
 
+typedef struct		s_loop
+{
+	int				cycle_to-die;
+	int				next_cycle_to_die;
+	int				next_max_check;
+}					t_loop;
+
 typedef struct		s_vm
 {
 	t_setting		setting;
 	int				cycle;
 	t_list			*process; //all process list
 	int				*vm;
+	t_loop			loop;
 }					t_vm;
+
+typedef enum	e_err
+{
+	ERR_PARAM,
+	ERR_MALLOC
+} t_err;
 
 int					cw_strisdig(char *str); // a supprimer ?
 int		cw_load_settings(t_setting *setting, int ac, char **av);
+void	cw_vm_init(t_vm *vm);
+void    cw_error(int err);
+void    cw_core_loop(t_vm vm);
 
 #endif
