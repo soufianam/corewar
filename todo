@@ -11,7 +11,16 @@
 
 ## ASM ##
 Parthing
+pour toutes les instcuctions :
+	- lire les instructions (opcode)
+	- lire les types de parametre (r,%, )
+	- calculer les ocp
+	- en deduire les pc au fur et a mesure
+pour toutes les instcrutions
+	- remplacer les labels
+	- remaplcer les parametres
 Writing
+- ecrire tout
 
 
 ## Corewar ##
@@ -60,3 +69,7 @@ launch processes:
 process:
 	call function of octet currnetly under pc
 	incremente process.next_cycle
+
+
+
+
