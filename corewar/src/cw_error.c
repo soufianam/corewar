@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cw_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 09:01:48 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/03/21 09:12:56 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/03/21 09:19:00 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int		main(int ac, char **av)
+void	cw_error(int err)
 {
-	t_vm	vm;
-	
-	cw_vm_init(&vm);
-	cw_core_loop(&vm);
-	return (0);
+	static const char *error[2] = {
+		"usage: ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...",
+		"Malloc error"
+	};
+
+	ft_putendl(error[err]);
+	exit(1);
 }
