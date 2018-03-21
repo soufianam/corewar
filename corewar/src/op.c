@@ -6,17 +6,25 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 10:53:07 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/21 12:54:05 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/21 15:17:56 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 
+typedef struct		s_param
+{
+	int 			p1;
+	int				p2;
+	int				p3;
+	int				p4;
+}					t_param;
+
 typedef struct		s_op
 {
 	char			*cmd_name; //Nom de l'instruction
-	int				nb_registre_index;  // Nombre de parametre + index == "equivaux au maximmum;
-	int				stuct_registre_schem; // Decription des structures acceptables.
+	int				nb_registre_index;  // Nombre de parametre de l'OCP;
+	t_param			stuct_registre_schem; // Decription des structures acceptables.
 	int				opcode; //Opcode de l'option == index de l'optab
 	int				nb_cycle; //nombre de cycle qu'une operation met pour s'executé
 	char			*description; //Descriptif...
