@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/19 16:55:29 by blefeuvr         ###   ########.fr        #
+#    Updated: 2018/03/21 09:46:05 by blefeuvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC_NAME =\
 	ft_isdigit.c\
 	ft_isprint.c\
 	ft_itoa.c\
+	ft_lstdelif.c\
 	ft_lstadd.c\
 	ft_lstaddend.c\
 	ft_lstdel.c\
