@@ -4,6 +4,8 @@
 	[ ] find a "majestuous, epic and glorious" name
 
 [ ] asm
+	[ ] Define t_op struct model
+	[ ] Thinking about match instruction and model (check control)
 
 [ ] corewar
 
