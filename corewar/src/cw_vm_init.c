@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 08:48:28 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 11:03:23 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/21 15:01:29 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	cw_vm_init(t_vm *vm)
 	vm->loop.next_cycle_to_die = CYCLE_TO_DIE;
 	vm->loop.next_max_check = MAX_CHECK * CYCLE_TO_DIE;
 	vm->loop.cycle_to_die = CYCLE_TO_DIE;
-	//cw_load_settings(&(vm->setting), ac, av);
+	vm->loop.last_live.index = -1;
+	vm->loop.last_live.cycle = -1;
+	cw_load_settings(&(vm->setting), ac, av);
 	//create processes
 }

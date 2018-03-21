@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 11:29:54 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/21 15:16:05 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,18 @@ typedef struct		s_setting
 	t_champion		champion_tab[MAX_PLAYERS];
 }					t_setting;
 
+typedef struct		s_live
+{
+	int				index; //init -1
+	unsigned int	cycle; //init -1l
+}					t_live;
+
 typedef struct		s_loop
 {
 	int				cycle_to_die;
 	int				next_cycle_to_die;
 	int				next_max_check;
+	t_live			last_live;
 }					t_loop;
 
 typedef struct		s_vm
