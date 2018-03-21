@@ -44,7 +44,7 @@ verif live:
 	kill processes whith no live
 	coutn and put to zero all procees live
 	if no more process 
-		end of game
+[ ]		end of game
 	if nbrlive < NBR_LIVE
 		CYCLE_TO_DIE -= CYCLE_DELTA
 		max_check = CYCLE_TO_DIE * MAX_CHECK
