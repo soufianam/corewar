@@ -6,13 +6,13 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 09:47:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 09:47:43 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 12:03:12 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	cw_process_process(t_list *process, int *vm, int cycle)
+void	cw_process_process(t_list *process, char *vm, int cycle)
 {
 	t_list *curr;
 
