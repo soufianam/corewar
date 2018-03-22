@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:08:09 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/22 16:14:19 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:51:07 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		cw_check_cor_file(char *file)
 		destroy_tab(tab);
 		return (1);
 	}
-	if (ft_strcmp(tab[1], "cor") == 0)
+	if (ft_strcmp(tab[1], "cor") != 0)
 	{
 		destroy_tab(tab);
 		return (1);

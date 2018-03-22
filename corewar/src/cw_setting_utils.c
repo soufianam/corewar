@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:24:17 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/22 16:07:26 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:53:07 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		cw_check_champion_id(t_setting *setting, int id)
 	while (++i < setting->nbr_champion)
 	{
 		if (id == setting->champion_tab[i].id)
-			return (1);
+			return (-1);
 		i++;
 	}
 	return (0);
