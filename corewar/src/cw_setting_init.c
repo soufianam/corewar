@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/22 16:02:10 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:14:17 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 
 	id = 0;
 	size_bin = 0;
+	if (cw_check_cor_file(file) == 1)
+		return (-1);
 	fd = open(file, O_RDONLY);
 	bin = cw_read_champion_header(fd, &size_bin);
 	if (size_bin == -1 || cw_check_champion_id(setting, id))
@@ -51,6 +53,7 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 	cw_load_bin_champion(&(setting->champion_tab[setting->nbr_champion]), \
 			bin, size_bin, id);
 	setting->nbr_champion++;
+	free(bin);
 	return (++i);
 }
 

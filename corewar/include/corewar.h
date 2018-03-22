@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 16:04:24 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:13:11 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void    cw_load_bin_champion(t_champion *champ, char *bin, int size, int id);
 int		cw_strisdig(char *str);
 char    *ft_memsub(char *src, size_t start, size_t size);
 char    *ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s);
+int     cw_check_cor_file(char *file);
 
 void    cw_exec_process(t_vm *vm, t_process *process);
 void	cw_vm_init(t_vm *vm, int ac, char **av);
