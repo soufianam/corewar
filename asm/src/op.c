@@ -5,20 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 10:53:07 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/22 16:22:30 by pprikazs         ###   ########.fr       */
+/*   Created: 2018/03/22 16:23:34 by pprikazs          #+#    #+#             */
+/*   Updated: 2018/03/22 16:23:37 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 
-typedef struct		s_param
-{
-	int 			p1;
-	int				p2;
-	int				p3;
-	int				p4;
-}					t_param;
+
 
 
 t_op    op_tab[17] =

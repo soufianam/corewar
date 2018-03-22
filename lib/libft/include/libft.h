@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:52:35 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 09:47:36 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 12:17:14 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ int					ft_gnl(int fd, char **line);
 int					ft_max(int a, int b);
 int					ft_min(int a, int b);
 int					ft_pow(int a, int b);
+intmax_t			ft_atoi_base_max(const char *str, int base);
 int					ft_atoi_base(const char *str, const char *base);
 size_t				ft_memclen(void *tab, char c);
+void				ft_lstdelif(t_list **begin_list, void *content_ref, int (*cmp)());
 int					ft_abs(int a);
 int					ft_strrepl(char *str, char from, char to);
 int					ft_atoi(const char *str);
@@ -72,6 +74,7 @@ int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
+char				*ft_itoa_base(uintmax_t n, char *base);
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstaddend(t_list **alst, t_list *new);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));

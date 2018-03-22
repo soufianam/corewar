@@ -5,13 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 15:16:05 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/03/22 16:19:26 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/03/22 16:19:30 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
+
+# include <limits.h>
+# include <fcntl.h>
 
 # include "libft.h"
 # include "op.h"
@@ -22,14 +25,15 @@
 # define S(x) ft_putstr_fd(x, 1)
 # define N(x) ft_putnbr_fd(x, 1)
 # define C(x) ft_putchar_fd(x, 1)
-# define ND(x, y) N(x); S(" - "); N(y); L("")
+# define NL(x) N(x); L("")
 // ---------- //
 
 typedef struct		s_champion
 {
-	int				number;
+	int				id;
 	char			*name;
-	int				*bin;
+	char			*bin;
+	int				size_prog;
 }					t_champion;
 
 typedef struct		s_process
@@ -52,7 +56,7 @@ typedef struct		s_setting
 typedef struct		s_live
 {
 	int				index; //init -1
-	unsigned int	cycle; //init -1l
+	unsigned int	cycle; //init -1
 }					t_live;
 
 typedef struct		s_loop
@@ -68,21 +72,45 @@ typedef struct		s_vm
 	t_setting		setting;
 	int				cycle;
 	t_list			*process; //all process list
-	int				*vm;
+	char			*vm;
 	t_loop			loop;
 }					t_vm;
 
-typedef enum	e_err
+typedef enum		e_err
 {
+	ERR_UNKNOW,
 	ERR_PARAM,
 	ERR_MALLOC
-} t_err;
+}					t_err;
 
-int					cw_strisdig(char *str); // a supprimer ?
+/*
+** Fcts to load and check all the settings from corewar
+*/
 int		cw_load_settings(t_setting *setting, int ac, char **av);
-void	cw_vm_init(t_vm *vm);
+int     cw_load_champion(t_setting *setting, char *file, int i, int id);
+void    cw_init_setting(t_setting *setting);
+int     cw_init_dump(t_setting *setting, int ac, char **av, int i);
+int     cw_init_champion(t_setting *setting, int ac, char **av, int i);
+int     cw_init_champion_id(t_setting *setting);
+int     cw_check_champion_id(t_setting *setting, int id);
+char    *cw_read_champion_header(int fd, int *size);
+char    *cw_read_champion_prog(int fd, char *bin, int prog_size, int *size);
+int     cw_check_bin_header(char *bin);
+int     cw_check_bin_null(char *bin, int pos);
+void    cw_load_bin_champion(t_champion *champ, char *bin, int size, int id);
+int		cw_strisdig(char *str);
+char    *ft_memsub(char *src, size_t start, size_t size);
+char    *ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s);
+int     cw_check_cor_file(char *file);
+
+void    cw_exec_process(t_vm *vm, t_process *process);
+void	cw_vm_init(t_vm *vm, int ac, char **av);
 void    cw_error(int err);
 void    cw_core_loop(t_vm vm);
-void    cw_process_process(t_process *process, int *vm);
+void    cw_process_process(t_list *process, t_vm *vm, int cycle);
+void    cw_check_process(t_vm *vm);
+void    cw_dump_and_quit(t_vm *vm);
+void    cw_game_over(t_vm *vm);
+char	*cw_itoa_base(char n, char *base);
 
 #endif

@@ -6,11 +6,14 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/19 17:11:42 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/21 15:20:34 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/03/22 16:18:26 by blefeuvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-all: libft corewar asm
+all:
+	$(MAKE) -C lib/libft
+	$(MAKE) -C corewar
+	$(MAKE) -C asm
 
 libft:
 	$(MAKE) -C lib/$@
@@ -32,6 +35,11 @@ fclean:
 coffee:
 	@printf "\e]1337;File=inline=1;height=15:" && base64 < ".media/coffee.gif" && printf "\a"
 	@afplay -t 10 .media/coffee.mp3 &
+
+joke:
+	@curl -s http://api.icndb.com/jokes/random | cut -d '"' -f 12
+	@afplay -t 10 .media/laught.mp3 &
+
 
 .SUFFIXES:
 .PHONY: all clean fclean re
