@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/19 17:10:26 by blefeuvr         ###   ########.fr        #
+#    Updated: 2018/03/22 18:42:29 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ CPPFLAGS = -Iinclude -I$(LIB_DIR)/libft/include
 CFLAGS = -Werror -Wall -Wextra
 
 # Sources #
-SRC_NAME = main.c
+SRC_NAME = main.c 
+
 SRC = $(addprefix /,$(SRC_NAME))
 
 # Objects #
@@ -34,7 +35,7 @@ OBJ_PATH = obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
-VPATH = src
+VPATH = ./src/:
 
 # Deps #
 DEPS = include/*.h Makefile 
