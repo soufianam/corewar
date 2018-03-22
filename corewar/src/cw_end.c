@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 11:21:13 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 15:30:27 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 15:33:36 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*cw_find_player(t_setting setting, int index)
 			return (setting.champion_tab[i].name);
 		i--;
 	}
-	error(ERR_UNKNOW);
+	cw_error(ERR_UNKNOW);
 	return (0);
 }
 
