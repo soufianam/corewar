@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 18:45:57 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/22 18:51:35 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef enum	e_bool
 	FALSE = 0,
 	TRUE = 0
 }				t_bool;
+
+# define OP_TAB_SIZE 17
 
 typedef struct	s_op
 {
