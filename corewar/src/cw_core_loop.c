@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 09:11:00 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 18:08:08 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 11:23:47 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	cw_core_loop(t_vm vm)
 			vm.loop.next_max_check += vm.loop.cycle_to_die * MAX_CHECKS;
 		}
 		if (cycle == vm.setting.nbr_cycle)
-			; //dunp memory and quit
+			cw_dump_and_quit(&vm);
 		cw_process_process(vm.process, vm.vm, cycle);
 		cycle++;
 	}
