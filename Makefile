@@ -6,11 +6,14 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/19 17:11:42 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/21 15:20:34 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/03/22 09:44:50 by blefeuvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-all: libft corewar asm
+all:
+	$(MAKE) -C lib/libft
+	$(MAKE) -C corewar
+	$(MAKE) -C asm
 
 libft:
 	$(MAKE) -C lib/$@
