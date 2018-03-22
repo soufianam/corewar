@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/21 09:46:05 by blefeuvr         ###   ########.fr        #
+#    Updated: 2018/03/22 10:39:48 by blefeuvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ CFLAGS = -Werror -Wall -Wextra
 # Sources #
 SRC_NAME =\
 	ft_isnum.c\
+	ft_atoi_base_max.c\
 	ft_abs.c\
 	ft_atoi.c\
 	ft_atoi_base.c\
