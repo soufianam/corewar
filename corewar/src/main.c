@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 17:58:13 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 11:34:45 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		main(int ac, char **av)
 {
-	t_vm	vm;
-	
+	t_vm		vm;
+
 	cw_vm_init(&vm, ac, av);
 	cw_core_loop(vm);
 	return (0);

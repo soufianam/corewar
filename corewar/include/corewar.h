@@ -6,12 +6,15 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 18:04:13 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 12:53:08 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
+
+# include <limits.h>
+# include <fcntl.h>
 
 # include "libft.h"
 # include "op.h"
@@ -78,8 +81,11 @@ typedef enum	e_err
 	ERR_MALLOC
 } t_err;
 
-int					cw_strisdig(char *str); // a supprimer ?
 int		cw_load_settings(t_setting *setting, int ac, char **av);
+char    *cw_read_champion_data(int fd, int *size);
+int     cw_check_bin_champion(char *bin, int size);
+int		cw_strisdig(char *str);
+
 void	cw_vm_init(t_vm *vm, int ac, char **av);
 void    cw_error(int err);
 void    cw_core_loop(t_vm vm);
