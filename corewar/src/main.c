@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 17:27:16 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 17:29:20 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ int		main(int ac, char **av)
 
 	cw_vm_init(&vm, ac, av);
 	print_champions_data(&(vm.setting));
-	//cw_core_loop(vm);
+	cw_core_loop(vm);
 	return (0);
 }
