@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 15:10:45 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/22 15:26:35 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 16:17:45 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	cw_load_bin_champion(t_champion *champ, char *bin, int size, int id)
 	int		prog_size;
 
 	prog_size = cw_check_bin_header(bin);
-	champ->number = id;
+	champ->id = id;
 	champ->name = ft_memsub(bin, 4, 128);
 	champ->bin = ft_memsub(bin, 2192, size);
+	champ->size_prog = size;
 }
 
 int		cw_check_bin_header(char *bin)

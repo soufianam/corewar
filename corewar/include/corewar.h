@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 15:37:55 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/03/22 16:19:26 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/03/22 16:19:30 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@
 
 typedef struct		s_champion
 {
-	int				number;
+	int				id;
 	char			*name;
 	char			*bin;
+	int				size_prog;
 }					t_champion;
 
 typedef struct		s_process
@@ -90,6 +91,8 @@ int     cw_load_champion(t_setting *setting, char *file, int i, int id);
 void    cw_init_setting(t_setting *setting);
 int     cw_init_dump(t_setting *setting, int ac, char **av, int i);
 int     cw_init_champion(t_setting *setting, int ac, char **av, int i);
+int     cw_init_champion_id(t_setting *setting);
+int     cw_check_champion_id(t_setting *setting, int id);
 char    *cw_read_champion_header(int fd, int *size);
 char    *cw_read_champion_prog(int fd, char *bin, int prog_size, int *size);
 int     cw_check_bin_header(char *bin);
@@ -98,6 +101,7 @@ void    cw_load_bin_champion(t_champion *champ, char *bin, int size, int id);
 int		cw_strisdig(char *str);
 char    *ft_memsub(char *src, size_t start, size_t size);
 char    *ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s);
+int     cw_check_cor_file(char *file);
 
 void    cw_exec_process(t_vm *vm, t_process *process);
 void	cw_vm_init(t_vm *vm, int ac, char **av);
