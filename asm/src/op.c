@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 10:53:07 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/21 18:16:46 by cmaxime          ###   ########.fr       */
+/*   Created: 2018/03/22 16:23:34 by pprikazs          #+#    #+#             */
+/*   Updated: 2018/03/22 16:23:37 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,6 @@
 
 
 
-typedef struct		s_op
-{
-	char			*cmd_name; //Nom de l'instruction
-	int				nb_registre_index;  // Nombre de parametre de l'OCP;
-	t_param			stuct_registre_schem; // Decription des structures acceptables.
-	int				opcode; //Opcode de l'option == index de l'optab
-	int				nb_cycle; //nombre de cycle qu'une operation met pour s'executé
-	char			*description; //Descriptif...
-	t_bool			octet_de_codage; //Indique si il y a un octet de codage
-	t_bool			cary_state; // valeur du carry pour l'instruction a tester avec operateur logique
-}					t_op;
 
 t_op    op_tab[17] =
 {
