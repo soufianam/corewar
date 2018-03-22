@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 12:58:03 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:28:54 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,22 @@ typedef enum	e_err
 	ERR_MALLOC
 } t_err;
 
+/*
+** Fcts to load and check all the settings from corewar
+*/
 int		cw_load_settings(t_setting *setting, int ac, char **av);
-char    *cw_read_champion_data(int fd, int *size);
-int     cw_check_bin_champion(char *bin, int size);
+int     cw_load_champion(t_setting *setting, char *file, int i, int id);
+void    cw_init_setting(t_setting *setting);
+int     cw_init_dump(t_setting *setting, int ac, char **av, int i);
+int     cw_init_champion(t_setting *setting, int ac, char **av, int i);
+char    *cw_read_champion_header(int fd, int *size);
+char    *cw_read_champion_prog(int fd, char *bin, int prog_size, int *size);
+int     cw_check_bin_header(char *bin);
+int     cw_check_bin_null(char *bin, int pos);
+void    cw_load_bin_champion(t_champion *champ, char *bin, int size, int id);
 int		cw_strisdig(char *str);
+char    *ft_memsub(char *src, size_t start, size_t size);
+char    *ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s);
 
 void	cw_vm_init(t_vm *vm, int ac, char **av);
 void    cw_error(int err);

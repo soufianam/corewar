@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/22 13:01:02 by cmaxime          ###   ########.fr        #
+#    Updated: 2018/03/22 15:26:57 by cmaxime          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC_NAME =	main.c \
 			cw_vm_init.c \
 			cw_end.c\
 			cw_setting_utils.c \
+			cw_setting_champion.c \
 			cw_setting_init.c
 #			cw_vm_init.c\
 			op.c
