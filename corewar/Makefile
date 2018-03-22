@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/22 16:14:47 by cmaxime          ###   ########.fr        #
+#    Updated: 2018/03/22 16:52:26 by blefeuvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ OBJ_PATH = obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
-VPATH = src
+VPATH = src src/instructions
 
 # Deps #
 DEPS = include/*.h Makefile 
