@@ -1,4 +1,5 @@
-./corewar/corewar
+corewar/corewar
+asm/asm
 sites
 *.d
 
