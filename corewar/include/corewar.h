@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 12:53:08 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 12:58:03 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct		s_champion
 {
 	int				number;
 	char			*name;
-	int				*bin;
+	char			*bin;
 }					t_champion;
 
 typedef struct		s_process
@@ -71,7 +71,7 @@ typedef struct		s_vm
 	t_setting		setting;
 	int				cycle;
 	t_list			*process; //all process list
-	int				*vm;
+	char			*vm;
 	t_loop			loop;
 }					t_vm;
 
@@ -89,7 +89,9 @@ int		cw_strisdig(char *str);
 void	cw_vm_init(t_vm *vm, int ac, char **av);
 void    cw_error(int err);
 void    cw_core_loop(t_vm vm);
-void    cw_process_process(t_list *process, int *vm, int cycle);
+void    cw_process_process(t_list *process, char *vm, int cycle);
 void    cw_check_process(t_vm *vm);
+void    cw_dump_and_quit(t_vm *vm);
+void    cw_game_over(t_vm *vm);
 
 #endif

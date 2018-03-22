@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 09:21:32 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 18:09:29 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 11:24:01 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	cw_check_process(t_vm *vm)
 		curr = curr->next;
 	}
 	if (live == 0)
-		; //cw_game_over();
+		cw_game_over(vm);
 	if (live > NBR_LIVE)
 	{
 		vm->loop.cycle_to_die -= CYCLE_DELTA;

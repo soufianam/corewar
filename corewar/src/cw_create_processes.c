@@ -1,27 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_process.c                                       :+:      :+:    :+:   */
+/*   cw_create_processes.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/22 09:47:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 12:03:12 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/03/22 10:40:32 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/03/22 11:18:13 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	cw_process_process(t_list *process, char *vm, int cycle)
-{
-	t_list *curr;
 
-	(void)vm;
-	curr = process;
-	while (curr)
-	{
-		if (((t_process*)curr->content)->next_cycle == cycle)
-			; //cw_exec_process();
-		curr = curr->next;
-	}
-}
