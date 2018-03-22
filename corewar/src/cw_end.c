@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 11:21:13 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 12:04:14 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 12:18:19 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	cw_dump_and_quit(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		res = ft_strext(res, ft_itoa_base(vm->vm[i], 16));
+		res = ft_strext(res, ft_itoa_base(vm->vm[i], "0123456789abcdef"));
 		if (i % 32 == 0)
 		{
 			ft_putendl(res);
