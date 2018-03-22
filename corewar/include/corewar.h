@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 15:34:36 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:37:55 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ typedef struct		s_vm
 	t_loop			loop;
 }					t_vm;
 
-typedef enum	e_err
+typedef enum		e_err
 {
 	ERR_UNKNOW,
 	ERR_PARAM,
 	ERR_MALLOC
-} t_err;
+}					t_err;
 
 /*
 ** Fcts to load and check all the settings from corewar
