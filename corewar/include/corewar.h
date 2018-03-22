@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 18:04:13 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 11:18:09 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct		s_champion
 {
 	int				number;
 	char			*name;
-	int				*bin;
+	char			*bin;
 }					t_champion;
 
 typedef struct		s_process
