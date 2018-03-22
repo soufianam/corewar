@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 11:21:13 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 13:54:55 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 15:30:27 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	cw_dump_and_quit(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		res = ft_strext(res, ft_itoa_base(vm->vm[i], "0123456789abcdef"));
-		if (i % 32 == 0)
+		res = ft_strext(res, cw_itoa_base(vm->vm[i], "0123456789abcdef"));
+		if (i % 32 != 0)
+			res = ft_strext(res, " ");
+		else
 		{
 			ft_putendl(res);
 			ft_strdel(&res);
@@ -32,9 +34,24 @@ void	cw_dump_and_quit(t_vm *vm)
 	exit(0);
 }
 
+static char	*cw_find_player(t_setting setting, int index)
+{
+	int	i;
+
+	i = setting.nbr_champion;
+	while (i)
+	{
+		if (setting.champion_tab[i].number == index)
+			return (setting.champion_tab[i].name);
+		i--;
+	}
+	error(ERR_UNKNOW);
+	return (0);
+}
+
 void	cw_game_over(t_vm *vm)
 {
 	ft_printf("Player %d %s won\n", vm->loop.last_live.index, \
-			vm->setting.champion_tab[vm->loop.last_live.index]);
+		cw_find_player(vm->setting, vm->loop.last_live.index));
 	exit(0);
 }

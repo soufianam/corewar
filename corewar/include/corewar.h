@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 15:32:17 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:34:36 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct		s_vm
 
 typedef enum	e_err
 {
+	ERR_UNKNOW,
 	ERR_PARAM,
 	ERR_MALLOC
 } t_err;
@@ -106,5 +107,6 @@ void    cw_process_process(t_list *process, t_vm *vm, int cycle);
 void    cw_check_process(t_vm *vm);
 void    cw_dump_and_quit(t_vm *vm);
 void    cw_game_over(t_vm *vm);
+char	*cw_itoa_base(char n, char *base);
 
 #endif
