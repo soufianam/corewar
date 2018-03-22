@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:19:26 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 16:19:30 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 17:31:43 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ char    *ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s);
 int     cw_check_cor_file(char *file);
 
 void    cw_exec_process(t_vm *vm, t_process *process);
+void    cw_create_process(t_vm *vm);
 void	cw_vm_init(t_vm *vm, int ac, char **av);
 void    cw_error(int err);
 void    cw_core_loop(t_vm vm);
