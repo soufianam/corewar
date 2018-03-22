@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 17:29:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 15:28:54 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/22 15:32:17 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define S(x) ft_putstr_fd(x, 1)
 # define N(x) ft_putnbr_fd(x, 1)
 # define C(x) ft_putchar_fd(x, 1)
-# define ND(x, y) N(x); S(" - "); N(y); L("")
+# define NL(x) N(x); L("")
 // ---------- //
 
 typedef struct		s_champion
@@ -98,10 +98,11 @@ int		cw_strisdig(char *str);
 char    *ft_memsub(char *src, size_t start, size_t size);
 char    *ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s);
 
+void    cw_exec_process(t_vm *vm, t_process *process);
 void	cw_vm_init(t_vm *vm, int ac, char **av);
 void    cw_error(int err);
 void    cw_core_loop(t_vm vm);
-void    cw_process_process(t_list *process, char *vm, int cycle);
+void    cw_process_process(t_list *process, t_vm *vm, int cycle);
 void    cw_check_process(t_vm *vm);
 void    cw_dump_and_quit(t_vm *vm);
 void    cw_game_over(t_vm *vm);

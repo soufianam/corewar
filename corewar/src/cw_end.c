@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 11:21:13 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 12:18:19 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 13:54:55 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	cw_dump_and_quit(t_vm *vm)
 
 void	cw_game_over(t_vm *vm)
 {
-	ft_printf("Player %d %s won", vm->loop.last_live.index, \
+	ft_printf("Player %d %s won\n", vm->loop.last_live.index, \
 			vm->setting.champion_tab[vm->loop.last_live.index]);
 	exit(0);
 }

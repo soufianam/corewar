@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/22 15:26:57 by cmaxime          ###   ########.fr        #
+#    Updated: 2018/03/22 15:33:09 by cmaxime          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,11 @@ SRC_NAME =	main.c \
 			cw_check.c \
 			cw_core_loop.c \
 			cw_error.c \
-			cw_vm_init.c \
-			cw_end.c\
+			cw_end.c \
 			cw_setting_utils.c \
 			cw_setting_champion.c \
-			cw_setting_init.c
-#			cw_vm_init.c\
-			op.c
+			cw_setting_init.c \
+			cw_vm_init.c
 SRC = $(addprefix /,$(SRC_NAME))
 
 # Objects #
