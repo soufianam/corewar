@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 09:47:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 16:58:42 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/22 17:00:48 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ static void	*get_fct(char id)
 
 	return (tab[id]);
 }
+*/
 
 void	cw_exec_process(t_vm *vm, t_process *process)
 {
-	get_fct(vm->vm[process->pc + process->entrypoint])();
+	(void)vm;
+	(void)process;
+//	get_fct(vm->vm[process->pc + process->entrypoint])();
 }
-*/
