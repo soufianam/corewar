@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 18:51:35 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/22 19:12:46 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,9 @@ typedef struct	s_instruct
 	char	ocp;
 	t_param	param[3];
 }				t_instruct;
+
+extern t_op		optab[OP_TAB_SIZE];
+
+void			ft_display_optab(void);
 
 #endif

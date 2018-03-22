@@ -6,14 +6,14 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:23:34 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/22 18:52:01 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/22 19:10:57 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 #include "asm.h"
 
-t_op    op_tab[OP_TAB_SIZE] =
+t_op    optab[OP_TAB_SIZE] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
