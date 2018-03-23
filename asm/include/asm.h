@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 19:12:46 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/23 15:44:19 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ typedef struct	s_instruct
 extern t_op		optab[OP_TAB_SIZE];
 
 void			ft_display_optab(void);
+int				parse(char	*file);
 
 #endif
