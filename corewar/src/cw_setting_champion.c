@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 15:10:45 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/22 17:27:17 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/23 15:49:08 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*cw_read_champion_header(int fd, int *size)
 	int		ret;
 	int		prog_size;
 
-	bin  = NULL;
+	bin = NULL;
 	i = 0;
 	if ((ret = read(fd, buff, 2192)) == 2192)
 	{

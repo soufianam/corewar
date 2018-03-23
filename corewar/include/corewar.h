@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/22 16:19:26 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 16:34:50 by tdeborde         ###   ########.fr       */
+/*   Created: 2018/03/23 16:54:00 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/03/23 16:54:21 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,7 @@
 # define C(x) ft_putchar_fd(x, 1)
 # define NL(x) N(x); L("")
 // ---------- //
-
-typedef struct	s_op
-{
-	char		*ins;
-	int8_t		nb_param;
-	int8_t		param[4];
-	int8_t		opcode;
-	int			nb_cycle;
-	char		*desc;
-	t_bool		carry;
-	t_bool		codage;
-}				t_op;
+# define OP_TAB_SIZE 17
 
 typedef struct		s_champion
 {
@@ -96,6 +85,23 @@ typedef enum		e_err
 	ERR_PLAYER_NB
 }					t_err;
 
+typedef enum	e_bool
+{
+	FALSE = 0,
+	TRUE = 1
+}				t_bool;
+
+typedef struct	s_op
+{
+	void		*f;
+	int8_t		nb_param;
+	int8_t		opcode;
+	int			nb_cycle;
+	t_bool		carry;
+	t_bool		codage;
+}				t_op;
+
+extern t_op		optab[OP_TAB_SIZE];
 /*
 ** Fcts to load and check all the settings from corewar
 */
