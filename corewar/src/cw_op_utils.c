@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:31:29 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 17:03:12 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 18:18:47 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,23 @@ t_champion	*cw_find_player(t_setting *setting, int index)
 		i--;
 	}
 	return (NULL);
+}
+
+int	cw_get_1(char *vm)
+{
+	char	*new;
+
+	printf("%02hhx\n", vm[0]);
+	new = (char*)vm;
+	return ((char)new[0]);
+}
+
+int	cw_get_2(char *vm)
+{
+	return (vm[0] << 8 | vm[1]);
+}
+
+int	cw_get_4(char *vm)
+{
+	return (vm[0] << 24 | vm[1] << 16 | vm[2] << 8 | vm[3]);
 }
