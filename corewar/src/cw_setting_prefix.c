@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:08:09 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/22 16:51:07 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/23 15:55:16 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,16 @@ void	destroy_tab(char **tab)
 int		cw_check_cor_file(char *file)
 {
 	char	**tab;
+	int		i;
 
 	tab = ft_strsplit(file, '.');
-	if (ft_strtab_len(tab) != 2)
+	i = ft_strtab_len(tab);
+	if (i < 2)
 	{
 		destroy_tab(tab);
 		return (1);
 	}
-	if (ft_strcmp(tab[1], "cor") != 0)
+	if (ft_strcmp(tab[i - 1], "cor") != 0)
 	{
 		destroy_tab(tab);
 		return (1);

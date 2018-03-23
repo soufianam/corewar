@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/23 13:10:12 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 15:58:51 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		cw_init_dump(t_setting *setting, int ac, char **av, int i)
 			i++;
 		}
 	}
-	else if (av[i][0] == '-')
+	else if (i < ac && av[i][0] == '-')
 		cw_error(ERR_USAGE);
 	return (i);
 }
@@ -46,7 +46,7 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 	if ((fd = open(file, O_RDONLY)) == -1)
 		cw_error_custom("Error: can't read file");
 	bin = cw_read_champion_header(fd, &size_bin);
-	if (size_bin == -1 || cw_check_champion_id(setting, id) == -1)
+	if (!bin || size_bin == -1 || cw_check_champion_id(setting, id) == -1)
 	{
 		if (bin)
 			free(bin);
@@ -90,5 +90,7 @@ int		cw_load_settings(t_setting *setting, int ac, char **av)
 		i = cw_init_champion(setting, ac, av, i);
 	if (setting->nbr_champion > MAX_PLAYERS)
 		cw_error_custom("Error: too many champions");
+	else if (setting->nbr_champion <= 0)
+		cw_error_custom("Error: no champion");
 	return (i);
 }
