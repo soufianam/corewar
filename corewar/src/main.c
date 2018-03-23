@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 17:29:20 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/23 11:36:40 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	print_champions_data(t_setting *setting)
 		L(c[i].name);
 		N(c[i].id);
 		L("");
-		N(c[i].size_prog);
+		NL(c[i].size_prog);
 		j = -1;
 		while (++j < c[i].size_prog)
-			ft_printf("%hhx ", c[i].bin[j]);
+			ft_printf("%02hhx ", c[i].bin[j]);
 		L("\n");
 	}
 }
