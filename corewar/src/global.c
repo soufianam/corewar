@@ -6,12 +6,11 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:23:34 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/22 19:10:57 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/23 16:22:24 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
-#include "asm.h"
+#include "corewar.h"
 
 t_op    optab[OP_TAB_SIZE] =
 {

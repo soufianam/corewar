@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 11:21:13 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 12:18:53 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 16:21:48 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,13 @@ static char	*cw_find_player(t_setting setting, int index)
 
 void	cw_game_over(t_vm *vm)
 {
-	ft_printf("Player %d %s won\n", vm->loop.last_live.index, \
-		cw_find_player(vm->setting, vm->loop.last_live.index));
+	int		index;
+
+	index = vm->loop.last_live.index;
+	if (index == -1)
+		ft_printf("No procces found living");
+	else
+		ft_printf("Player %d %s won\n", index, \
+			cw_find_player(vm->setting, index));
 	exit(0);
 }
