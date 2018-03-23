@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/22 12:16:02 by blefeuvr         ###   ########.fr        #
+#    Updated: 2018/03/23 17:08:02 by cmaxime          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ SRC_NAME =\
 	ft_lstsize.c\
 	ft_lstsort.c\
 	ft_max.c\
+	ft_memextend.c\
+	ft_memsub.c\
 	ft_memalloc.c\
 	ft_memjoin.c\
 	ft_memccpy.c\
