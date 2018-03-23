@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:52:35 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 12:17:14 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 13:09:37 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** get_next_line Paul
 */
 
-# define MAX_FD 1
+# define MAX_FD 100
 # define BUFF_SIZE 16384
 
 typedef struct		s_buff
