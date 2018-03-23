@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:19:26 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 16:21:03 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 16:40:49 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,10 @@ typedef enum	e_bool
 
 typedef struct	s_op
 {
-	char		*ins;
+	void		*f;
 	int8_t		nb_param;
-	int8_t		param[4];
 	int8_t		opcode;
 	int			nb_cycle;
-	char		*desc;
 	t_bool		carry;
 	t_bool		codage;
 }				t_op;
