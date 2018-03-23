@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:54:00 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 17:01:55 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:12:55 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,6 @@ char		*cw_itoa_base(char n, char *base);
 t_champion	*cw_find_player(t_setting *setting, int index);
 void		cw_live(t_vm *vm, t_process *process);
 
-extern t_op		optab[OP_TAB_SIZE];
+extern t_op		op_tab[OP_TAB_SIZE];
 
 #endif
