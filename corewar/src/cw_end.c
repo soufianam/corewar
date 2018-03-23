@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 11:21:13 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 12:18:53 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 16:33:57 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,12 @@ void	cw_dump_and_quit(t_vm *vm)
 	exit(0);
 }
 
-static char	*cw_find_player(t_setting setting, int index)
-{
-	int	i;
-
-	i = setting.nbr_champion;
-	while (i)
-	{
-		if (setting.champion_tab[i].id == index)
-			return (setting.champion_tab[i].name);
-		i--;
-	}
-	cw_error(ERR_UNKNOW);
-	return (0);
-}
-
 void	cw_game_over(t_vm *vm)
 {
-	ft_printf("Player %d %s won\n", vm->loop.last_live.index, \
-		cw_find_player(vm->setting, vm->loop.last_live.index));
+	t_champion	*champ;
+
+	if (!(champ = cw_find_player(vm->setting, vm->loop.last_live.index)))
+		cw_error(ERR_UNKNOW);
+	ft_printf("Player %d %s won\n", vm->loop.last_live.index, champ->name);
 	exit(0);
 }
