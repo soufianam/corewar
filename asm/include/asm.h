@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 15:44:19 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/23 15:46:54 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef enum	e_bool
 {
 	FALSE = 0,
-	TRUE = 0
+	TRUE = 1
 }				t_bool;
 
 # define OP_TAB_SIZE 17
