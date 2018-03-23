@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cw_op_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 16:31:29 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 18:23:26 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/03/23 18:49:59 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/03/23 18:50:02 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ t_champion	*cw_find_player(t_setting *setting, int index)
 	return (NULL);
 }
 
-int	cw_get_1(char *vm)
+int			cw_get_1(char *vm)
 {
 	return (vm[0]);
 }
 
-int	cw_get_2(char *vm)
+int			cw_get_2(char *vm)
 {
 	return (vm[0] << 8 | vm[1]);
 }
 
-int	cw_get_4(char *vm)
+int			cw_get_4(char *vm)
 {
 	return (vm[0] << 24 | vm[1] << 16 | vm[2] << 8 | vm[3]);
 }
