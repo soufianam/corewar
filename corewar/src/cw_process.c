@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 09:47:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 16:43:39 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:01:11 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	cw_exec_process(t_vm *vm, t_process *process)
 {
 	t_op	op;
 	
-	op = op_tab[vm->vm[process->pc + process->entrypoint]];
+	op = optab[(int)vm->vm[(process->pc + process->entrypoint) % MEM_SIZE]];
 	op.f(vm, process, op);
 }

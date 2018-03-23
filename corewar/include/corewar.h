@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:54:00 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 16:58:00 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:01:55 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef enum	e_bool
 
 typedef struct	s_op
 {
-	void		*f;
+	void		(*f)();
 	int8_t		nb_param;
 	int8_t		opcode;
 	int			nb_cycle;
@@ -132,7 +132,7 @@ void		cw_check_process(t_vm *vm);
 void		cw_dump_and_quit(t_vm *vm);
 void		cw_game_over(t_vm *vm);
 char		*cw_itoa_base(char n, char *base);
-t_champion	*cw_find_player(t_setting setting, int index);
+t_champion	*cw_find_player(t_setting *setting, int index);
 void		cw_live(t_vm *vm, t_process *process);
 
 extern t_op		optab[OP_TAB_SIZE];
