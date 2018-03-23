@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:52:35 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 13:09:37 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/23 19:44:57 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcpy(char *dst, const char *src);
 void				ft_strdel(char **as);
+void				ft_strdel_splittab(char **svg);
 char				*ft_strdup(const char *s1);
 int					ft_strequ(char const *s1, char const *s2);
 char				*ft_strextend(char *s1, char *s2);
