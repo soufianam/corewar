@@ -5,33 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/22 16:23:34 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/22 16:23:37 by pprikazs         ###   ########.fr       */
+/*   Created: 2018/03/22 18:50:32 by pprikazs          #+#    #+#             */
+/*   Updated: 2018/03/22 19:10:07 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "op.h"
+#include "ft_printf.h"
+#include "asm.h"
 
+extern t_op		optab[OP_TAB_SIZE];
 
-
-
-t_op    op_tab[17] =
+void			ft_display_optab(void)
 {
-	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
-	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
-	{"st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
-	{"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
-	{"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
-	{"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6, "et (and  r1, r2, r3   r1&r2 -> r3", 1, 0},
-	{"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6, "ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
-	{"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6, "ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0},
-	{"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
-	{"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25, "load index", 1, 1},
-	{"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25, "store index", 1, 1},
-	{"fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
-	{"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
-	{"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50, "long load index", 1, 1},
-	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
-	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0},
-	{0, 0, {0}, 0, 0, 0, 0, 0}
-};
+	int			i;
+
+	i = 0;
+	while (i < OP_TAB_SIZE)
+	{
+		ft_printf("ins : %s | nb_param : %d | ", optab[i].ins, optab[i].nb_param);
+		ft_printf("params : {p1 %d , p2 %d, ", optab[i].param[0], optab[i].param[1]);
+		ft_printf("p3 %d, p4 %d} | ", optab[i].param[2], optab[i].param[3]);
+		ft_printf("opcode : %d | ", optab[i].opcode);
+		ft_printf("nb_cycle : %d | ", optab[i].nb_cycle);
+		ft_printf("desc : %s | ", optab[i].desc);
+		ft_printf("carry : %d | codage : %d \n", optab[i].carry, optab[i].codage);
+		i++;
+	}
+}

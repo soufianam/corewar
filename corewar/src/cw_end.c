@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 11:21:13 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 17:08:58 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 12:18:53 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,11 @@ void	cw_dump_and_quit(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		res = ft_strext(res, cw_itoa_base(vm->vm[i], "0123456789abcdef"));
-		if (i % 32 != 0)
-			res = ft_strext(res, " ");
+		ft_printf("%02hhx", vm->vm[i]);
+		if ((i + 1) % 32 != 0)
+			ft_putchar(' ');
 		else
-		{
-			ft_putendl(res);
-			ft_strdel(&res);
-		}
+			ft_putchar('\n');
 		i++;
 	}
 	exit(0);
@@ -45,7 +42,7 @@ static char	*cw_find_player(t_setting setting, int index)
 			return (setting.champion_tab[i].name);
 		i--;
 	}
-//	cw_error(ERR_UNKNOW);
+	cw_error(ERR_UNKNOW);
 	return (0);
 }
 
