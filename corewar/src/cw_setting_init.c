@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/23 12:09:52 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 13:10:12 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		cw_init_dump(t_setting *setting, int ac, char **av, int i)
 			i++;
 		}
 	}
+	else if (av[i][0] == '-')
+		cw_error(ERR_USAGE);
 	return (i);
 }
 
@@ -40,14 +42,15 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 
 	size_bin = 0;
 	if (cw_check_cor_file(file) == 1)
-		return (-1);
-	fd = open(file, O_RDONLY);
+		cw_error_custom("Error: not a .cor file");
+	if ((fd = open(file, O_RDONLY)) == -1)
+		cw_error_custom("Error: can't read file");
 	bin = cw_read_champion_header(fd, &size_bin);
 	if (size_bin == -1 || cw_check_champion_id(setting, id) == -1)
 	{
 		if (bin)
 			free(bin);
-		return (-1);
+		cw_error_custom("Error: bad file format");
 	}
 	cw_load_bin_champion(&(setting->champion_tab[setting->nbr_champion]), \
 			bin, size_bin, id);
@@ -64,14 +67,14 @@ int		cw_init_champion(t_setting *setting, int ac, char **av, int i)
 		if (i < ac && cw_strisdig(av[i - 1]))
 			i = cw_load_champion(setting, av[i], i, ft_atoi(av[i - 1]));
 		else
-			return (-1);
+			cw_error(ERR_USAGE);
 	}
 	else if (i < ac)
 	{
 		i = cw_load_champion(setting, av[i], i, cw_init_champion_id(setting));
 	}
 	else
-		return (-1);
+		cw_error(ERR_USAGE);
 	return (i);
 }
 
@@ -82,8 +85,10 @@ int		cw_load_settings(t_setting *setting, int ac, char **av)
 	i = 1;
 	cw_init_setting(setting);
 	if ((i = cw_init_dump(setting, ac, av, i)) % 2 != 1)
-		return (-1);
+		cw_error(ERR_USAGE);
 	while (i < ac && i != -1)
 		i = cw_init_champion(setting, ac, av, i);
+	if (setting->nbr_champion > MAX_PLAYERS)
+		cw_error_custom("Error: too many champions");
 	return (i);
 }

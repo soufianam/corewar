@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 08:48:28 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 12:10:46 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 12:58:14 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ void	cw_vm_init(t_vm *vm, int ac, char **av)
 	vm->loop.cycle_to_die = CYCLE_TO_DIE;
 	vm->loop.last_live.index = -1;
 	vm->loop.last_live.cycle = -1;
-	int res;
-	if ((res = cw_load_settings(&(vm->setting), ac, av)) <= 1)
-	{
-		NL(res);
+	if (cw_load_settings(&(vm->setting), ac, av) <= 1)
 		cw_error(ERR_USAGE);
-	}
 	cw_create_process(vm);
 }
