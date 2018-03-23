@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:19:26 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 12:51:19 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 15:51:59 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@
 # define C(x) ft_putchar_fd(x, 1)
 # define NL(x) N(x); L("")
 // ---------- //
+
+typedef struct	s_op
+{
+	char		*ins;
+	int8_t		nb_param;
+	int8_t		param[4];
+	int8_t		opcode;
+	int			nb_cycle;
+	char		*desc;
+	t_bool		carry;
+	t_bool		codage;
+}				t_op;
 
 typedef struct		s_champion
 {
@@ -115,5 +127,7 @@ void    cw_check_process(t_vm *vm);
 void    cw_dump_and_quit(t_vm *vm);
 void    cw_game_over(t_vm *vm);
 char	*cw_itoa_base(char n, char *base);
+
+extern t_op		optab[OP_TAB_SIZE];
 
 #endif

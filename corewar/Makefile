@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/22 16:59:23 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/23 12:14:12 by blefeuvr         ###   ########.fr        #
+#    Updated: 2018/03/23 15:51:41 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ CFLAGS = -Werror -Wall -Wextra
 
 # Sources #
 SRC_NAME =	main.c \
+			global.c \
 			cw_process.c \
 			cw_check.c \
 			cw_core_loop.c \
