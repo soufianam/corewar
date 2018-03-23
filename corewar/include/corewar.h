@@ -5,8 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD
 /*   Created: 2018/03/22 16:19:26 by blefeuvr          #+#    #+#             */
 /*   Updated: 2018/03/23 17:10:22 by cmaxime          ###   ########.fr       */
+=======
+/*   Created: 2018/03/23 16:54:00 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/03/23 17:12:55 by blefeuvr         ###   ########.fr       */
+>>>>>>> a44f07a44d712dad95caf3dd4a66e902ce1ff789
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +138,6 @@ char		*cw_itoa_base(char n, char *base);
 t_champion	*cw_find_player(t_setting *setting, int index);
 void		cw_live(t_vm *vm, t_process *process);
 
-extern t_op		optab[OP_TAB_SIZE];
+extern t_op		op_tab[OP_TAB_SIZE];
 
 #endif

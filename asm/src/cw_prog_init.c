@@ -6,29 +6,31 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 12:13:09 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/23 17:08:40 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/23 17:19:32 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 /*
-** fct
+** fct to add a param to the program
 */
 int		cw_add_param(t_param param, char *bin, int add, int size)
 {
 	char	*p;
 	int		i;
 
-	p = memalloc(add);
+	p = ft_memalloc(add);
 	i = -1;
 	while (++i < add)
 		p[i] = (char)((param.val << (i * 8)) >> (8 * add));
+	bin = ft_memextend(bin, p, size, add);
+	free(p);
 	return (add);
 }
 
 /*
-** fct
+** fct to get the size of a param
 */
 int		cw_size_param(t_param param, int8_t id)
 {
@@ -53,12 +55,25 @@ int		cw_compile_instruct(t_instruct *inst, char *bin, int size)
 {
 	int		i;
 	int		add;
+	char	*p;
+	int		s_p;
 
+	s_p = 1;
+	if (inst->ocp % 4 != 0)
+		s_p = 2;
+	p = ft_memalloc(s_p);
+	p[0] = inst->id;
+	if (s_p == 2)
+		p[1] = inst->ocp;
+	bin = ft_memextend(bin, p, size, s_p);
+	size += s_p;
+	free(p);
 	i = -1;
 	while (++i < 3)
 	{
 		add = cw_size_param(inst->param[i], inst->id);
-		size += cw_add_param(inst->param[i], bin, add, size);
+		if (add != 0)
+			size += cw_add_param(inst->param[i], bin, add, size);
 	}
 	return (size);
 }
