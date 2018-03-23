@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:52:35 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 17:11:13 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/23 18:21:29 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int					ft_isnum(char *str);
 void				ft_putwchar_fd(wchar_t chr, int fd);
 char				*ft_memjoin(char *s1, char *s2, size_t l1, \
 		size_t l2);
-char				*ft_memsub(char *src, size_t start, size_t size)
-char				*ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s)
+char				*ft_memsub(char *src, size_t start, size_t size);
+char				*ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s);
 int					ft_cinstr(char c, char *str);
 int					ft_gnl(int fd, char **line);
 int					ft_max(int a, int b);
