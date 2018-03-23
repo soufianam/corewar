@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:31:29 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 18:18:47 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 18:23:26 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@ t_champion	*cw_find_player(t_setting *setting, int index)
 
 int	cw_get_1(char *vm)
 {
-	char	*new;
-
-	printf("%02hhx\n", vm[0]);
-	new = (char*)vm;
-	return ((char)new[0]);
+	return (vm[0]);
 }
 
 int	cw_get_2(char *vm)
