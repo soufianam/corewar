@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cw_op_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 15:43:28 by pprikazs         ###   ########.fr       */
+/*   Created: 2018/03/23 16:31:29 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/03/23 17:03:12 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include "libft.h"
-#include "op.h"
-#include "asm.h"
+#include "corewar.h"
 
-extern t_op		optab[OP_TAB_SIZE];
-
-
-int				main(int argc, char *argv[])
+t_champion	*cw_find_player(t_setting *setting, int index)
 {
-	ft_display_optab();
-	line = NULL;
-	if (argc == 2)
+	int	i;
+
+	i = setting->nbr_champion;
+	while (i)
 	{
-		ft_parse(argc[1]);
+		if (setting->champion_tab[i].id == index)
+			return (&(setting->champion_tab[i]));
+		i--;
 	}
-	return (0);
+	return (NULL);
 }

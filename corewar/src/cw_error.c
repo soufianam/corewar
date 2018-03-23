@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 09:12:56 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 15:30:52 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 13:00:58 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 void	cw_error(int err)
 {
-	static const char *error[3] = {
-		"unknown error",
+	static const char *error[] = {
+		"Error: unknown",
 		"usage: ./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...",
-		"malloc error"
+		"Error: malloc failed"
 	};
 
 	ft_putendl(error[err]);
+	exit(1);
+}
+
+int		cw_error_custom(char *str)
+{
+	ft_putendl(str);
 	exit(1);
 }

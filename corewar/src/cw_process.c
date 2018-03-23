@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 09:47:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 17:00:48 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:01:11 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,11 @@ void	cw_process_process(t_list *process, t_vm *vm, int cycle)
 		curr = curr->next;
 	}
 }
-/*
-static void	*get_fct(char id)
-{
-	static void	*tab[] = {
-		cw_live		
-	};
-
-	return (tab[id]);
-}
-*/
 
 void	cw_exec_process(t_vm *vm, t_process *process)
 {
-	(void)vm;
-	(void)process;
-//	get_fct(vm->vm[process->pc + process->entrypoint])();
+	t_op	op;
+	
+	op = optab[(int)vm->vm[(process->pc + process->entrypoint) % MEM_SIZE]];
+	op.f(vm, process, op);
 }
