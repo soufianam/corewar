@@ -6,24 +6,24 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:52:37 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 17:02:58 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:08:51 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_champion	*cw_get_champ_id(t_vm *vm, t_process *process)
+int		cw_get_champ_id(t_vm *vm, t_process *process)
 {
-	char	*vm;
+	char	*ram;
 	int		id;
 	int		i;
 
 	i = -1;
 	id = 0;
-	vm = &(vm->vm[process->pc + process->entrypoint + 1] % MEM_SIZE);
+	ram = &(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]);
 	while (++i < 4)
 	{
-		id += vm[i];
+		id += ram[i];
 		id = id << 8;
 	}
 	return (id);
@@ -41,8 +41,8 @@ void	cw_live(t_vm *vm, t_process *process)
 	{
 		ft_printf("Player %S (%d) has been reported alive.\n",
 			champ->name, id);
-		vm->loop->last_live.index = id;
-		vm->loop->last_live.cycle = vm->cycle;
+		vm->loop.last_live.index = id;
+		vm->loop.last_live.cycle = vm->cycle;
 		process->pc = (process->pc + 5) % MEM_SIZE;
 		process->next_cycle += 10;
 	}

@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:54:44 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 16:55:14 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:06:33 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	cw_game_over(t_vm *vm)
 {
 	t_champion	*champ;
 
-	if (!(champ = cw_find_player(vm->setting, vm->loop.last_live.index)))
+	if (!(champ = cw_find_player(&vm->setting, vm->loop.last_live.index)))
 		cw_error(ERR_UNKNOW);
 	ft_printf("Player %d %s won\n", vm->loop.last_live.index, champ->name);
 	exit(0);
