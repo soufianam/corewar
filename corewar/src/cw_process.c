@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 09:47:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 17:13:12 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:22:18 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	cw_process_process(t_list *process, t_vm *vm, int cycle)
 void	cw_exec_process(t_vm *vm, t_process *process)
 {
 	t_op	op;
-	
-	op = op_tab[(int)vm->vm[(process->pc + process->entrypoint) % MEM_SIZE]];
+	int		opcode;
+
+	if ((opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE]) < 1)
+		cw_error_custom("unknow opcode");
+	op = op_tab[opcode];
 	op.f(vm, process, op);
 }
