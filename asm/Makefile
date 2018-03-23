@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/22 18:54:10 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/03/23 11:27:25 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ CFLAGS = -Werror -Wall -Wextra
 
 # Sources #
 SRC_NAME = main.c \
+		   global.c \
 		   op.c
 
 SRC = $(addprefix /,$(SRC_NAME))
