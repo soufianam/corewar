@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/22 17:27:21 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/23 11:30:27 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 	int		size_bin;
 	char	*bin;
 
-	id = 0;
 	size_bin = 0;
 	if (cw_check_cor_file(file) == 1)
 		return (-1);
@@ -52,7 +51,7 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 	}
 	cw_load_bin_champion(&(setting->champion_tab[setting->nbr_champion]), \
 			bin, size_bin, id);
-	setting->nbr_champion++;
+	setting->nbr_champion += 1;
 	free(bin);
 	return (++i);
 }
@@ -83,7 +82,7 @@ int		cw_load_settings(t_setting *setting, int ac, char **av)
 	i = 1;
 	cw_init_setting(setting);
 	if ((i = cw_init_dump(setting, ac, av, i)) % 2 != 1)
-		return (0);
+		return (-1);
 	while (i < ac && i != -1)
 		i = cw_init_champion(setting, ac, av, i);
 	return (i);
