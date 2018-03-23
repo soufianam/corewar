@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:24:17 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/23 11:29:41 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/03/23 12:09:48 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int		cw_init_champion_id(t_setting *setting)
 	{
 		max_id = max_id >= setting->champion_tab[i].id ? max_id : \
 				 setting->champion_tab[i].id;
-		i++;
 	}
 	return (max_id + 1);
 }

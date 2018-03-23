@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 10:40:32 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/22 16:27:57 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/23 12:00:00 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void		cw_create_process(t_vm *vm)
 	while (++i < setting.nbr_champion)
 	{
 		champion = setting.champion_tab[i];
-		ft_memcpy(vm->vm + start_pos, &champion, champion.size_prog);
+		ft_memcpy(vm->vm + start_pos, champion.bin, champion.size_prog);
 		cw_add_process(vm, champion, start_pos);
 		start_pos += (MEM_SIZE / setting.nbr_champion);
 	}
