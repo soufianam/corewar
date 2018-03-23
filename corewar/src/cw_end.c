@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/22 11:21:13 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 12:18:53 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/03/23 17:11:23 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/03/23 17:11:54 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,16 @@ void	cw_dump_and_quit(t_vm *vm)
 	exit(0);
 }
 
-static char	*cw_find_player(t_setting setting, int index)
-{
-	int	i;
-
-	i = setting.nbr_champion;
-	while (i)
-	{
-		if (setting.champion_tab[i].id == index)
-			return (setting.champion_tab[i].name);
-		i--;
-	}
-	cw_error(ERR_UNKNOW);
-	return (0);
-}
-
 void	cw_game_over(t_vm *vm)
 {
-	ft_printf("Player %d %s won\n", vm->loop.last_live.index, \
-		cw_find_player(vm->setting, vm->loop.last_live.index));
+	t_champion	*champ;
+	int		index;
+
+	index = vm->loop.last_live.index;
+	champ = cw_find_player(&(vm->setting), index);
+	if (index == -1 || !champ)
+		ft_printf("No process found living for a champion\n");
+	else
+		ft_printf("Player %d %s won\n", index, champ->name);
 	exit(0);
 }
