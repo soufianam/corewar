@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:54:44 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 16:55:14 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:10:36 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,13 @@ void	cw_dump_and_quit(t_vm *vm)
 void	cw_game_over(t_vm *vm)
 {
 	t_champion	*champ;
+	int		index;
 
-	if (!(champ = cw_find_player(vm->setting, vm->loop.last_live.index)))
-		cw_error(ERR_UNKNOW);
-	ft_printf("Player %d %s won\n", vm->loop.last_live.index, champ->name);
+	index = vm->loop.last_live.index;
+	champ = cw_find_player(&(vm->setting), index);
+	if (index == -1 || !champ)
+		ft_printf("No process found living for a champion\n");
+	else
+		ft_printf("Player %d %s won\n", index, champ->name);
 	exit(0);
 }
