@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 15:46:54 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/03/23 17:09:38 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct	s_instruct
 {
 	char	*label;
 	int		pc;
-	char	id;
+	int8_t	id;
 	char	ocp;
 	t_param	param[3];
 }				t_instruct;

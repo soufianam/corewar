@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 16:54:00 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 18:18:44 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/03/23 18:20:20 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,6 @@ int			cw_check_bin_header(char *bin);
 int			cw_check_bin_null(char *bin, int pos);
 void		cw_load_bin_champion(t_champion *champ, char *bin, int size, int id);
 int			cw_strisdig(char *str);
-char		*ft_memsub(char *src, size_t start, size_t size);
-char		*ft_memextend(char *dst, char *src, size_t sz_d, size_t sz_s);
 int			cw_check_cor_file(char *file);
 
 void		cw_exec_process(t_vm *vm, t_process *process);
