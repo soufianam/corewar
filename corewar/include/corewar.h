@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:19:26 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 17:31:43 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/23 11:13:49 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct		s_vm
 typedef enum		e_err
 {
 	ERR_UNKNOW,
-	ERR_PARAM,
+	ERR_USAGE,
 	ERR_MALLOC
 }					t_err;
 
