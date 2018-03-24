@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:12:39 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 20:19:02 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:17:46 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	cw_rev_get(char *registries, int nb)
 	}
 }
 
-void	cw_get_param(t_vm *vm, t_process *process, int *param1, int *param2)
+void	cw_get_param_ld(t_vm *vm, t_process *process, int *param1, int *param2)
 {
 	unsigned char	ocp;
 
@@ -42,19 +42,16 @@ void	cw_get_param(t_vm *vm, t_process *process, int *param1, int *param2)
 	}
 }
 
-void	cw_ld(t_vm *vm, t_process *process)
+int		cw_ld(t_vm *vm, t_process *process)
 {
-	unsigned char	ocp;
 	int				param1;
 	int				param2;
 
-	cw_get_params(vm, process, &param1, &param2);
+	cw_get_param_ld(vm, process, &param1, &param2);
 	process->carry = !param1 ? 1 : 0;
-	if (param2 < 1 || param2 >= REG_NUMBER)
-		ft_printf("Ld failed : no registries found for reg_index %d", param2);
-	else
-	{
-		cw_rev_get(process->registries[param2], param1);
-		process->next_cycle += 5;
-	}
+	if (cw_check_reg(param2))
+		return (0);
+	cw_rev_get(process->registries[param2], param1);
+	process->next_cycle += 5;
+	return (1);
 }

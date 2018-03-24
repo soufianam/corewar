@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 18:26:17 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/24 17:14:04 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,11 +131,13 @@ void		cw_dump_and_quit(t_vm *vm);
 void		cw_game_over(t_vm *vm);
 char		*cw_itoa_base(char n, char *base);
 t_champion	*cw_find_player(t_setting *setting, int index);
-void		cw_live(t_vm *vm, t_process *process);
-void		cw_ld(t_vm *vm, t_process *process);
+int			cw_live(t_vm *vm, t_process *process);
+int			cw_ld(t_vm *vm, t_process *process);
+int			cw_st(t_vm *vm, t_process *process);
 int			cw_get_1(char *vm);
 int			cw_get_2(char *vm);
 int			cw_get_4(char *vm);
+int			cw_check_reg(int param);
 
 extern t_op		op_tab[OP_TAB_SIZE];
 

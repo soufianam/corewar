@@ -6,7 +6,7 @@
 #    By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/23 16:53:34 by tdeborde          #+#    #+#              #
-#    Updated: 2018/03/23 18:26:47 by tdeborde         ###   ########.fr        #
+#    Updated: 2018/03/24 17:16:50 by tdeborde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,11 @@ SRC_NAME =	main.c \
 			cw_setting_prefix.c \
 			cw_vm_init.c \
 			cw_op_utils.c \
+			cw_op_utils2.c \
 			cw_create_process.c \
 			cw_live.c \
-			cw_ld.c	
+			cw_ld.c \
+			cw_st.c	
 SRC = $(addprefix /,$(SRC_NAME))
 
 # Objects #
