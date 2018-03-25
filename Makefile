@@ -41,8 +41,7 @@ a:
 	@touch .tmp
 
 joke:
-	@bash -c "if [ -f '.tmp' ]; then curl -s http://api.icndb.com/jokes/random | cut -d '\"' -f 12; afplay -t 10 .media/laught.mp3 & fi"
-	@rm -f .tmp
+	@bash -c "if [ $$(($$(date +%s) - $$(date --utc --reference=.tmp +%s))) -lt 1 ]; then curl -s http://api.icndb.com/jokes/random | cut -d '\"' -f 12; afplay -t 10 .media/laught.mp3 & fi"
 
 .SUFFIXES:
 .PHONY: all clean fclean re

@@ -1,6 +1,7 @@
 corewar/corewar
 asm/asm
 sites
+.tmp
 *.d
 
 # Object files
