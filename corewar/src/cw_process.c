@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 09:47:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/26 15:41:56 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/26 18:10:36 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ void	cw_exec_process(t_vm *vm, t_process *process)
 	while (op_tab[i].opcode != opcode)
 		i++;
 	op = op_tab[i];
-	ft_printf("New op, opcode = %d\n", opcode);
 	op.f(vm, process);
 }

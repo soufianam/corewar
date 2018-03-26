@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/26 15:11:27 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/26 17:23:13 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ int			cw_get_1(char *vm);
 int			cw_get_2(char *vm);
 int			cw_get_4(char *vm);
 int			cw_check_reg(int param);
+void		cw_rev_get(char *registries, int nb);
 
 extern t_op		op_tab[OP_TAB_SIZE];
 

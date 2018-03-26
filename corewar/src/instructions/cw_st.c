@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:32:07 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/24 17:17:37 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/26 17:25:57 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			cw_get_param_st(t_vm *vm, t_process *process, int *param1, int *param2)
 	unsigned char	ocp;
 
 	if ((ocp = vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE])
-			== 50)
+			== 0x50)
 	{
 		*param1 = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 2)
 					% MEM_SIZE]));
@@ -41,9 +41,9 @@ int			cw_st(t_vm *vm, t_process *process)
 	int				ret;
 
 	ret = cw_get_param_st(vm, process, &param1, &param2);
-	process->carry = !param1 ? 1 : 0;
 	if (!cw_check_reg(param1))
 		return (0);
+	process->carry = !process->registries[param1] ? 1 : 0;
 	if (!ret)
 	{
 		if (!cw_check_reg(param2))
