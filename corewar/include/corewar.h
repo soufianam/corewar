@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/24 17:14:04 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/26 15:11:27 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef enum	e_bool
 
 typedef struct	s_op
 {
-	void		(*f)();
+	int			(*f)();
 	int8_t		nb_param;
 	int8_t		opcode;
 	int			nb_cycle;
@@ -134,6 +134,9 @@ t_champion	*cw_find_player(t_setting *setting, int index);
 int			cw_live(t_vm *vm, t_process *process);
 int			cw_ld(t_vm *vm, t_process *process);
 int			cw_st(t_vm *vm, t_process *process);
+int			cw_sti(t_vm *vm, t_process *process);
+int			cw_and(t_vm *vm, t_process *process);
+int			cw_zjump(t_vm *vm, t_process *process);
 int			cw_get_1(char *vm);
 int			cw_get_2(char *vm);
 int			cw_get_4(char *vm);

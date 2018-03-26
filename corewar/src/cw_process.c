@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 09:47:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 17:22:18 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/03/26 15:41:56 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,14 @@ void	cw_exec_process(t_vm *vm, t_process *process)
 {
 	t_op	op;
 	int		opcode;
+	int		i;
 
 	if ((opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE]) < 1)
-		cw_error_custom("unknow opcode");
-	op = op_tab[opcode];
-	op.f(vm, process, op);
+		cw_error_custom("unknown opcode");
+	i = 0;
+	while (op_tab[i].opcode != opcode)
+		i++;
+	op = op_tab[i];
+	ft_printf("New op, opcode = %d\n", opcode);
+	op.f(vm, process);
 }

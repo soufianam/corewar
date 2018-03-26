@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:52:37 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/24 16:59:38 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/26 15:40:18 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			cw_live(t_vm *vm, t_process *process)
 	id = cw_get_4(&(vm->vm[(process->pc + process->entrypoint) % MEM_SIZE]));
 	if (!(champ = cw_find_player(&(vm->setting), id)))
 	{
-		ft_printf("Live failed : no player found for id %d", id);
+		ft_printf("Live failed : no player found for id %d\n", id);
 		return (0);
 	}
 	ft_printf("Player %S (%d) has been reported alive.\n",
