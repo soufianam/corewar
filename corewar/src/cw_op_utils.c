@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 20:20:14 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/26 17:41:42 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/28 17:44:48 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_champion	*cw_find_player(t_setting *setting, int index)
 	int	i;
 
 	i = setting->nbr_champion;
-	while (i)
+	while (i >= 0)
 	{
 		if (setting->champion_tab[i].id == index)
 			return (&(setting->champion_tab[i]));
