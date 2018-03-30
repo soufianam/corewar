@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_and.c                                           :+:      :+:    :+:   */
+/*   cw_xor.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/30 17:26:32 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/30 17:30:39 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int		cw_and_param(t_vm *vm, t_process *process, int param[3], int ret[3])
+int		cw_xor_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 {
 	int				i;
 	unsigned char	ocp;
@@ -30,16 +30,16 @@ int		cw_and_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 	return (1);
 }
 
-int			cw_and(t_vm *vm, t_process *process)
+int			cw_xor(t_vm *vm, t_process *process)
 {
 	int				param[3];
 	int				ret[3];
 
 	process->pc = (process->pc + 1) % MEM_SIZE;
-	if (!(cw_and_param(vm, process, param, ret)))
+	if (!(cw_xor_param(vm, process, param, ret)))
 		return (0);
-	cw_rev_get(process->registries[param[2]], (param[0] & param[1]));
-	process->carry = !(param[0] & param[1]) ? 1 : 0;
+	cw_rev_get(process->registries[param[2]], (param[0] ^ param[1]));
+	process->carry = !(param[0] ^ param[1]) ? 1 : 0;
 	process->next_cycle += 6;
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	return (1);
