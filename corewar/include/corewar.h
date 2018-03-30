@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/26 17:23:13 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/30 15:49:51 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,10 @@ int			cw_get_2(char *vm);
 int			cw_get_4(char *vm);
 int			cw_check_reg(int param);
 void		cw_rev_get(char *registries, int nb);
+int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
+		unsigned char ocp_trunc);
+int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
+		unsigned char ocp_trunc);
 
 extern t_op		op_tab[OP_TAB_SIZE];
 

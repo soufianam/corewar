@@ -6,40 +6,39 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:12:39 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/26 17:23:29 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/30 16:43:24 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	cw_get_param_ld(t_vm *vm, t_process *process, int *param1, int *param2)
+int		cw_ld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 {
+	int				i;
 	unsigned char	ocp;
 
-	if ((ocp = vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]) == 0xD0)
+	i = -1;
+	ocp = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
+	while (++i < 2)
 	{
-		*param1 = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 2) % MEM_SIZE]));
-		*param2 = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 4) % MEM_SIZE]));
-		process->pc = (process->pc + 5) % MEM_SIZE;
+		if (!(ret[i] = cw_read_ocp(vm, process, &param[i], ocp)))
+			return (0);
+		ocp = ocp << 2;
 	}
-	else
-	{
-		*param1 = cw_get_4(&(vm->vm[(process->pc + process->entrypoint + 2) % MEM_SIZE]));
-		*param2 = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 6) % MEM_SIZE]));
-		process->pc = (process->pc + 7) % MEM_SIZE;
-	}
+	return (1);
 }
 
 int		cw_ld(t_vm *vm, t_process *process)
 {
-	int				param1;
-	int				param2;
+	int				param[2];
+	int				ret[2];
 
-	cw_get_param_ld(vm, process, &param1, &param2);
-	process->carry = !param1 ? 1 : 0;
-	if (cw_check_reg(param2))
+	process->pc = (process->pc + 1) % MEM_SIZE;
+	if (!(cw_ld_param(vm, process, param, ret)))
 		return (0);
-	cw_rev_get(process->registries[param2], param1);
+	cw_rev_get(process->registries[param[1]], param[0]);
+	process->carry = !param[0] ? 1 : 0;
 	process->next_cycle += 5;
+	process->pc = (process->pc + 1) % MEM_SIZE;
 	return (1);
 }
