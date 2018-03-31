@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/30 18:14:04 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/03/31 14:16:15 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,8 @@ int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc);
 int			cw_read_ocp_sh_nomod(t_vm *vm, t_process *process, int *param,
+		unsigned char ocp_trunc);
+int			cw_read_ocp_nomod(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc);
 
 extern t_op		op_tab[OP_TAB_SIZE];

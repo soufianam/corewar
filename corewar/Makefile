@@ -6,7 +6,7 @@
 #    By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/23 16:53:34 by tdeborde          #+#    #+#              #
-#    Updated: 2018/03/26 17:18:31 by tdeborde         ###   ########.fr        #
+#    Updated: 2018/03/31 14:15:54 by tdeborde         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC_NAME =	main.c \
 			cw_vm_init.c \
 			cw_op_utils.c \
 			cw_op_utils2.c \
+			cw_op_utils3.c \
 			cw_create_process.c \
 			cw_live.c \
 			cw_ld.c \
