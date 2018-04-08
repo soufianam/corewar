@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/23 15:58:51 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/08 16:24:55 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@ void	cw_init_setting(t_setting *setting)
 	setting->nbr_champion = 0;
 }
 
-int		cw_init_dump(t_setting *setting, int ac, char **av, int i)
+int		cw_init_dump(t_setting *setting, int ac, char **av)
 {
-	if (i < ac && ft_strcmp(av[i], "-dump") == 0)
+	int	i;
+
+	i = 1;
+	if (ac > 2 && ft_strcmp(av[1], "-dump") == 0)
 	{
 		i++;
-		if (i < ac && cw_strisdig(av[i]))
+		if (cw_strisdig(av[2]))
 		{
-			setting->nbr_cycle = (int)ft_atoi(av[i]);
+			setting->nbr_cycle = (int)ft_atoi(av[2]);
 			i++;
 		}
 	}
-	else if (i < ac && av[i][0] == '-')
-		cw_error(ERR_USAGE);
 	return (i);
 }
 
@@ -46,6 +47,8 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 	if ((fd = open(file, O_RDONLY)) == -1)
 		cw_error_custom("Error: can't read file");
 	bin = cw_read_champion_header(fd, &size_bin);
+	if (size_bin > CHAMP_MAX_SIZE)
+		cw_error_custom("Error: champion is too large");
 	if (!bin || size_bin == -1 || cw_check_champion_id(setting, id) == -1)
 	{
 		if (bin)
@@ -82,9 +85,9 @@ int		cw_load_settings(t_setting *setting, int ac, char **av)
 {
 	int		i;
 
-	i = 1;
 	cw_init_setting(setting);
-	if ((i = cw_init_dump(setting, ac, av, i)) % 2 != 1)
+	i = cw_init_dump(setting, ac, av);
+	if (i != 1 && i != 3)
 		cw_error(ERR_USAGE);
 	while (i < ac && i != -1)
 		i = cw_init_champion(setting, ac, av, i);
