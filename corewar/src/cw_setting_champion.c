@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 15:10:45 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/23 15:49:08 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/09 12:30:22 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ char	*cw_read_champion_header(int fd, int *size)
 			*size = -1;
 			return (bin);
 		}
+		if (prog_size > CHAMP_MAX_SIZE)
+			cw_error_custom("Error: champion code is too large");
 		bin = cw_read_champion_prog(fd, bin, prog_size, size);
 	}
 	return (bin);

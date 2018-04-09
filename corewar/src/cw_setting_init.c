@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/04/08 16:24:55 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/09 12:20:41 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 	if ((fd = open(file, O_RDONLY)) == -1)
 		cw_error_custom("Error: can't read file");
 	bin = cw_read_champion_header(fd, &size_bin);
-	if (size_bin > CHAMP_MAX_SIZE)
-		cw_error_custom("Error: champion is too large");
 	if (!bin || size_bin == -1 || cw_check_champion_id(setting, id) == -1)
 	{
 		if (bin)
