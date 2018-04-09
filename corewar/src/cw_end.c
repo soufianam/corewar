@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:11:23 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 17:11:54 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/09 12:47:50 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@ void	cw_dump_and_quit(t_vm *vm)
 
 	res = 0;
 	i = 0;
+	/**/
+	/*debug*/
+	/*cycle*/
+	ft_printf("Cycle: %d\n", vm->cycle);
+	/*players process & registres*/
+	while (i < vm->setting.nbr_champion)
+	{
+		ft_printf("Player %d: %s\n", vm->setting.champion_tab[i].id, vm->setting.champion_tab[i].name);
+		i++;
+	}
+	/**/
 	while (i < MEM_SIZE)
 	{
 		ft_printf("%02hhx", vm->vm[i]);

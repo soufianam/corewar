@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 09:11:00 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/28 17:44:55 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/09 12:49:46 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	cw_core_loop(t_vm vm)
 			cw_dump_and_quit(&vm);
 		cw_process_process(vm.process, &vm, cycle);
 		cycle++;
+		vm.cycle = cycle;
 	}
 }
