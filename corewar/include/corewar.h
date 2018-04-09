@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/31 14:16:15 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/08 16:24:57 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ extern t_op		optab[OP_TAB_SIZE];
 int			cw_load_settings(t_setting *setting, int ac, char **av);
 int			cw_load_champion(t_setting *setting, char *file, int i, int id);
 void		cw_init_setting(t_setting *setting);
-int			cw_init_dump(t_setting *setting, int ac, char **av, int i);
+int			cw_init_dump(t_setting *setting, int ac, char **av);
 int			cw_init_champion(t_setting *setting, int ac, char **av, int i);
 int			cw_init_champion_id(t_setting *setting);
 int			cw_check_champion_id(t_setting *setting, int id);
