@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 15:05:42 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 11:26:43 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/09 15:41:46 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memrealloc(void *ptr, size_t size)
 	ft_bzero(dst, size);
 	if (ptr)
 	{
-		ft_memccpy(dst, ptr, 0, size);
+		dst = ft_memcpy(dst, ptr, size);
 		ft_memdel(&ptr);
 	}
 	return (dst);
