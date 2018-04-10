@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 10:40:32 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/23 15:39:39 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/10 14:58:23 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ t_process	cw_init_process(t_champion champion, int start_pos)
 	int			id;
 	t_process	process;
 
-	i = 4;
 	id = champion.id;
+	i = REG_NUMBER * REG_SIZE;
+	while (i > 4)
+	{
+		process.registries[i/4][i%4] = 0;
+		i--;
+	}
 	while (--i > -1)
 	{
 		process.registries[0][i] = (char)id;
