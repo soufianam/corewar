@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/10 12:54:27 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/10 16:19:10 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define C(x) ft_putchar_fd(x, 1)
 # define NL(x) N(x); L("")
 // ---------- //
+# define DEBUG 1
 # define OP_TAB_SIZE 17
 
 typedef struct		s_champion
