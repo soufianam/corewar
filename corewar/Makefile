@@ -6,7 +6,7 @@
 #    By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/23 16:53:34 by tdeborde          #+#    #+#              #
-#    Updated: 2018/03/31 14:15:54 by tdeborde         ###   ########.fr        #
+#    Updated: 2018/04/10 15:51:25 by blefeuvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,11 +67,11 @@ DEPS += $(shell find $(LIB_DIR) -type f -regex ".*\.[ch]")
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(DEPS)
+$(NAME): $(OBJ)
 	$(MAKE) -C $(LIB_DIR)/libft
 	$(CC) $(LFLAGS) $(OBJ) -o $@
 
-$(OBJ_PATH)%.o: %.c
+$(OBJ_PATH)%.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
 clean:
