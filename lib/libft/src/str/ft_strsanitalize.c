@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strsanitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 15:36:02 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/12 12:40:38 by pprikazs         ###   ########.fr       */
+/*   Created: 2018/04/12 15:37:59 by pprikazs          #+#    #+#             */
+/*   Updated: 2018/04/12 17:26:19 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void			ft_strsanitalize(char *str, const char *car)
 {
-	t_list	*tmp;
+	int			i;
+	int			y;
 
-	if (lst)
+	i = 0;
+	y = 0;
+	while (str[y] != '\0' && ft_strchr(car, str[y]))
+		y++;
+	while (str[y] != '\0')
 	{
-		tmp = lst;
-		while (tmp != 0)
-		{
-			f(tmp);
-			tmp = tmp->next;
-		}
+		str[i] = str[y];
+		i++;
+		y++;
+	}
+	while (str[i] != '\0')
+	{
+		str[i] = '\0';
+		i++;
 	}
 }
