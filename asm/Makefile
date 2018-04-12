@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/23 11:27:25 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/12 12:19:26 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,21 @@ CPPFLAGS = -Iinclude -I$(LIB_DIR)/libft/include
 
 # Flags #
 CFLAGS = -Werror -Wall -Wextra
+DEBUG = no
+ifeq ($(DEBUG), yes)
+	CFLAGS = -g -w
+endif
 
 # Sources #
 SRC_NAME = main.c \
 		   global.c \
-		   op.c
+		   op.c \
+		   err.c \
+		   ft_parse_inst.c \
+		   ft_parse_label.c \
+		   ft_parse_param.c \
+		   ft_parse_param_aux.c \
+		   parse.c
 
 SRC = $(addprefix /,$(SRC_NAME))
 
@@ -37,7 +47,7 @@ OBJ_PATH = obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
-VPATH = ./src/:
+VPATH = ./src/:./src/parser/:
 
 # Deps #
 DEPS = include/*.h Makefile 

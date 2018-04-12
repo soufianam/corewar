@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:44:34 by blefeuvr          #+#    #+#             */
-/*   Updated: 2017/12/01 10:33:57 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:35:29 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static char	**split(char const *s, char c)
 
 extern char	**ft_strsplit(char const *s, char c)
 {
-	if (!s)
+	if (!s || *s == '\0')
 		return (NULL);
 	else
 		return (split(s, c));

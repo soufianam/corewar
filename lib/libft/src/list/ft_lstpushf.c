@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstpushf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/12 16:28:17 by pprikazs         ###   ########.fr       */
+/*   Created: 2018/04/12 10:47:17 by pprikazs          #+#    #+#             */
+/*   Updated: 2018/04/12 10:47:27 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "libft.h"
-#include "op.h"
-#include "asm.h"
 
-extern t_op		optab[OP_TAB_SIZE];
-
-
-int				main(int argc, char *argv[])
+void		ft_lstpushf(t_list **alst, t_list *new_one)
 {
-//	ft_display_optab();
-	if (argc == 2)
-		ft_parse(argv[1]);
-	return (0);
+	if (*alst)
+		new_one->next = *alst;
+	*alst = new_one;
 }

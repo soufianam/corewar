@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strsanitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/12 16:28:17 by pprikazs         ###   ########.fr       */
+/*   Created: 2018/04/12 15:37:59 by pprikazs          #+#    #+#             */
+/*   Updated: 2018/04/12 17:26:19 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "libft.h"
-#include "op.h"
-#include "asm.h"
 
-extern t_op		optab[OP_TAB_SIZE];
-
-
-int				main(int argc, char *argv[])
+void			ft_strsanitalize(char *str, const char *car)
 {
-//	ft_display_optab();
-	if (argc == 2)
-		ft_parse(argv[1]);
-	return (0);
+	int			i;
+	int			y;
+
+	i = 0;
+	y = 0;
+	while (str[y] != '\0' && ft_strchr(car, str[y]))
+		y++;
+	while (str[y] != '\0')
+	{
+		str[i] = str[y];
+		i++;
+		y++;
+	}
+	while (str[i] != '\0')
+	{
+		str[i] = '\0';
+		i++;
+	}
 }

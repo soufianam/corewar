@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:52:35 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 20:00:04 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/12 15:39:21 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,10 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
+int					ft_lstpush(t_list **alst, void *data, size_t content_size, \
+		void (*f)(t_list **list, t_list *elem));
+void				ft_lstpushb(t_list **alst, t_list *new_one);
+void				ft_lstpushf(t_list **alst, t_list *new_one);
 int					ft_lstsize(t_list *lst);
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -134,8 +138,8 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strnew(size_t size);
 char				*ft_strnstr(const char *haystack, const char *needle, \
 		size_t len);
-char				**ft_strplit(char *s, char c);
 char				*ft_strrchr(const char *s, int c);
+void				ft_strsanitalize(char *str, const char *car);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);

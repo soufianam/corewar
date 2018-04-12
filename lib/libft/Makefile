@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/03/23 17:08:02 by cmaxime          ###   ########.fr        #
+#    Updated: 2018/04/12 15:40:15 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,9 @@ SRC_NAME =\
 	ft_lstiter.c\
 	ft_lstmap.c\
 	ft_lstnew.c\
+	ft_lstpush.c \
+	ft_lstpushb.c \
+	ft_lstpushf.c \
 	ft_lstsize.c\
 	ft_lstsort.c\
 	ft_max.c\
@@ -83,6 +86,7 @@ SRC_NAME =\
 	ft_strcmp.c\
 	ft_strcpy.c\
 	ft_strdel.c\
+	ft_strdel_splittab.c\
 	ft_strdup.c\
 	ft_strequ.c\
 	ft_strext.c\
@@ -103,7 +107,7 @@ SRC_NAME =\
 	ft_strnstr.c\
 	ft_strrchr.c\
 	ft_strrepl.c\
-	ft_strsplit.c\
+	ft_strsanitalize.c\
 	ft_strsplit.c\
 	ft_strstr.c\
 	ft_strsub.c\

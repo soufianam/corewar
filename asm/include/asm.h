@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/23 17:09:38 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/12 15:48:01 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,17 @@ typedef struct	s_instruct
 	int		pc;
 	int8_t	id;
 	char	ocp;
-	t_param	param[3];
+	t_param	param[4];
 }				t_instruct;
 
 extern t_op		optab[OP_TAB_SIZE];
 
 void			ft_display_optab(void);
-int				parse(char	*file);
+int				ft_insert_param(char *param, t_instruct **inst, int i);
+int				ft_parse(char	*file);
+int				ft_parse_instruct(char *instruct, t_instruct **inst, char ***param);
+int				ft_parse_label(char *line, t_instruct **inst, char ***lab);
+int				ft_parse_param(t_instruct **ins, char **param);
+void			ft_display_instruct(t_list *elem);
 
 #endif
