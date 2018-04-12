@@ -22,15 +22,15 @@ t_process	*cw_init_process(t_champion champion, int start_pos)
 		cw_error(ERR_MALLOC);
 	id = champion.id;
 	i = REG_NUMBER * REG_SIZE;
-	while (i > 4)
+	while (--i >= 4)
 	{
 		process->registries[i/4][i%4] = 0;
-		i--;
 	}
-	while (--i > -1)
+	while (i > -1)
 	{
 		process->registries[0][i] = (char)id;
 		id = id >> 8;
+		i--;
 	}
 	process->entrypoint = start_pos;
 	process->pc = 0;
@@ -46,7 +46,7 @@ void		cw_add_process(t_vm *vm, t_champion champion, int start_pos)
 	t_process	*process;
 
 	process = cw_init_process(champion, start_pos);
-	if (!(new_process = ft_lstnew(process, sizeof(t_process*))))
+	if (!(new_process = ft_lstnew(process, sizeof(t_process))))
 		cw_error(ERR_MALLOC);
 	ft_lstaddend(&(vm->process), new_process);
 }
