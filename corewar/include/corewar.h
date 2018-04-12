@@ -15,6 +15,7 @@
 
 # include <limits.h>
 # include <fcntl.h>
+# include <stdint.h>
 
 # include "libft.h"
 # include "op.h"
