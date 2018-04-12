@@ -6,12 +6,12 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:13:05 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/23 19:55:37 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/12 16:55:24 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/cdefs.h>
-#include "op.c"
+#include "op.h"
 #include "libft.h"
 #include "asm.h"
 
@@ -22,32 +22,31 @@ int			ft_count_param(char **param)
 	i = 0;
 	while (param[i] != '\0')
 		i++;
-	return (++i);
+	return (i);
 }
 
-int			ft_parse_param(char *param_line, t_instruct *inst, char **param)
+int			ft_parse_param(t_instruct **inst, char **param)
 {
-	char	**param_list;
 	int		nb_param;
 	int 	ret;
 	int		i;
 
-	if (!(param_list = ft_strsplit(param_line, SEPARATOR_CHAR)))
-		return (0);
-	if ((nb_param = ft_count_param(param)) > ft_count_op_param(optab[ins->id]))
+	if (param == 0)
+		return (1);
+	if ((nb_param = ft_count_param(param)) > optab[(*inst)->id].nb_param)
 		return (0);
 	i = 0;
 	ret = 1;
-	while (i < MAX_ARG_NUMBER)
+	while (i < MAX_ARGS_NUMBER)
 	{
 		if (i < nb_param)
 		{
-			if (!(ret = t_insert_param(param_list[i], ins, i)))
+			if (!(ret = ft_insert_param(param[i], inst, i)))
 				break ;
 		}
 		else
-			ret = ft_insert_param(0, ins, i);
+			ret = ft_insert_param(0, inst, i);
+		i++;
 	}
-	ft_strdel_splittab(param);
-	return (ret;)
+	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 18:50:32 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/23 18:55:45 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/12 16:25:27 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,37 @@ void			ft_display_optab(void)
 	}
 }
 
-int			ft_count_op_param(int8_t id)
+void			ft_display_instruct(t_list *elem)
 {
-	int		i;
+	t_instruct *content;
 
-	i = 0;
-	while (i < 4)
-	{
-		if (optab[id].param[i] == 0)
-			return (i++);
-		i++;
-	}
-	return (++i);
+	content = ((t_instruct *)elem->content);
+	ft_putstr("label : ");
+	(content->label != 0) ? ft_putstr(content->label) : ft_putnbr(0);
+	ft_putstr(" | pc : ");
+	ft_putnbr(content->pc);
+	ft_putstr(" | id : ");
+	ft_putnbr(content->id);
+	ft_putstr(" | ocp : ");
+	ft_putnbr(content->ocp);
+
+	ft_putstr(" | params : ");
+		ft_putstr(content->param[0].link);
+		ft_putstr(" ");
+		ft_putnbr(content->param[0].val);
+		ft_putstr(" ");
+		ft_putnbr(content->param[0].pid);
+	ft_putstr(" | ");
+		ft_putstr(content->param[1].link);
+		ft_putstr(" ");
+		ft_putnbr(content->param[1].val);
+		ft_putstr(" ");
+		ft_putnbr(content->param[1].pid);
+	ft_putstr(" | ");
+		ft_putstr(content->param[2].link);
+		ft_putstr(" ");
+		ft_putnbr(content->param[2].val);
+		ft_putstr(" ");
+		ft_putnbr(content->param[2].pid);
+	ft_putendl("\n");
 }
