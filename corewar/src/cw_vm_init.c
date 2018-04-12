@@ -23,6 +23,7 @@ void	cw_vm_init(t_vm *vm, int ac, char **av)
 	vm->loop.cycle_to_die = CYCLE_TO_DIE;
 	vm->loop.last_live.index = -1;
 	vm->loop.last_live.cycle = -1;
+	vm->process = 0;
 	if (cw_load_settings(&(vm->setting), ac, av) <= 1)
 		cw_error(ERR_USAGE);
 	/*

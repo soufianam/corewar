@@ -69,7 +69,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(MAKE) -C $(LIB_DIR)/libft
-	$(CC) $(LFLAGS) $(OBJ) -o $@
+	$(CC) $(OBJ) $(LFLAGS) -o $@
 
 $(OBJ_PATH)%.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
