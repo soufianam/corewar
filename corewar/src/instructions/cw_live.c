@@ -24,11 +24,14 @@ int			cw_live(t_vm *vm, t_process *process)
 		ft_printf("Live failed : no player found for id %d\n", id);
 		return (0);
 	}
-	ft_printf("Player %S (%d) has been reported alive.\n",
-		champ->name, id);
+	ft_printf("Player %s (%d) has been reported alive.\n", champ->name, id);
 	vm->loop.last_live.index = id;
 	vm->loop.last_live.cycle = vm->cycle;
 	process->pc = (process->pc + 4) % MEM_SIZE;
 	cw_wait_process(vm, process);
+	if (DEBUG)
+	{
+		ft_printf("--cycle %d--\nlive: %d\n", vm->cycle, id);
+	}
 	return (1);
 }

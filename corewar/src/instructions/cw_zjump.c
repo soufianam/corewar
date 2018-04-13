@@ -21,5 +21,9 @@ int			cw_zjump(t_vm *vm, t_process *process)
 	param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 	process->pc = (process->pc + param) % MEM_SIZE;
 	cw_wait_process(vm, process);
+	if (DEBUG)
+	{
+		ft_printf("--cycle %d--\nzjump: %d\n", vm->cycle, param);
+	}
 	return (1);
 }

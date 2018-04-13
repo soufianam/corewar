@@ -44,7 +44,7 @@ int			cw_and(t_vm *vm, t_process *process)
 	cw_wait_process(vm, process);
 	if (DEBUG)
 	{
-		printf("and:\n%d & %d (%d) -> r%d\n", param[0], param[1], param[0] & param[1], param[2]);
+		printf("--cycle %d--\nand: %d & %d (%d) -> r%d\n", vm->cycle, param[0], param[1], param[0] & param[1], param[2]);
 	}
 	return (1);
 }

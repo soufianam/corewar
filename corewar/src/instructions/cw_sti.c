@@ -45,7 +45,7 @@ int		cw_sti(t_vm *vm, t_process *process)
 	cw_wait_process(vm, process);
 	if (DEBUG)
 	{
-		printf("sti:\nr%d (%d) -> %d + %d\n", param[0], cw_get_4(process->registries[param[0]-1]), param[1], param[2]);
+		printf("--cycle %d--\nsti: r%d (%d) -> %d + %d\n", vm->cycle, param[0], cw_get_4(process->registries[param[0]-1]), param[1], param[2]);
 	}
 	return (1);
 }
