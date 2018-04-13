@@ -14,7 +14,8 @@
 
 int		minus(t_adj *adj, va_list ap)
 {
-	(void)ap;
+	if (adj->percent == 0)
+		return (def(adj, ap));
 	adj->minus = 1;
 	adj->format++;
 	return (0);
