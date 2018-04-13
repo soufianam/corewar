@@ -23,8 +23,8 @@ int		cw_and_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 	{
 		if (!(ret[i] = cw_read_ocp(vm, process, &param[i], ocp)))
 			return (0);
-		else if (ret[i] == 1 && i > 0)
-			param[i] = cw_get_4(process->registries[param[i]]);
+		else if (ret[i] == 1 && i == 0)
+			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		ocp = ocp << 2;
 	}
 	return (1);
