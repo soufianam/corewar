@@ -40,7 +40,7 @@ int			cw_or(t_vm *vm, t_process *process)
 		return (0);
 	cw_rev_get(process->registries[param[2]], (param[0] | param[1]));
 	process->carry = !(param[0] | param[1]) ? 1 : 0;
-	process->next_cycle += 6;
 	process->pc = (process->pc + 1) % MEM_SIZE;
+	cw_wait_process(vm, process);
 	return (1);
 }

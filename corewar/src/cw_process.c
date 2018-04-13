@@ -32,11 +32,22 @@ void	cw_exec_process(t_vm *vm, t_process *process)
 	int		opcode;
 	int		i;
 
-	if ((opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE]) < 1)
-		ft_printf("%hhx\n", opcode);
+	opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
 	i = 0;
 	while (op_tab[i].opcode != opcode)
 		i++;
 	op = op_tab[i];
 	op.f(vm, process);
+}
+
+void	cw_wait_process(t_vm *vm, t_process *process)
+{
+	int		opcode;
+	int		i;
+
+	opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
+	i = 0;
+	while (op_tab[i].opcode != opcode)
+		i++;
+	process->next_cycle += op_tab[i].nb_cycle;
 }

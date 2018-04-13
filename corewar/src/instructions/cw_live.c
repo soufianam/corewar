@@ -29,6 +29,6 @@ int			cw_live(t_vm *vm, t_process *process)
 	vm->loop.last_live.index = id;
 	vm->loop.last_live.cycle = vm->cycle;
 	process->pc = (process->pc + 4) % MEM_SIZE;
-	process->next_cycle += 10;
+	cw_wait_process(vm, process);
 	return (1);
 }

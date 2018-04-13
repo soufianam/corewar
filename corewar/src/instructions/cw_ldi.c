@@ -41,7 +41,7 @@ int		cw_ldi(t_vm *vm, t_process *process)
 	ft_memcpy(process->registries[param[2]], &(vm->vm[(process->pc
 		+ process->entrypoint + param[0] + param[1] - ret[0] - 4) % MEM_SIZE]), REG_SIZE);
 	process->carry = !param[0] ? 1 : 0;
-	process->next_cycle += 25;
 	process->pc = (process->pc + 1) % MEM_SIZE;
+	cw_wait_process(vm, process);
 	return (1);
 }

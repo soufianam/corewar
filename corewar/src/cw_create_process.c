@@ -46,6 +46,7 @@ void		cw_add_process(t_vm *vm, t_champion champion, int start_pos)
 	t_process	*process;
 
 	process = cw_init_process(champion, start_pos);
+	cw_wait_process(vm, process);
 	if (!(new_process = ft_lstnew(process, sizeof(t_process))))
 		cw_error(ERR_MALLOC);
 	ft_lstaddend(&(vm->process), new_process);

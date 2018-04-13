@@ -152,6 +152,7 @@ int			cw_read_ocp_sh_nomod(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc);
 int			cw_read_ocp_nomod(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc);
+void		cw_wait_process(t_vm *vm, t_process *process);
 /**/
 void		cw_dump_all(t_vm *vm);
 /**/

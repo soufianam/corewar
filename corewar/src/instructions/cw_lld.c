@@ -38,7 +38,7 @@ int		cw_lld(t_vm *vm, t_process *process)
 		return (0);
 	cw_rev_get(process->registries[param[1]], param[0]);
 	process->carry = !param[0] ? 1 : 0;
-	process->next_cycle += 5;
 	process->pc = (process->pc + 1) % MEM_SIZE;
+	cw_wait_process(vm, process);
 	return (1);
 }

@@ -42,10 +42,10 @@ int		cw_sti(t_vm *vm, t_process *process)
 		- ret[1] - 4) % MEM_SIZE]), process->registries[param[0]-1], REG_SIZE);
 	process->carry = !process->registries[param[0]-1] ? 1 : 0;
 	process->pc = (process->pc + 1) % MEM_SIZE;
-	process->next_cycle += 25;
+	cw_wait_process(vm, process);
 	if (DEBUG)
 	{
-		printf("sti:\nr%d (%d) -> %d+%d\n", param[0], cw_get_4(process->registries[param[0]-1]), param[1], param[2]);
+		printf("sti:\nr%d (%d) -> %d + %d\n", param[0], cw_get_4(process->registries[param[0]-1]), param[1], param[2]);
 	}
 	return (1);
 }

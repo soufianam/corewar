@@ -20,6 +20,6 @@ int			cw_zjump(t_vm *vm, t_process *process)
 		return (0);
 	param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 	process->pc = (process->pc + param) % MEM_SIZE;
-	process->next_cycle += 20;
+	cw_wait_process(vm, process);
 	return (1);
 }
