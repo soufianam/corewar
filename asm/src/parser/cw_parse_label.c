@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:38:16 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/12 16:55:44 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/16 18:54:37 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "op.h"
 #include "asm.h"
 
-char		**ft_strsplit_first(const char *str, char c)
+static char		**cw_strsplit_first(const char *str, char c)
 {
 	char	*mark;
 	size_t	len1;
@@ -37,7 +37,7 @@ char		**ft_strsplit_first(const char *str, char c)
 	return (split);
 }
 
-char			ft_carchr(char *line, char *c)
+static char		cw_carchr(char *line, char *c)
 {
 	int		i;
 	int		j;
@@ -57,7 +57,7 @@ char			ft_carchr(char *line, char *c)
 	return (line[i]);
 }
 
-int			ft_check_label(char *label)
+static int		cw_check_label(char *label)
 {
 	int		i;
 
@@ -74,14 +74,14 @@ int			ft_check_label(char *label)
 	return (1);
 }
 
-int			ft_parse_label(char *line, t_instruct **inst, char ***lab)
+extern int		cw_parse_label(char *line, t_instruct **inst, char ***lab)
 {
 	if (line[0] == '\t' || line[0] == ' ')
 		return (0);
-	if (ft_carchr(line, ",\t:") == ':')
+	if (cw_carchr(line, ",\t:") == ':')
 	{
-		*lab = ft_strsplit_first(line, ':');
-		if (!ft_check_label((*lab)[0]))
+		*lab = cw_strsplit_first(line, ':');
+		if (!cw_check_label((*lab)[0]))
 			return (-1);
 		(*inst)->label = ft_strdup((*lab)[0]);
 		return (1);

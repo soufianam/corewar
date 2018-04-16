@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/12 12:19:26 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/16 19:04:31 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,14 +31,14 @@ endif
 
 # Sources #
 SRC_NAME = main.c \
-		   global.c \
-		   op.c \
-		   err.c \
-		   ft_parse_inst.c \
-		   ft_parse_label.c \
-		   ft_parse_param.c \
-		   ft_parse_param_aux.c \
-		   parse.c
+		   cw_display.c \
+		   cw_err.c \
+		   cw_global.c \
+		   cw_parse.c \
+		   cw_parse_inst.c \
+		   cw_parse_label.c \
+		   cw_parse_param.c \
+		   cw_parse_param_aux.c
 
 SRC = $(addprefix /,$(SRC_NAME))
 
@@ -47,7 +47,7 @@ OBJ_PATH = obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
-VPATH = ./src/:./src/parser/:
+VPATH = ./src/:./src/parser/:./src/error/:
 
 # Deps #
 DEPS = include/*.h Makefile 

@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/12 15:48:01 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/16 18:53:53 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,21 @@ typedef struct	s_param
 
 typedef struct	s_instruct
 {
-	char	*label;
-	int		pc;
-	int8_t	id;
-	char	ocp;
-	t_param	param[4];
+	char			*label;
+	int				pc;
+	int8_t			id;
+	unsigned char	ocp;
+	t_param			param[4];
 }				t_instruct;
 
 extern t_op		optab[OP_TAB_SIZE];
 
-void			ft_display_optab(void);
-int				ft_insert_param(char *param, t_instruct **inst, int i);
-int				ft_parse(char	*file);
-int				ft_parse_instruct(char *instruct, t_instruct **inst, char ***param);
-int				ft_parse_label(char *line, t_instruct **inst, char ***lab);
-int				ft_parse_param(t_instruct **ins, char **param);
-void			ft_display_instruct(t_list *elem);
+void			cw_display_optab(void);
+int				cw_insert_param(char *param, t_instruct **inst, int i);
+int				cw_parse(char *file, t_list **instruct);
+int				cw_parse_instruct(char *instruct, t_instruct **inst, char ***param);
+int				cw_parse_label(char *line, t_instruct **inst, char ***lab);
+int				cw_parse_param(t_instruct **ins, char **param);
+void			cw_display_instruct(t_list *elem);
 
 #endif

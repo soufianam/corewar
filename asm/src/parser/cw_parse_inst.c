@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:12:37 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/12 17:27:14 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/16 18:55:38 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ extern t_op		optab[OP_TAB_SIZE];
 /*
 ** return first occurences, in str match with one of the
 ** occurence of car. It's a case by case search.
+** NON UTILISÉ.
 */
 
-char			*strostr(const char *str, const char *car)
+extern char		*ft_strostr(const char *str, const char *car)
 {
 	int			i;
 	int			y;
@@ -41,7 +42,7 @@ char			*strostr(const char *str, const char *car)
 	return (0);
 }
 
-int8_t			ft_isset_instruct(char *instruct)
+static int8_t	cw_isset_instruct(char *instruct)
 {
 	int		i;
 
@@ -55,7 +56,7 @@ int8_t			ft_isset_instruct(char *instruct)
 	return (-1);
 }
 
-void		ft_clear_first_param(char *fparam)
+static void		cw_clear_first_param(char *fparam)
 {
 	int 	i;
 	int		y;
@@ -73,7 +74,7 @@ void		ft_clear_first_param(char *fparam)
 	fparam[i] = '\0';
 }
 
-int			ft_parse_instruct(char *instruct, t_instruct **inst, char ***param)
+extern int		cw_parse_instruct(char *instruct, t_instruct **inst, char ***param)
 {
 	int8_t	id;
 	char 	**ins;
@@ -82,10 +83,10 @@ int			ft_parse_instruct(char *instruct, t_instruct **inst, char ***param)
 	ins = ft_strsplit(instruct, ' ');
 	if (ins == 0)
 		return (1);
-	if ((id = ft_isset_instruct(ins[0])) == -1)
+	if ((id = cw_isset_instruct(ins[0])) == -1)
 		return (0);
 	(*inst)->id = id;
 	(*param) = ft_strsplit(instruct, SEPARATOR_CHAR);
-	ft_clear_first_param(**param);
+	cw_clear_first_param(**param);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 18:50:32 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/12 16:25:27 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/16 18:56:33 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 
 extern t_op		optab[OP_TAB_SIZE];
 
-void			ft_display_optab(void)
+/*
+** Display de la structure global passé en ressource du projet
+*/
+extern void		cw_display_optab(void)
 {
 	int			i;
 
@@ -34,7 +37,14 @@ void			ft_display_optab(void)
 	}
 }
 
-void			ft_display_instruct(t_list *elem)
+/*
+** Display d'un maillon de la list chainée contenant l'intégralité des
+** instructions, après un premier formatage du fichier .s.
+** Usage:
+** 		ft_lstiter(instructs, &ft_display_instruct);
+*/
+
+extern void		cw_display_instruct(t_list *elem)
 {
 	t_instruct *content;
 
@@ -46,7 +56,7 @@ void			ft_display_instruct(t_list *elem)
 	ft_putstr(" | id : ");
 	ft_putnbr(content->id);
 	ft_putstr(" | ocp : ");
-	ft_putnbr(content->ocp);
+	ft_putbit((void *)&(content->ocp), sizeof(unsigned char));
 
 	ft_putstr(" | params : ");
 		ft_putstr(content->param[0].link);
