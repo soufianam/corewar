@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/16 12:29:25 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/16 12:35:10 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int			cw_zjump(t_vm *vm, t_process *process)
 {
 	int		param;
 
+	param  = 0;
 	if (process->carry)
 	{
 		param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
