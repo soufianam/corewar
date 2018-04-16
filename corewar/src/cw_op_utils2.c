@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 20:11:08 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/30 18:13:46 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/16 12:10:30 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 	else
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
+		process->pc = (process->pc + 1) % MEM_SIZE;
 		if (*param && !cw_check_reg(*param))
 			return (0);
-		process->pc = (process->pc + 1) % MEM_SIZE;
 		return (1);
 	}
 }
@@ -76,9 +76,9 @@ int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
 	else
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
+		process->pc = (process->pc + 1) % MEM_SIZE;
 		if (*param && !cw_check_reg(*param))
 			return (0);
-		process->pc = (process->pc + 1) % MEM_SIZE;
 		return (1);
 	}
 }
@@ -95,9 +95,9 @@ int			cw_read_ocp_sh_nomod(t_vm *vm, t_process *process, int *param,
 	else
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
+		process->pc = (process->pc + 1) % MEM_SIZE;
 		if (*param && !cw_check_reg(*param))
 			return (0);
-		process->pc = (process->pc + 1) % MEM_SIZE;
 		return (1);
 	}
 }
