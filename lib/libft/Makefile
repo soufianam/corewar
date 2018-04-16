@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/12 15:40:15 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/16 18:43:12 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRC_NAME =\
 	ft_memset.c\
 	ft_min.c\
 	ft_pow.c\
+	ft_putbit.c\
 	ft_putchar.c\
 	ft_putchar_fd.c\
 	ft_putendl.c\

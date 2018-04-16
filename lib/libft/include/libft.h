@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:52:35 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/12 15:39:21 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/16 18:42:52 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void				ft_memdel(void **ap);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memrealloc(void *ptr, size_t size);
 void				*ft_memset(void *b, int c, size_t len);
+void				ft_putbit(void *data, size_t n);
 void				ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl(char const *s);
