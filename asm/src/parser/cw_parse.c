@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/16 19:03:11 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/16 19:13:11 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ extern int		cw_parse(char *file, t_list **list)
 	{
 		if (*line != '\0')
 		{
-			ret = cw_parse_line(line, list);
+			ret = cw_parse_line(line, list); //Mettre à la norme la fonction, ajout du parsing des commentaire.
+											 //Ajout du parsing de l'entête.
+											 //cw_parse(char *file, t_list **list, header_t **head);
+											 //cw_parse_line(char *file, t_list **list, header_t **head);
 			ft_strdel((char **)&line);
 		}
 	}
