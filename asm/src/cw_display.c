@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 18:50:32 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/16 18:56:33 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 15:04:18 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,23 @@ extern void		cw_display_instruct(t_list *elem)
 	ft_putstr(" | ocp : ");
 	ft_putbit((void *)&(content->ocp), sizeof(unsigned char));
 
-	ft_putstr(" | params : ");
+	ft_putstr(" | params : link(");
 		ft_putstr(content->param[0].link);
-		ft_putstr(" ");
+		ft_putstr(") val(");
 		ft_putnbr(content->param[0].val);
-		ft_putstr(" ");
+		ft_putstr(") pid(");
 		ft_putnbr(content->param[0].pid);
-	ft_putstr(" | ");
+	ft_putstr(") | link(");
 		ft_putstr(content->param[1].link);
-		ft_putstr(" ");
+		ft_putstr(") val(");
 		ft_putnbr(content->param[1].val);
-		ft_putstr(" ");
+		ft_putstr(") pid(");
 		ft_putnbr(content->param[1].pid);
-	ft_putstr(" | ");
+	ft_putstr(") | link(");
 		ft_putstr(content->param[2].link);
-		ft_putstr(" ");
+		ft_putstr(") val(");
 		ft_putnbr(content->param[2].val);
-		ft_putstr(" ");
+		ft_putstr(") pid(");
 		ft_putnbr(content->param[2].pid);
-	ft_putendl("\n");
+	ft_putendl(")\n");
 }

@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/16 18:53:53 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 16:38:23 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct	s_op
 
 typedef struct	s_param
 {
-	char	pid;
-	int		val;
-	char	*link;
+	unsigned char	pid;
+	int				val;
+	char			*link;
 }				t_param;
 
 typedef struct	s_instruct
@@ -61,6 +61,7 @@ int				cw_parse(char *file, t_list **instruct);
 int				cw_parse_instruct(char *instruct, t_instruct **inst, char ***param);
 int				cw_parse_label(char *line, t_instruct **inst, char ***lab);
 int				cw_parse_param(t_instruct **ins, char **param);
+void			cw_parse_update_pc(t_instruct **ins, t_list **list);
 void			cw_display_instruct(t_list *elem);
 
 #endif

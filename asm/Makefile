@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/16 19:04:31 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/17 15:53:42 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC_NAME = main.c \
 		   cw_parse_inst.c \
 		   cw_parse_label.c \
 		   cw_parse_param.c \
-		   cw_parse_param_aux.c
+		   cw_parse_param_aux.c \
+		   cw_parse_update_pc.c
 
 SRC = $(addprefix /,$(SRC_NAME))
 

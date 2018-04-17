@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/17 12:35:41 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 16:37:58 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 #include "asm.h"
 
 extern t_op		optab[OP_TAB_SIZE];
-
-
-static void		cw_instruct_del(t_instruct **ins)
-{
-	(void)ins;
-}
 
 static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 {
@@ -55,8 +49,9 @@ static int		cw_parse_line(char *line, t_list **list)
 		return (-1);
 	if ((ret = cw_parse_line_aux(line, list, &ins)) < 0)
 		return (ret);
+	cw_parse_update_pc(&ins, list);
 	ft_lstpush(list, (void *)ins, sizeof(t_instruct), &ft_lstpushb);
-	cw_instruct_del(&ins);
+//	ft_memdel((void**)ins);
 	return (1);
 }
 
