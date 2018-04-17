@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:52:35 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/16 18:42:52 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 13:06:17 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ char				*ft_strdup(const char *s1);
 int					ft_strequ(char const *s1, char const *s2);
 char				*ft_strextend(char *s1, char *s2);
 char				*ft_strext(char *s1, char const *s2);
+int					ft_strisdigit(char *str);
+int					ft_strisnumber(char *str);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strjoin(char const *s1, char const *s2);

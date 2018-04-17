@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/16 18:43:12 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/17 13:06:50 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,8 @@ SRC_NAME =\
 	ft_strequ.c\
 	ft_strext.c\
 	ft_strextend.c\
+	ft_strisdigit.c\
+	ft_strisnumber.c\
 	ft_striter.c\
 	ft_striteri.c\
 	ft_strjoin.c\
