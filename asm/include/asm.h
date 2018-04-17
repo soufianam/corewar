@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/17 16:38:23 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 17:25:37 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct	s_op
 	int8_t		opcode;
 	int			nb_cycle;
 	char		*desc;
-	t_bool		carry;
 	t_bool		codage;
+	t_bool		carry;
 }				t_op;
 
 typedef struct	s_param

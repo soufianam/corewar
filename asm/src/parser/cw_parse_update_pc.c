@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 15:12:15 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/17 16:50:17 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 17:26:50 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ extern t_op		optab[OP_TAB_SIZE];
 
 static int		cw_parse_get_dirsize(int id)
 {
-	if (id == 1 || id == 2 || id == 6 || id == 7 || id == 8 || id == 13)
+	if (id == 0 || id == 1 || id == 5 || id == 6 || id == 7 || id == 12)
 		return (4);
 	else
 		return (2);
