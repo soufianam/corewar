@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/17 13:06:50 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/17 16:43:23 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC_NAME =\
 	ft_lstdel.c\
 	ft_lstdelone.c\
 	ft_lstiter.c\
+	ft_lstlast.c\
 	ft_lstmap.c\
 	ft_lstnew.c\
 	ft_lstpush.c \
