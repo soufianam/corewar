@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/17 11:38:53 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 12:18:57 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 extern t_op		optab[OP_TAB_SIZE];
 
+/*
 static void		cw_instruct_del(t_instruct **ins)
 {
 	int			i;
@@ -29,9 +30,8 @@ static void		cw_instruct_del(t_instruct **ins)
 			ft_strdel((char **)&((*ins)->param[i].link));
 		i++;
 	}
-	
 }
-
+*/
 static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 {
 	char		**instruct;
@@ -44,7 +44,7 @@ static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 		return (ret);
 	if (ret == 1 && (ret = cw_parse_instruct(instruct[1], ins, &param)) < 0)
 		return (ret);
-	else if (ret == 0 && !(ret = cw_parse_instruct(line, ins, &param)) < 0)
+	else if (ret == 0 && (ret = cw_parse_instruct(line, ins, &param)) < 0)
 			return (ret);
 	if ((ret = cw_parse_param(ins, param)) < 0)
 		return (ret);
@@ -52,6 +52,7 @@ static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 		ft_strdel_splittab(instruct);
 	if (param != 0)
 		ft_strdel_splittab(param);
+	return (1);
 }
 
 static int		cw_parse_line(char *line, t_list **list)
@@ -61,10 +62,10 @@ static int		cw_parse_line(char *line, t_list **list)
 
 	if (!(ins = (t_instruct *)ft_memalloc(sizeof(t_instruct))))
 		return (-1);
-	if (ret = cw_parse_line_aux(line, list, &ins) < 0)
+	if ((ret = cw_parse_line_aux(line, list, &ins)) < 0)
 		return (ret);
 	ft_lstpush(list, (void *)ins, sizeof(t_instruct), &ft_lstpushf);
-	cw_instruct_del(&ins);
+//	cw_instruct_del(&ins);
 	return (1);
 }
 
