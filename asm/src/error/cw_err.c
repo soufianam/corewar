@@ -6,8 +6,13 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 11:50:55 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/23 11:52:33 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 11:01:16 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+extern void			cw_error(int err_code)
+{
+
+}
