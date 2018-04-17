@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/17 16:37:58 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 17:58:14 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ extern int		cw_parse(char *file, t_list **list)
 			ft_strdel((char **)&line);
 		}
 	}
+	// TODO plug les functions de maxime ici pour les labels
 	if (ret <= 0)
 	{
 		// Fonction err en appel avec le code d'erreur correspondant:

@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/17 15:53:42 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/17 17:54:03 by cmaxime          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,10 @@ endif
 
 # Sources #
 SRC_NAME = main.c \
-		   cw_display.c \
+		   cw_label_init.c \
+		   cw_prog_init.c \
 		   cw_err.c \
+		   cw_display.c \
 		   cw_global.c \
 		   cw_parse.c \
 		   cw_parse_inst.c \

@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/17 17:25:37 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/17 19:06:23 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,12 @@ int				cw_parse_label(char *line, t_instruct **inst, char ***lab);
 int				cw_parse_param(t_instruct **ins, char **param);
 void			cw_parse_update_pc(t_instruct **ins, t_list **list);
 void			cw_display_instruct(t_list *elem);
+
+/*
+** fct max
+*/
+int     cw_prog_init(t_list *list, char **bin);
+int     cw_check_duplicates_label(t_list *list);
+int     cw_label_init(t_list *list);
 
 #endif

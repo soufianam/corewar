@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:58:08 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/04/17 14:56:53 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/17 19:06:20 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		cw_get_addr_from_label(char *label, t_list *list)
 	while (list)
 	{
 		inst = list->content;
-		if (ft_strcmp(inst, label) == 0)
+		if (inst->label && ft_strcmp(inst->label, label) == 0)
 			return (inst->pc);
 		list = list->next;
 	}
@@ -33,7 +33,10 @@ int		cw_convert_to_addr(int val, int pc)
 {
 	int		result;
 
-	result = (val + pc) & 0xfff;
+	if (val > pc)
+		result = (val + pc);
+	else	
+	result = 0xffff - (pc - val - 1);
 	return (result);
 }
 
@@ -47,10 +50,10 @@ int		cw_check_label_instruct(t_instruct *inst, t_list *list)
 	{
 		if (inst->param[i].link != NULL)
 		{
-			if ((val = cw_get_val_from_label(inst->param[i].link, list)) != -1)
+			if ((val = cw_get_addr_from_label(inst->param[i].link, list)) != -1)
 			{
 				inst->param[i].val = cw_convert_to_addr(val, inst->pc);
-				free(inst->param[i].link);
+				// free(inst->param[i].link);
 				inst->param[i].link = NULL;
 			}
 			else
