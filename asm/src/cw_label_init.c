@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 16:58:08 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/03/23 17:51:18 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/17 14:56:53 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ int		cw_get_addr_from_label(char *label, t_list *list)
 	return (-1);
 }
 
+int		cw_convert_to_addr(int val, int pc)
+{
+	int		result;
+
+	result = (val + pc) & 0xfff;
+	return (result);
+}
+
 int		cw_check_label_instruct(t_instruct *inst, t_list *list)
 {
 	int		i;
@@ -48,6 +56,31 @@ int		cw_check_label_instruct(t_instruct *inst, t_list *list)
 			else
 				return (-1);
 		}
+	}
+	return (1);
+}
+
+int		cw_check_duplicates_label(t_list *list)
+{
+	t_instruct	*inst;
+	t_list		*buff;
+	char		*label;
+
+	while (list)
+	{
+		inst = list->content;
+		if (inst->label)
+		{
+			buff = list->next;
+			while (buff)
+			{
+				label = ((t_instruct*)(buff->content))->label;
+				if (label && ft_strcmp(inst->label, label) == 0)
+					return (-1);
+				buff = buff->next;
+			}
+		}
+		list = list->next;
 	}
 	return (1);
 }
