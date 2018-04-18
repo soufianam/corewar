@@ -6,7 +6,7 @@
 #    By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/23 16:53:34 by tdeborde          #+#    #+#              #
-#    Updated: 2018/04/10 15:51:25 by blefeuvr         ###   ########.fr        #
+#    Updated: 2018/04/18 12:10:14 by blefeuvr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,16 @@ SRC_NAME =	main.c \
 			cw_st.c \
 			cw_sti.c \
 			cw_and.c \
+			cw_add.c \
+			cw_sub.c \
+			cw_or.c \
+			cw_xor.c \
+			cw_ldi.c \
+			cw_fork.c \
+			cw_lld.c \
+			cw_lldi.c \
+			cw_lfork.c \
+			cw_aff.c \
 			cw_zjump.c
 SRC = $(addprefix /,$(SRC_NAME))
 

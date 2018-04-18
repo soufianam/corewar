@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 16:48:08 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/16 12:17:45 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 12:03:25 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,15 @@ int		cw_add(t_vm *vm, t_process *process)
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	if ((cw_add_param(vm, process, param, ret)))
 	{
-		cw_rev_get(process->registries[param[2]], (param[0] + param[1]));
+		cw_rev_get(process->registries[param[2] - 1], (param[0] + param[1]));
 		process->carry = !(param[0] + param[1]) ? 1 : 0;
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
+	if (DEBUG)
+	{
+		ft_printf("--cycle %d--\nadd: r%d (%d) + r%d (%d) -> r%d\n",
+				vm->cycle, param[0]);
+	}
+	return (1);
 }

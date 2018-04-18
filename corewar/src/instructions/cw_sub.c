@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 16:48:08 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/16 12:25:54 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 12:15:30 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		cw_sub_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 	return (check);
 }
 
-int		cw_add(t_vm *vm, t_process *process)
+int		cw_sub(t_vm *vm, t_process *process)
 {
 	int				param[3];
 	int				ret[3];
