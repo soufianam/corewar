@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:32:07 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 12:20:38 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 15:39:24 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int		cw_st_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 			ret[i] += 1;
 			check = 0;
 		}
-		else if (ret[i] == 1 && i == 0)
-			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		ocp = ocp << 2;
 	}
 	return (check);
@@ -44,14 +42,16 @@ int		cw_st(t_vm *vm, t_process *process)
 	if ((cw_st_param(vm, process, param, ret)))
 	{
 		if (ret[1] == 1)
-			ft_memcpy(process->registries[param[1] - 1], process->registries[param[0] - 1],
-				REG_SIZE);
+			ft_memcpy(process->registries[param[1] - 1], process->registries[param[0] - 1], REG_SIZE);
 		else
-			ft_memcpy(&(vm->vm[(process->pc + process->entrypoint + (param[1] % IDX_MOD)
-				- ret[1] - 2) % MEM_SIZE]), process->registries[param[0] - 1], REG_SIZE);
+			ft_memcpy(&(vm->vm[(process->pc + process->entrypoint + (param[1] % IDX_MOD) - ret[1] - 2) % MEM_SIZE]), process->registries[param[0] - 1], REG_SIZE);
 		process->carry = !(param[0]) ? 1 : 0;
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
+	if (DEBUG)
+	{
+		ft_printf("--cycle %d--\nst: r%d () -> %d\n", vm->cycle, param[0], param[1]);
+	}
 	return (1);
 }
