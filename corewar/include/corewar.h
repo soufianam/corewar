@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/10 16:19:10 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/18 12:34:41 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,16 @@ int			cw_st(t_vm *vm, t_process *process);
 int			cw_sti(t_vm *vm, t_process *process);
 int			cw_and(t_vm *vm, t_process *process);
 int			cw_zjump(t_vm *vm, t_process *process);
+int			cw_add(t_vm *vm, t_process *process);
+int			cw_sub(t_vm *vm, t_process *process);
+int			cw_or(t_vm *vm, t_process *process);
+int			cw_xor(t_vm *vm, t_process *process);
+int			cw_ldi(t_vm *vm, t_process *process);
+int			cw_fork(t_vm *vm, t_process *process);
+int			cw_lld(t_vm *vm, t_process *process);
+int			cw_lldi(t_vm *vm, t_process *process);
+int			cw_lfork(t_vm *vm, t_process *process);
+int			cw_aff(t_vm *vm, t_process *process);
 int			cw_get_1(char *vm);
 int			cw_get_2(char *vm);
 int			cw_get_4(char *vm);

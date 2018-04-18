@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:12:39 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/16 12:14:00 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 12:19:14 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int		cw_ldi_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 			check = 0;
 		}
 		else if (ret[i] == 1 && i < 2)
-			param[i] = cw_get_4(process->registries[param[i]]);
+			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		ocp = ocp << 2;
 	}
-	return (check)
+	return (check);
 }
 
 int		cw_ldi(t_vm *vm, t_process *process)
@@ -43,7 +43,7 @@ int		cw_ldi(t_vm *vm, t_process *process)
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	if ((cw_ldi_param(vm, process, param, ret)))
 	{
-		ft_memcpy(process->registries[param[2]], &(vm->vm[(process->pc
+		ft_memcpy(process->registries[param[2] - 1], &(vm->vm[(process->pc
 			+ process->entrypoint + param[0] + param[1] - ret[0] - 4) % MEM_SIZE]), REG_SIZE);
 		process->carry = !param[0] ? 1 : 0;
 	}

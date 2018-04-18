@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 20:20:14 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/03/28 17:44:48 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 11:51:21 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			cw_check_reg(int param)
 {
 	if (param < 1 || param >= REG_NUMBER)
 	{
-		ft_printf("Ld failed : no registries found for reg_index %d\n", param);
+		ft_printf("Op failed : no registries found for reg_index %d\n", param);
 		return (0);
 	}
 	return (1);
