@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 08:48:28 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/10 16:25:07 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/18 19:13:47 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,5 @@ void	cw_vm_init(t_vm *vm, int ac, char **av)
 	vm->process = 0;
 	if (cw_load_settings(&(vm->setting), ac, av) <= 1)
 		cw_error(ERR_USAGE);
-	/*
-	 * TO BE DELETED AFTER ASM
-	 */
-//	vm->setting.champion_tab[0].bin[6] = 0x01;
-	/*
-	 *
-	 */
 	cw_create_process(vm);
 }
