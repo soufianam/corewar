@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/17 19:06:23 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/18 13:38:24 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ASM_H
 
 # include <sys/cdefs.h>
+# include <fcntl.h>
 # include "libft.h"
 # include "op.h"
 
@@ -57,7 +58,7 @@ extern t_op		optab[OP_TAB_SIZE];
 
 void			cw_display_optab(void);
 int				cw_insert_param(char *param, t_instruct **inst, int i);
-int				cw_parse(char *file, t_list **instruct);
+int				cw_parse(char *file, t_list **instruct, header_t *head);
 int				cw_parse_instruct(char *instruct, t_instruct **inst, char ***param);
 int				cw_parse_label(char *line, t_instruct **inst, char ***lab);
 int				cw_parse_param(t_instruct **ins, char **param);
@@ -67,8 +68,13 @@ void			cw_display_instruct(t_list *elem);
 /*
 ** fct max
 */
-int     cw_prog_init(t_list *list, char **bin);
-int     cw_check_duplicates_label(t_list *list);
-int     cw_label_init(t_list *list);
+int				cw_prog_init(t_list *list, char **bin);
+int				cw_check_duplicates_label(t_list *list);
+int				cw_label_init(t_list *list);
+int				cw_prog_builder(t_list *list, char **bin);
+
+int				cw_write(char *name, header_t head, char *bin);
+
+char			**ft_strexplode(char const *s, char *c);
 
 #endif
