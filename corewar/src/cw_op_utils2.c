@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 20:11:08 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 19:02:17 by tdeborde         ###   ########.fr       */
+/*   Created: 2018/04/18 19:06:21 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/04/18 19:06:23 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	cw_rev_get(char *registries, int nb)
 	int		i;
 
 	i = 4;
-	while (--i)
+	while (--i >= 0)
 	{
 		registries[i] = (char)nb;
 		nb = nb >> 8;
