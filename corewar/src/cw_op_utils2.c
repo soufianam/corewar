@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 20:11:08 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 16:40:00 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/04/18 19:06:21 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/04/18 19:06:23 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		if (*param && !cw_check_reg(*param))
+		if (*param && !cw_check_reg(*(param - 1)))
 			return (0);
 		return (1);
 	}
@@ -69,15 +69,19 @@ int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
 	if (ocp_trunc & 128)
 	{
 		*param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
-		*param = (ocp_trunc & 64) ? *param % IDX_MOD : *param;
 		process->pc = (process->pc + 2) % MEM_SIZE;
-		return (2);
+		if (ocp_trunc & 64)
+		{
+			*param = *param % IDX_MOD;
+			return (2);
+		}
+		return (4);
 	}
 	else
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		if (*param && !cw_check_reg(*param))
+		if (*param && !cw_check_reg(*(param - 1)))
 			return (0);
 		return (1);
 	}
@@ -90,13 +94,15 @@ int			cw_read_ocp_sh_nomod(t_vm *vm, t_process *process, int *param,
 	{
 		*param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 2) % MEM_SIZE;
-		return (2);
+		if (ocp_trunc & 64)
+			return (2);
+		return (4);
 	}
 	else
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		if (*param && !cw_check_reg(*param))
+		if (*param && !cw_check_reg(*(param - 1)))
 			return (0);
 		return (1);
 	}
