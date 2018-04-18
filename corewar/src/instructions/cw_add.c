@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cw_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/30 16:48:08 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 16:18:53 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/04/18 16:22:47 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/04/18 16:32:36 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int		cw_add(t_vm *vm, t_process *process)
 	cw_wait_process(vm, process);
 	if (DEBUG)
 	{
-		ft_printf("--cycle %d--\nadd: r%d (%d) + r%d (%d) -> r%d\n",\
-				vm->cycle, param[0], cw_get_4(process->registries[param[0] - 1]), param[1], cw_get_4(process->registries[param[1] - 1]), param[2]);
+		ft_printf("--cycle %d--\nadd: (%d) + (%d) -> r%d\n",\
+				vm->cycle, param[0], param[1], param[2]);
 	}
 	return (1);
 }
