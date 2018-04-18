@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:12:39 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 17:40:01 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 19:04:27 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int		cw_ld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 {
 	int				i;
 	int				check;
+	int				offset;
 	unsigned char	ocp;
 
 	i = -1;
+	offset = 1;
 	check = 1;
 	ocp = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
 	while (++i < 2)
@@ -28,10 +30,11 @@ int		cw_ld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 			ret[i] += 1;
 			check = 0;
 		}
-		else if (ret[i] == 2 && i == 0)
+		else if (ret[i] == 2)
 			param[i] = cw_get_2(&(vm->vm[(process->pc + process->entrypoint
-							- 3 + (param[i] % 512)) % MEM_SIZE]));
+							- offset + (param[i] % 512)) % MEM_SIZE]));
 		ocp = ocp << 2;
+		offset += ret[i];
 	}
 	return (check);
 }

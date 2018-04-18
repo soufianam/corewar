@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 12:55:54 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 19:04:04 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int		cw_sti_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 {
 	int				i;
 	int				check;
+	int				offset;
 	unsigned char	ocp;
 
 	i = -1;
 	check = 1;
+	offset = 1;
 	ocp = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
 	while (++i < 3)
 	{
@@ -30,7 +32,12 @@ int		cw_sti_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 		}
 		else if (ret[i] == 1 && i > 0)
 			param[i] = cw_get_4(process->registries[param[i] - 1]);
+		else if (ret[i] == 2)
+			param[i] = cw_get_2(&(vm->vm[(process->pc + process->entrypoint
+							- offset + (param[i] % 512)) % MEM_SIZE]));
+		ret[i] = ret[i] == 4 ? 2 : ret[i];
 		ocp = ocp << 2;
+		offset += ret[i];
 	}
 	return (check);
 }
