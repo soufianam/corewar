@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 14:10:34 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/16 12:39:19 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 12:27:33 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,9 @@ int			cw_aff(t_vm *vm, t_process *process)
 	param = param % 256;
 	process->pc = (process->pc + 4) % MEM_SIZE;
 	ft_printf("%C", (unsigned char)param);
+	if (DEBUG)
+	{
+		ft_printf("--cycle %d--\naff: %d", vm->cycle, param);
+	}
 	return (1);
 }
