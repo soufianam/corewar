@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 10:40:32 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/10 14:58:23 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/18 10:36:39 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		cw_add_process(t_vm *vm, t_champion champion, int start_pos)
 	cw_wait_process(vm, process);
 	if (!(new_process = ft_lstnew(process, sizeof(t_process))))
 		cw_error(ERR_MALLOC);
-	ft_lstaddend(&(vm->process), new_process);
+	ft_lstpushf(&(vm->process), new_process);
 }
 
 void		cw_create_process(t_vm *vm)
