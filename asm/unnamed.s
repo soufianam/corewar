@@ -1,4 +1,5 @@
-.name "unnamed"
+.name "lol"  #i
+
 .comment "this is a comment"
 
 l2:		sti r1,%:live,%1

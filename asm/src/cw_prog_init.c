@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 12:13:09 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/04/17 19:06:21 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/18 13:40:21 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_putbin(char *bin, int size)
 }
 
 /*
-** fct to add a param to the program
-*/
+ ** fct to add a param to the program
+ */
 int		cw_add_param(t_param param, char **bin, int add, int size)
 {
 	char	*p;
@@ -34,15 +34,14 @@ int		cw_add_param(t_param param, char **bin, int add, int size)
 	i = -1;
 	while (++i < add)
 		p[i] = (char)((param.val << (i * 8)) >> (8 * (add - 1)));
-	ft_putbin(p, add); ft_putnbr(param.val); ft_putstr("\n");
 	*bin = ft_memextend(*bin, p, size, add);
 	free(p);
 	return (add);
 }
 
 /*
-** fct to get the size of a param
-*/
+ ** fct to get the size of a param
+ */
 int		cw_size_param(t_param param, int8_t id)
 {
 	int		dir;
@@ -60,8 +59,8 @@ int		cw_size_param(t_param param, int8_t id)
 }
 
 /*
-** fct to add an instruction to the prog
-*/
+ ** fct to add an instruction to the prog
+ */
 int		cw_compile_instruct(t_instruct *inst, char **bin, int size)
 {
 	int		i;
@@ -90,8 +89,8 @@ int		cw_compile_instruct(t_instruct *inst, char **bin, int size)
 }
 
 /*
-** fcts to init in and get the size of bin and allocate the bin
-*/
+ ** fcts to init in and get the size of bin and allocate the bin
+ */
 int		cw_prog_init(t_list *list, char **bin)
 {
 	int			size;
@@ -104,8 +103,21 @@ int		cw_prog_init(t_list *list, char **bin)
 	{
 		inst = cmd->content;
 		size = cw_compile_instruct(inst, bin, size);
-		ft_putbin(*bin, size);
 		cmd = cmd->next;
 	}
+	//ft_putbin(*bin, size);
+	return (size);
+}
+
+/*
+ ** Core fct of all max functions. Check label, fill values and create the binary
+ */
+int		cw_prog_builder(t_list *list, char **bin)
+{
+	int		size;
+
+	if ((size = cw_prog_init(list, bin)) == -1)
+		return (-22); 	// Erreur dans la creation du programme 
+						//(il ne doit pas ppouvoir y en avoir ici)
 	return (size);
 }

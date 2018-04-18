@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 19:38:49 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/17 15:02:03 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/18 10:58:27 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int		cw_check_dir_legality(int i, char *param, t_instruct *inst)
 	if ((ret = ((optab[inst->id].param[i] & T_DIR) == T_DIR)))
 	{
 		if (ft_strisdigit(&(param[2])))
-			inst->param[i].val = ft_atoi(&(param[2]));
+			inst->param[i].val = ft_atoi(&(param[1]));
 		else
 			inst->param[i].link = ft_strdup(&param[2]);
 		inst->param[i].pid |= T_DIR;
