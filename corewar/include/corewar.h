@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 19:54:24 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/04/18 19:59:31 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/04/18 19:59:34 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,11 +149,11 @@ int			cw_lld(t_vm *vm, t_process *process);
 int			cw_lldi(t_vm *vm, t_process *process);
 int			cw_lfork(t_vm *vm, t_process *process);
 int			cw_aff(t_vm *vm, t_process *process);
-int			cw_get_1(char *vm);
-int			cw_get_2(char *vm);
-int			cw_get_4(char *vm);
+int			cw_get_1(unsigned char *vm);
+int			cw_get_2(unsigned char *vm);
+int			cw_get_4(unsigned char *vm);
 int			cw_check_reg(int param);
-void		cw_rev_get(char *registries, int nb);
+void		cw_rev_get(unsigned char *registries, int nb);
 int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc);
 int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,

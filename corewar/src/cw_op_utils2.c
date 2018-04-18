@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 19:06:21 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 19:06:23 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 19:56:15 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	*ft_memcpy_circle(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-void	cw_rev_get(char *registries, int nb)
+void	cw_rev_get(unsigned char *registries, int nb)
 {
 	int		i;
 
 	i = 4;
 	while (--i >= 0)
 	{
-		registries[i] = (char)nb;
+		registries[i] = (unsigned char)nb;
 		nb = nb >> 8;
 	}
 }
