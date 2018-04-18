@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:30:55 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 12:30:58 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/18 16:38:40 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	cw_wait_process(t_vm *vm, t_process *process)
 	opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
 	while (opcode < 1 || opcode > 16)
 	{
-		process->pc += 1;
+		process->pc = (process->pc + 1) % MEM_SIZE;
 		opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
 	}
 	i = 0;
