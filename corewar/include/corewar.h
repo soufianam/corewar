@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:20:12 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 12:34:41 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 19:54:24 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct		s_champion
 
 typedef struct		s_process
 {
-	char			registries[REG_NUMBER][REG_SIZE]; //r1 = player id
+	unsigned char	registries[REG_NUMBER][REG_SIZE]; //r1 = player id
 	int				entrypoint; //entrypoint
 	int				pc; //init a 0
 	int				carry; //init a 0
@@ -75,7 +75,7 @@ typedef struct		s_vm
 	t_setting		setting;
 	int				cycle;
 	t_list			*process; //all process list
-	char			*vm;
+	unsigned char	*vm;
 	t_loop			loop;
 }					t_vm;
 
