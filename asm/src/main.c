@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 13:40:23 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/19 10:11:37 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int				main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		cw_parse(argv[1], &instructs, &head);
-		// Ici le display de la liste chainé contenant l'ensemble des
-		// instruction après le premier parsing.
 		if ((size = cw_prog_builder(instructs, &bin)) < 0)
 		{
 			ft_putendl("prog error");

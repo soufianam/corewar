@@ -6,14 +6,14 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 19:43:35 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/03/23 19:44:07 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 10:18:37 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-extern void			ft_strdel_splittab(char **svg)
+extern void			ft_strdel_tab(char **svg)
 {
 	int				i;
 
