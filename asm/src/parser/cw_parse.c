@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 17:13:14 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:26:19 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static int		cw_parse_line(char *line, t_list **list, header_t *head, int line_nb
 	return (ret);
 }
 
-//Vérifier la présence d'un header.
 static int		cw_final_check(t_list *list)
 {
 	if (cw_check_duplicates_label(list) == -1)

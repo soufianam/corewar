@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 19:38:49 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/18 10:58:27 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/19 17:40:19 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,8 @@ extern int		cw_insert_param(char *param, t_instruct **inst, int i)
 
 	ret = 1;
 	cw_init_param(*inst, i);
-	if (param == 0)
-		return (ret);
-	ft_strsanitalize(param, " ");
+	if (param != 0)
+		ft_strsanitalize(param, " ");
 	if (param == 0)
 		return (ret);
 	if (ret != 0 && param[0] == 'r')

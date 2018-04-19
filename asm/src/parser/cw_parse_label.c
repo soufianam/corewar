@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:38:16 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 13:15:22 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:36:33 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ extern int		cw_parse_label(char *line, t_instruct **inst, char ***lab)
 	{
 		if (end_label == line)
 			return (-1); // Lexical error (ligne commence par un :)
-		*lab = cw_strsplit_first(line, ':');
+		if (!(*lab = cw_strsplit_first(line, ':'))
+			return (-1) // Alloc error;
 		if (!cw_check_label((*lab)[0]))
-			return (-1);
+			return (-1); // Lexical error (mauvais caractere dans le label);
 		(*inst)->label = ft_strdup((*lab)[0]);
 		return (1);
 	}
