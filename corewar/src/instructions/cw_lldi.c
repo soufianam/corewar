@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:12:39 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 16:46:39 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/19 18:05:53 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		cw_lldi_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		else if (ret[i] == 2)
 			param[i] = cw_get_4(&(vm->vm[(process->pc + process->entrypoint
-							- offset + param[i]) % MEM_SIZE]));
+							- offset + ((short)param[i] % IDX_MOD)) % MEM_SIZE]));
 		ret[i] = ret[i] == 4 ? 2 : ret[i];
 		ocp = ocp << 2;
 	}
