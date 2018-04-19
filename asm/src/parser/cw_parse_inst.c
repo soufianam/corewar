@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:12:37 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/16 18:55:38 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 11:44:57 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ extern int		cw_parse_instruct(char *instruct, t_instruct **inst, char ***param)
 	int8_t	id;
 	char 	**ins;
 
-	ft_strsanitalize(instruct, "\t");
+	ft_strsanitalize(instruct, "\t ");
 	ins = ft_strsplit(instruct, ' ');
 	if (ins == 0)
 		return (1);
