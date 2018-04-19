@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 19:59:31 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 19:59:34 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/19 15:04:05 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,10 +157,6 @@ void		cw_rev_get(unsigned char *registries, int nb);
 int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc);
 int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
-		unsigned char ocp_trunc);
-int			cw_read_ocp_sh_nomod(t_vm *vm, t_process *process, int *param,
-		unsigned char ocp_trunc);
-int			cw_read_ocp_nomod(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc);
 void		cw_wait_process(t_vm *vm, t_process *process);
 /**/

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/18 19:06:21 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 19:56:15 by tdeborde         ###   ########.fr       */
+/*   Created: 2018/04/19 15:05:10 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/04/19 15:05:16 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 	if ((ocp_trunc & 128) && (ocp_trunc & 64))
 	{
 		*param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
-		*param = *param % IDX_MOD;
 		process->pc = (process->pc + 2) % MEM_SIZE;
 		return (2);
 	}
@@ -57,7 +56,7 @@ int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		if (*param && !cw_check_reg(*(param - 1)))
+		if (*param && !cw_check_reg(*param))
 			return (0);
 		return (1);
 	}
@@ -71,30 +70,6 @@ int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
 		*param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 2) % MEM_SIZE;
 		if (ocp_trunc & 64)
-		{
-			*param = *param % IDX_MOD;
-			return (2);
-		}
-		return (4);
-	}
-	else
-	{
-		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
-		process->pc = (process->pc + 1) % MEM_SIZE;
-		if (*param && !cw_check_reg(*(param - 1)))
-			return (0);
-		return (1);
-	}
-}
-
-int			cw_read_ocp_sh_nomod(t_vm *vm, t_process *process, int *param,
-		unsigned char ocp_trunc)
-{
-	if (ocp_trunc & 128)
-	{
-		*param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
-		process->pc = (process->pc + 2) % MEM_SIZE;
-		if (ocp_trunc & 64)
 			return (2);
 		return (4);
 	}
@@ -102,7 +77,7 @@ int			cw_read_ocp_sh_nomod(t_vm *vm, t_process *process, int *param,
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		if (*param && !cw_check_reg(*(param - 1)))
+		if (*param && !cw_check_reg(*param))
 			return (0);
 		return (1);
 	}
