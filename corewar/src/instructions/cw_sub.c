@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 16:48:08 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/18 12:21:24 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/19 15:08:23 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,10 @@ int		cw_sub(t_vm *vm, t_process *process)
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
+	if (DEBUG)
+	{
+		ft_printf("--cycle %d--\nsub: (%d) - (%d) -> r%d\n",\
+				vm->cycle, param[0], param[1], param[2]);
+	}
 	return (1);
 }
