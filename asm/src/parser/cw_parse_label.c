@@ -83,8 +83,8 @@ extern int		cw_parse_label(char *line, t_instruct **inst, char ***lab)
 	{
 		if (end_label == line)
 			return (-1); // Lexical error (ligne commence par un :)
-		if (!(*lab = cw_strsplit_first(line, ':'))
-			return (-1) // Alloc error;
+		if (!(*lab = cw_strsplit_first(line, ':')))
+			return (-1); // Alloc error;
 		if (!cw_check_label((*lab)[0]))
 			return (-1); // Lexical error (mauvais caractere dans le label);
 		(*inst)->label = ft_strdup((*lab)[0]);

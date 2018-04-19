@@ -40,7 +40,7 @@ int				main(int argc, char *argv[])
 		}
 		head.magic = COREWAR_EXEC_MAGIC;
 		head.prog_size = (unsigned int)size;
-		cw_write("test_max.cor", head, bin);
+		cw_write(argv[1], head, bin);
 	}
 	return (0);
 }
