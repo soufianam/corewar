@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:12:17 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/19 11:12:34 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:08:22 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ int		cw_ld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 		offset += ret[i];
 		if (ret[i] == 2)
 		{
-			ft_printf("%d\n", (process->pc + process->entrypoint - offset + (param[i] % 512)) % MEM_SIZE);
 			param[i] = cw_get_4(&(vm->vm[(process->pc + process->entrypoint
-							- offset + (param[i] % 512)) % MEM_SIZE]));
-			ft_printf("%d\n", param[i]);
+							- offset + ((short)param[i] % 512)) % MEM_SIZE]));
 		}
 		ocp = ocp << 2;
 	}
