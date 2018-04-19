@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/19 10:47:27 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 11:12:45 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct	s_instruct
 extern t_op		optab[OP_TAB_SIZE];
 
 void			cw_display_optab(void);
-void			cw_error(int err_code, int line_nb);
+void			cw_error(int err_code, t_list *last);
 int				cw_insert_param(char *param, t_instruct **inst, int i);
 int				cw_parse(char *file, t_list **instruct, header_t *head);
 int				cw_parse_instruct(char *instruct, t_instruct **inst, char ***param);
