@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 15:32:48 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:13:14 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,11 @@ static int		cw_parse_line(char *line, t_list **list, header_t *head, int line_nb
 	t_instruct	*ins;
 	int			ret;
 
-	ft_putchar('Z');
 	cw_parse_comment(line);
 	if (*line == '\0')
 		return (1);
 	ft_strsanitalize(line, "\t ");
-	if ((ret = cw_parse_header(line, head)) <= 0)
+	if ((ret = cw_parse_header(line, head)) <= 0 || ret == 2)
 		return (ret);
 	if (!(ins = (t_instruct *)ft_memalloc(sizeof(t_instruct))))
 		return (-1);
@@ -60,6 +59,8 @@ static int		cw_parse_line(char *line, t_list **list, header_t *head, int line_nb
 //	ft_memdel((void**)ins);
 	return (ret);
 }
+
+//Vérifier la présence d'un header.
 static int		cw_final_check(t_list *list)
 {
 	if (cw_check_duplicates_label(list) == -1)
@@ -88,8 +89,6 @@ extern int		cw_parse(char *file, t_list **list, header_t *head)
 		ft_putnbr(line_nb);
 		ft_putstr(line);
 		ret = cw_parse_line(line, list, head, line_nb);
-		ft_putstr(" ret : ");
-		ft_putnbr(ret);
 		ft_putchar('\n');
 		ft_strdel((char **)&line);
 	}

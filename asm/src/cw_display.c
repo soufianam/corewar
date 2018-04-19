@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 18:50:32 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 15:49:24 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:02:55 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ extern void		cw_display_optab(void)
 
 extern void		cw_display_header(header_t header)
 {
+	ft_putchar('\n');
 	if (*(header.prog_name) != '\0')
 	{
 		ft_putstr("prog_name : ");
@@ -90,5 +91,5 @@ extern void		cw_display_instruct(t_list *elem)
 		ft_putnbr(content->param[2].val);
 		ft_putstr(") pid(");
 		ft_putnbr(content->param[2].pid);
-	ft_putendl(")\n");
+	ft_putendl(")");
 }
