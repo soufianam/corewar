@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/30 17:40:15 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 12:27:23 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/04/19 14:55:17 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/04/19 14:55:19 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		cw_lld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 	ocp = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
 	while (++i < 2)
 	{
-		if (!(ret[i] = cw_read_ocp_nomod(vm, process, &param[i], ocp)))
+		if (!(ret[i] = cw_read_ocp_short(vm, process, &param[i], ocp)))
 		{
 			ret[i] += 1;
 			check = 0;
