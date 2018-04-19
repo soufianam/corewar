@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 10:22:04 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 10:54:33 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 	return (1);
 }
 
-static int		cw_parse_line(char *line, t_list **list)
+static int		cw_parse_line(char *line, t_list **list, int line_nb)
 {
 	t_instruct	*ins;
 	int			ret;
 
 	if (!(ins = (t_instruct *)ft_memalloc(sizeof(t_instruct))))
 		return (-1);
-	if ((ret = cw_parse_line_aux(line, list, &ins)) < 0)
-		return (ret);
+	ins->line = line_nb;
+	ret = cw_parse_line_aux(line, list, &ins);
 	cw_parse_update_pc(&ins, list);
 	ft_lstpush(list, (void *)ins, sizeof(t_instruct), &ft_lstpushb);
 //	ft_memdel((void**)ins);
-	return (1);
+	return (ret);
 }
 
 char			*ft_getstr_head(char *line)
@@ -117,20 +117,20 @@ extern int		cw_parse(char *file, t_list **list, header_t *head)
 	int			fd;
 	int			ret;
 	char		*line;
+	int			line_nb;
+	// Ajout d'un compteur de ligne pour les erreur.
 
 	ret = 0;
 	fd = open(file, O_RDONLY);
 	*list = 0;
+	line_nb = 0;
 	while (ft_gnl(fd, &line) > 0 && ret >= 0)
 	{
-		if (*line != '\0' && *line != COMMENT_CHAR)
+		line_nb++;
+		if (*line != '\0' && *line != COMMENT_CHAR) //Esquive des commentaire ici
 		{
-			ret = (ret == 0) ? cw_parse_header(line, head) 
-				: cw_parse_line(line, list); 
-			//Mettre à la norme la fonction, ajout du parsing des commentaire.
-											 //Ajout du parsing de l'entête.
-											 //cw_parse(char *file, t_list **list, header_t **head);
-											 //cw_parse_line(char *file, t_list **list, header_t **head);
+			ret = (ret == 0) ? cw_parse_header(line, head)
+				: cw_parse_line(line, list, line_nb);
 			ft_strdel((char **)&line);
 		}
 	}

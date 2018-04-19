@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/19 10:11:37 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 10:52:31 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ int				main(int argc, char *argv[])
 	t_list		*instructs;
 	char		*bin;
 	int			size;
+	int			ret;
 	header_t	head;
 
 	bin = NULL;
 	if (argc == 2)
 	{
-		cw_parse(argv[1], &instructs, &head);
+		if ((ret = cw_parse(argv[1], &instructs, &head)) < 0)
+			cw_error(ret, ((t_instruct *)(ft_lstlast(&instructs)->content))->line);
 		if ((size = cw_prog_builder(instructs, &bin)) < 0)
 		{
 			ft_putendl("prog error");
