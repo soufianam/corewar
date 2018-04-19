@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 12:30:55 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 16:38:40 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:28:56 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,19 @@ void	cw_exec_process(t_vm *vm, t_process *process)
 	int		i;
 
 	opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
-	i = 0;
-	while (op_tab[i].opcode != opcode)
-		i++;
-	op = op_tab[i];
-	op.f(vm, process);
+	if (opcode < 1 || opcode > 16)
+	{
+		process->pc = (process->pc + 1) % MEM_SIZE;
+		cw_wait_process(vm, process);
+	}
+	else
+	{
+		i = 0;
+		while (op_tab[i].opcode != opcode)
+			i++;
+		op = op_tab[i];
+		op.f(vm, process);
+	}
 }
 
 void	cw_wait_process(t_vm *vm, t_process *process)
@@ -46,13 +54,15 @@ void	cw_wait_process(t_vm *vm, t_process *process)
 	int		i;
 
 	opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
-	while (opcode < 1 || opcode > 16)
+	if (opcode < 1 || opcode > 16)
 	{
-		process->pc = (process->pc + 1) % MEM_SIZE;
-		opcode = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
+		process->next_cycle += 1;
 	}
-	i = 0;
-	while (op_tab[i].opcode != opcode)
-		i++;
-	process->next_cycle += op_tab[i].nb_cycle;
+	else
+	{
+		i = 0;
+		while (op_tab[i].opcode != opcode)
+			i++;
+		process->next_cycle += op_tab[i].nb_cycle;
+	}
 }
