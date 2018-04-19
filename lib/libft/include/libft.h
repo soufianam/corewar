@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:52:35 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/19 10:20:01 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 10:30:08 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void				ft_strdel(char **as);
 void				ft_strdel_tab(char **svg);
 char				*ft_strdup(const char *s1);
 int					ft_strequ(char const *s1, char const *s2);
+char				**ft_strexplode(char const *s, char *c);
 char				*ft_strextend(char *s1, char *s2);
 char				*ft_strext(char *s1, char const *s2);
 int					ft_strisdigit(char *str);

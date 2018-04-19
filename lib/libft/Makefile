@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/19 10:19:12 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/19 10:29:35 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ SRC_NAME =\
 	ft_strdel.c\
 	ft_strdel_tab.c\
 	ft_strdup.c\
+	ft_strexplode.c\
 	ft_strequ.c\
 	ft_strext.c\
 	ft_strextend.c\
