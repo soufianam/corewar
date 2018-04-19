@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cw_ldi.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 17:12:39 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 16:06:37 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/04/19 16:49:58 by blefeuvr          #+#    #+#             */
+/*   Updated: 2018/04/19 17:06:33 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,23 @@ int		cw_ldi_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 		else if (ret[i] == 2)
 			param[i] = cw_get_4(&(vm->vm[(process->pc + process->entrypoint
 							- offset + ((short)param[i] % IDX_MOD)) % MEM_SIZE]));
+		ret[i] = ret[i] == 4 ? 2 : ret[i];
 		ocp = ocp << 2;
 	}
-	return (check);
+	return (check ? offset : 0);
 }
 
 int		cw_ldi(t_vm *vm, t_process *process)
 {
 	int				param[3];
 	int				ret[3];
+	int				offset;
 
 	process->pc = (process->pc + 1) % MEM_SIZE;
-	if ((cw_ldi_param(vm, process, param, ret)))
+	if ((offset = cw_ldi_param(vm, process, param, ret)))
 	{
 		ft_memcpy(process->registries[param[2] - 1], &(vm->vm[(process->pc
-			+ process->entrypoint + param[0] + param[1] - ret[0] - ret[1] - ret[2]) % MEM_SIZE]), REG_SIZE);
-		process->carry = !param[0] ? 1 : 0;
+			+ process->entrypoint + param[0] + param[1] - offset) % MEM_SIZE]), REG_SIZE);
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
