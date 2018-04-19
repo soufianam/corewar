@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 16:56:30 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 13:40:23 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/19 11:12:32 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int				main(int argc, char *argv[])
 	t_list		*instructs;
 	char		*bin;
 	int			size;
+	int			ret;
 	header_t	head;
 
 	bin = NULL;
 	if (argc == 2)
 	{
-		cw_parse(argv[1], &instructs, &head);
-		// Ici le display de la liste chainé contenant l'ensemble des
-		// instruction après le premier parsing.
+		if ((ret = cw_parse(argv[1], &instructs, &head)) < 0)
+			cw_error(ret, ft_lstlast(&instructs));
 		if ((size = cw_prog_builder(instructs, &bin)) < 0)
 		{
 			ft_putendl("prog error");

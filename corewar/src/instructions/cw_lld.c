@@ -6,7 +6,11 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 17:40:15 by tdeborde          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/04/19 14:52:35 by tdeborde         ###   ########.fr       */
+=======
+/*   Updated: 2018/04/19 12:27:23 by blefeuvr         ###   ########.fr       */
+>>>>>>> 6bb77fc4dccb2b790a80dd4a030c991e1c6bfacd
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +24,8 @@ int		cw_lld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 	unsigned char	ocp;
 
 	i = -1;
-	check = 1;
 	offset = 1;
+	check = 1;
 	ocp = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
 	while (++i < 2)
 	{
@@ -52,5 +56,9 @@ int		cw_lld(t_vm *vm, t_process *process)
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
+	if (DEBUG)
+	{
+		ft_printf("--cycle %d--\nlld: %d -> %d\n", vm->cycle, param[0], param[1]);
+	}
 	return (1);
 }

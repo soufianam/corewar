@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 13:38:24 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/19 11:12:45 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ typedef struct	s_instruct
 	int				pc;
 	int8_t			id;
 	unsigned char	ocp;
+	int				line;
 	t_param			param[4];
 }				t_instruct;
 
 extern t_op		optab[OP_TAB_SIZE];
 
 void			cw_display_optab(void);
+void			cw_error(int err_code, t_list *last);
 int				cw_insert_param(char *param, t_instruct **inst, int i);
 int				cw_parse(char *file, t_list **instruct, header_t *head);
 int				cw_parse_instruct(char *instruct, t_instruct **inst, char ***param);
@@ -74,7 +76,5 @@ int				cw_label_init(t_list *list);
 int				cw_prog_builder(t_list *list, char **bin);
 
 int				cw_write(char *name, header_t head, char *bin);
-
-char			**ft_strexplode(char const *s, char *c);
 
 #endif

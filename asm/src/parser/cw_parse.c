@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/18 12:52:48 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/19 11:04:44 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,25 @@ static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 	if ((ret = cw_parse_param(ins, param)) < 0)
 		return (ret);
 	if (instruct != 0)
-		ft_strdel_splittab(instruct);
+		ft_strdel_tab(instruct);
 	if (param != 0)
-		ft_strdel_splittab(param);
+		ft_strdel_tab(param);
 	return (1);
 }
 
-static int		cw_parse_line(char *line, t_list **list)
+static int		cw_parse_line(char *line, t_list **list, int line_nb)
 {
 	t_instruct	*ins;
 	int			ret;
 
 	if (!(ins = (t_instruct *)ft_memalloc(sizeof(t_instruct))))
 		return (-1);
-	if ((ret = cw_parse_line_aux(line, list, &ins)) < 0)
-		return (ret);
+	ins->line = line_nb;
+	ret = cw_parse_line_aux(line, list, &ins);
 	cw_parse_update_pc(&ins, list);
 	ft_lstpush(list, (void *)ins, sizeof(t_instruct), &ft_lstpushb);
 //	ft_memdel((void**)ins);
-	return (1);
-}
-
-void			free_tab(char **tab)
-{
-	int		i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
+	return (ret);
 }
 
 char			*ft_getstr_head(char *line)
@@ -103,11 +90,11 @@ static int		cw_parse_header(char *line, header_t *head)
 	(void)head;
 	tab = ft_strexplode(line, "#");
 	buff = ft_strdup(*tab);
-	free_tab(tab);
+	ft_strdel_tab(tab);
 	tab = ft_strexplode(buff, "\t ");
 	if (*tab && ft_strcmp(NAME_CMD_STRING, *tab) == 0 && tab[1])
 	{
-		free_tab(tab);
+		ft_strdel_tab(tab);
 		buff = ft_getstr_head(buff);
 		ft_strcpy(head->prog_name, buff);
 		if (buff)
@@ -116,7 +103,7 @@ static int		cw_parse_header(char *line, header_t *head)
 	}
 	if (*tab && ft_strcmp(COMMENT_CMD_STRING, *tab) == 0 && tab[1])
 	{
-		free_tab(tab);
+		ft_strdel_tab(tab);
 		buff = ft_getstr_head(buff);
 		ft_strcpy(head->comment, buff);
 		free(buff);
@@ -130,20 +117,20 @@ extern int		cw_parse(char *file, t_list **list, header_t *head)
 	int			fd;
 	int			ret;
 	char		*line;
+	int			line_nb;
+	// Ajout d'un compteur de ligne pour les erreur.
 
 	ret = 0;
 	fd = open(file, O_RDONLY);
 	*list = 0;
+	line_nb = 0;
 	while (ft_gnl(fd, &line) > 0 && ret >= 0)
 	{
-		if (*line != '\0' && *line != COMMENT_CHAR)
+		line_nb++;
+		if (*line != '\0' && *line != COMMENT_CHAR) //Esquive des commentaire ici
 		{
-			ret = (ret == 0) ? cw_parse_header(line, head) 
-				: cw_parse_line(line, list); 
-			//Mettre à la norme la fonction, ajout du parsing des commentaire.
-											 //Ajout du parsing de l'entête.
-											 //cw_parse(char *file, t_list **list, header_t **head);
-											 //cw_parse_line(char *file, t_list **list, header_t **head);
+			ret = (ret == 0) ? cw_parse_header(line, head)
+				: cw_parse_line(line, list, line_nb);
 			ft_strdel((char **)&line);
 		}
 	}
@@ -152,14 +139,9 @@ extern int		cw_parse(char *file, t_list **list, header_t *head)
 		ret = -20;   // Duplicata d'un label dans le .s
 	if (cw_label_init(*list) == -1)
 		ret = -21;   // Un label n'existe pas
-	if (ret <= 0)
-	{
-		// Fonction err en appel avec le code d'erreur correspondant:
-		// cw_error(ret);
-		ft_putendl("error");
-		return (0);
-	}
 	if (line)
 		ft_strdel((char **)&line);
-	return (1);
+	if (ret <= 0) // Peut etre viré
+		ft_putendl("error");
+	return (ret);
 }
