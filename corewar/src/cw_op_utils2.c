@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/18 19:06:21 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 15:03:02 by tdeborde         ###   ########.fr       */
+/*   Created: 2018/04/19 15:05:10 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/04/19 15:05:16 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		if (*param && !cw_check_reg(*(param - 1)))
+		if (*param && !cw_check_reg(*param))
 			return (0);
 		return (1);
 	}
@@ -77,7 +77,7 @@ int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
 	{
 		*param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		if (*param && !cw_check_reg(*(param - 1)))
+		if (*param && !cw_check_reg(*param))
 			return (0);
 		return (1);
 	}
