@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 18:50:32 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/17 15:04:18 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 15:49:24 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ extern void		cw_display_optab(void)
 		ft_printf("desc : %s | ", optab[i].desc);
 		ft_printf("carry : %d | codage : %d \n", optab[i].carry, optab[i].codage);
 		i++;
+	}
+}
+
+extern void		cw_display_header(header_t header)
+{
+	if (*(header.prog_name) != '\0')
+	{
+		ft_putstr("prog_name : ");
+		ft_putendl(header.prog_name);
+	}
+	if (*(header.comment) != '\0')
+	{
+		ft_putstr("comment : ");
+		ft_putendl(header.comment);
 	}
 }
 

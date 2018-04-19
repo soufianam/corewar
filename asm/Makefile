@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/19 10:31:03 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/19 13:16:23 by pprikazs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRC_NAME = main.c \
 		   cw_display.c \
 		   cw_global.c \
 		   cw_parse.c \
+		   cw_parse_comment.c \
+		   cw_parse_header.c \
 		   cw_parse_inst.c \
 		   cw_parse_label.c \
 		   cw_parse_param.c \

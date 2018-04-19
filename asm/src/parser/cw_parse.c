@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 11:04:44 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 15:32:48 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,18 @@ static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 	return (1);
 }
 
-static int		cw_parse_line(char *line, t_list **list, int line_nb)
+static int		cw_parse_line(char *line, t_list **list, header_t *head, int line_nb)
 {
 	t_instruct	*ins;
 	int			ret;
 
+	ft_putchar('Z');
+	cw_parse_comment(line);
+	if (*line == '\0')
+		return (1);
+	ft_strsanitalize(line, "\t ");
+	if ((ret = cw_parse_header(line, head)) <= 0)
+		return (ret);
 	if (!(ins = (t_instruct *)ft_memalloc(sizeof(t_instruct))))
 		return (-1);
 	ins->line = line_nb;
@@ -53,63 +60,13 @@ static int		cw_parse_line(char *line, t_list **list, int line_nb)
 //	ft_memdel((void**)ins);
 	return (ret);
 }
-
-char			*ft_getstr_head(char *line)
+static int		cw_final_check(t_list *list)
 {
-	char	*buff;
-	int		start;
-	int		end;
-
-	start = 0;
-	while (line[start] != '"' && line[start] != '\0')
-		start++;
-	if (line[start] == '\0')
-	{
-		free(line);
-		return (NULL);
-	}
-	end = start + 1;
-	while (line[end] != '"' && line[end] != '\0')
-		end++;
-	if (line[end] != '"')
-	{
-		free(line);
-		return (NULL);
-	}
-	buff = (char*)ft_memalloc(sizeof(char) * (end - start + 1));
-	buff = ft_strncpy(buff, line + start + 1, end - start - 1);
-	free(line);
-	return (buff);
-}
-
-static int		cw_parse_header(char *line, header_t *head)
-{
-	char	**tab;
-	char	*buff;
-
-	(void)head;
-	tab = ft_strexplode(line, "#");
-	buff = ft_strdup(*tab);
-	ft_strdel_tab(tab);
-	tab = ft_strexplode(buff, "\t ");
-	if (*tab && ft_strcmp(NAME_CMD_STRING, *tab) == 0 && tab[1])
-	{
-		ft_strdel_tab(tab);
-		buff = ft_getstr_head(buff);
-		ft_strcpy(head->prog_name, buff);
-		if (buff)
-			free(buff);
-		return (0);
-	}
-	if (*tab && ft_strcmp(COMMENT_CMD_STRING, *tab) == 0 && tab[1])
-	{
-		ft_strdel_tab(tab);
-		buff = ft_getstr_head(buff);
-		ft_strcpy(head->comment, buff);
-		free(buff);
-		return (1);
-	}
-	return (-1);
+	if (cw_check_duplicates_label(list) == -1)
+		return (-20);   // Duplicata d'un label dans le .s
+	if (cw_label_init(list) == -1)
+		return (-21);   // Un label n'existe pas
+	return (1);
 }
 
 extern int		cw_parse(char *file, t_list **list, header_t *head)
@@ -118,30 +75,28 @@ extern int		cw_parse(char *file, t_list **list, header_t *head)
 	int			ret;
 	char		*line;
 	int			line_nb;
-	// Ajout d'un compteur de ligne pour les erreur.
 
 	ret = 0;
 	fd = open(file, O_RDONLY);
 	*list = 0;
 	line_nb = 0;
+	*(head->comment) = '\0';
+	*(head->prog_name) = '\0';
 	while (ft_gnl(fd, &line) > 0 && ret >= 0)
 	{
 		line_nb++;
-		if (*line != '\0' && *line != COMMENT_CHAR) //Esquive des commentaire ici
-		{
-			ret = (ret == 0) ? cw_parse_header(line, head)
-				: cw_parse_line(line, list, line_nb);
-			ft_strdel((char **)&line);
-		}
+		ft_putnbr(line_nb);
+		ft_putstr(line);
+		ret = cw_parse_line(line, list, head, line_nb);
+		ft_putstr(" ret : ");
+		ft_putnbr(ret);
+		ft_putchar('\n');
+		ft_strdel((char **)&line);
 	}
-	// functions de maxime ici pour les labels
-	if (cw_check_duplicates_label(*list) == -1)
-		ret = -20;   // Duplicata d'un label dans le .s
-	if (cw_label_init(*list) == -1)
-		ret = -21;   // Un label n'existe pas
 	if (line)
 		ft_strdel((char **)&line);
-	if (ret <= 0) // Peut etre viré
-		ft_putendl("error");
+	if (ret <= 0)
+		return (ret);
+	ret = cw_final_check(*list);
 	return (ret);
 }

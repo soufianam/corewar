@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:38:16 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/16 18:54:37 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/19 13:15:22 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char		**cw_strsplit_first(const char *str, char c)
 	return (split);
 }
 
-static char		cw_carchr(char *line, char *c)
+static char		*cw_carchr(char *line, char *c)
 {
 	int		i;
 	int		j;
@@ -49,12 +49,12 @@ static char		cw_carchr(char *line, char *c)
 		while (c[j] != '\0')
 		{
 			if (line[i] == c[j])
-				return (c[j]);
+				return (&c[j]);
 			j++;
 		}
 		i++;
 	}
-	return (line[i]);
+	return (&line[i]);
 }
 
 static int		cw_check_label(char *label)
@@ -76,15 +76,18 @@ static int		cw_check_label(char *label)
 
 extern int		cw_parse_label(char *line, t_instruct **inst, char ***lab)
 {
-	if (line[0] == '\t' || line[0] == ' ')
-		return (0);
-	if (cw_carchr(line, ",\t:") == ':')
+	char		*end_label;
+
+	end_label = cw_carchr(line, ", \t:");
+	if (*end_label == ':')
 	{
+		if (end_label == line)
+			return (-1); // Lexical error (ligne commence par un :)
 		*lab = cw_strsplit_first(line, ':');
 		if (!cw_check_label((*lab)[0]))
 			return (-1);
 		(*inst)->label = ft_strdup((*lab)[0]);
 		return (1);
 	}
-	return (-1);
+	return (0); //No label
 }
