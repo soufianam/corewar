@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:05:10 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 15:59:53 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/20 14:48:35 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 	{
 		*param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 2) % MEM_SIZE;
+		*param = (short)*param;
 		return (2);
 	}
 	else if ((ocp_trunc & 128))
@@ -69,6 +70,7 @@ int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
 	{
 		*param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 		process->pc = (process->pc + 2) % MEM_SIZE;
+		*param = (short)*param;
 		if (ocp_trunc & 64)
 			return (2);
 		return (4);
