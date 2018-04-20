@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 11:47:28 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 12:08:26 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/20 12:48:13 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int		cw_ocp(int ocp)
 {
-	if (ocp != 0x54 && ocp != 0x64 && ocp != 0x74 &&\
-			ocp != 0x58 && ocp != 0x68 && ocp != 0x78)
+	if (ocp != 0x54 && ocp != 0xd4 && ocp != 0x94 &&\
+			ocp != 0x64 && ocp != 0xe4 && ocp != 0xa4)
 	{
 		if (DEBUG)
 			ft_printf("ldi: bad ocp %02x\n", ocp);
