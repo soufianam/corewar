@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:13:05 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 17:37:47 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 14:43:14 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #include "op.h"
 #include "libft.h"
 #include "asm.h"
+
+static void		cw_init_param(t_instruct *inst, int i)
+{
+	inst->param[i].pid = 0;
+	inst->param[i].val = 0;
+	inst->param[i].link = 0;
+}
 
 static int		cw_count_param(char **param)
 {
@@ -41,6 +48,7 @@ extern int		cw_parse_param(t_instruct **inst, char **param)
 	{
 		if (i < nb_param)
 		{
+			cw_init_param(*inst, i);
 			if (!(ret = cw_insert_param(param[i], inst, i)))
 				break ;
 		}

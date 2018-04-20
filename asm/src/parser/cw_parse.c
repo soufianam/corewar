@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 17:26:19 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 15:11:06 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ extern int		cw_parse(char *file, t_list **list, header_t *head)
 		ft_putchar('\n');
 		ft_strdel((char **)&line);
 	}
+	cw_display_header(*head);
+	ft_lstiter(*list, &cw_display_instruct);
 	if (line)
 		ft_strdel((char **)&line);
 	if (ret <= 0)
