@@ -63,9 +63,14 @@ void	cw_write_header(header_t h, int fd, char *bin)
 int		cw_write(char *name, header_t head, char *bin)
 {
 	int		fd;
+	char	*new_name;
 
-	fd = open(name, O_CREAT | O_RDWR, 777);
+	new_name = (char*)ft_memalloc(sizeof(char) * (ft_strlen(name) + 3));
+	new_name = ft_strncpy(new_name, name, ft_strlen(name) - 1);
+	new_name = ft_strcat(new_name, "cor");
+	fd = open(new_name, O_CREAT | O_RDWR, 777);
 	if (fd > 0)
 		cw_write_header(head, fd, bin);
+	free(new_name);
 	return (0);
 }

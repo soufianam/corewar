@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:13:05 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/18 10:51:22 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/19 17:37:47 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ extern int		cw_parse_param(t_instruct **inst, char **param)
 	if (param == 0)
 		return (1);
 	if ((nb_param = cw_count_param(param)) > optab[(*inst)->id].nb_param)
-		return (0);
+		return (-1); //Plus de paranettre que ce que l'instruction est capable d'accepter
 	i = 0;
 	ret = 1;
 	while (i < MAX_ARGS_NUMBER)

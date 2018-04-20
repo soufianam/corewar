@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/23 17:12:39 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 17:45:00 by tdeborde         ###   ########.fr       */
+/*   Created: 2018/04/20 11:47:28 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/04/20 11:47:56 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,9 @@ int		cw_ldi(t_vm *vm, t_process *process)
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
+	if (DEBUG)
+	{
+		ft_printf("--cycle %d--\nldi: (%d) + (%d) -> r%d\n", vm->cycle, param[0], param[1], param[2]);
+	}
 	return (1);
 }
