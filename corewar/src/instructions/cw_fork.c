@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 13:43:19 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 17:11:41 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/20 13:53:16 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		cw_fork(t_vm *vm, t_process *process)
 	cw_wait_process(vm, (t_process*)new->content);
 	if (DEBUG)
 	{
-		ft_printf("--cycle %d--\nfork:\n", vm->cycle);
+		ft_printf("--cycle %d--\nfork: %d\n", vm->cycle, param);
 	}
 	return (1);
 }

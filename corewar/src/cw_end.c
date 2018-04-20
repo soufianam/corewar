@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:11:23 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/20 13:26:15 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/20 14:39:13 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,18 @@ void	cw_dump_and_quit(t_vm *vm)
 
 	res = 0;
 	i = 0;
+	ft_printf("%#06x : ", 0);
 	while (i < MEM_SIZE)
 	{
 		ft_printf("%02x", vm->vm[i]);
-		if ((i + 1) % 32 != 0)
+		if ((i + 1) % 64 != 0)
 			ft_putchar(' ');
 		else
+		{
 			ft_putchar('\n');
+			if (i != MEM_SIZE - 1)
+				ft_printf("%#06x : ", i +1);
+		}
 		i++;
 	}
 	if (DEBUG)
