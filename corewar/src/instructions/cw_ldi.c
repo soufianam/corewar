@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cw_ldi.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/19 16:49:58 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/19 17:06:33 by blefeuvr         ###   ########.fr       */
+/*   Created: 2018/04/20 11:47:28 by tdeborde          #+#    #+#             */
+/*   Updated: 2018/04/20 11:47:56 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int		cw_ldi(t_vm *vm, t_process *process)
 	if ((offset = cw_ldi_param(vm, process, param, ret)))
 	{
 		ft_memcpy(process->registries[param[2] - 1], &(vm->vm[(process->pc
-			+ process->entrypoint + param[0] + param[1] - offset) % MEM_SIZE]), REG_SIZE);
+			+ process->entrypoint + ((param[0] + param[1]) % IDX_MOD) - offset) % MEM_SIZE]), REG_SIZE);
+		process->carry = !param[0] ? 1 : 0;
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
