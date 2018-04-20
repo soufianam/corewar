@@ -6,11 +6,24 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 15:35:06 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/20 12:06:32 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static int		cw_ocp(int ocp)
+{
+	if (ocp != 0x54 && ocp != 0xd4 && ocp != 0x74 &&\
+			ocp != 0xf4 && ocp != 0x94 && ocp != 0x64 &&\
+			ocp != 0xb4 && ocp != 0xe4 && ocp != 0xa4)
+	{
+		if (DEBUG)
+			ft_printf("or: bad ocp %02x\n", ocp);
+		return (0);
+	}
+	return (ocp);
+}
 
 int		cw_or_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 {
@@ -22,7 +35,8 @@ int		cw_or_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 	i = -1;
 	check = 1;
 	offset = 1;
-	ocp = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
+	if (!(ocp = cw_ocp(vm->vm[(process->pc + process->entrypoint) % MEM_SIZE])))
+		return (0);
 	while (++i < 3)
 	{
 		if (!(ret[i] = cw_read_ocp(vm, process, &param[i], ocp)))
