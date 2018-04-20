@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 19:38:49 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/20 15:18:58 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 16:35:16 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int		cw_check_lab_legality(int i, char *param, t_instruct *inst)
 		if (param[1] == 0)
 			return (-1); //flag label definit mais rien ne suit
 		else if (!ft_strchr(LABEL_CHARS, param[1])) // !IMPORTANT à remplacer sur l'authenticité complete de la chaine
-			return (-1); //label direct définit mais la caractere suivant ne correspond à rien
+			return (-1); //Erreur de définition de label
 		if (ft_strisdigit(&(param[1])))
 			inst->param[i].val = ft_atoi(&(param[1]));
 		else
@@ -78,7 +78,7 @@ static int		cw_check_dir_legality_aux(int i, char *param, t_instruct *inst, int 
 		(*pos)++;
 	}
 	if (ret > 0 && !ft_strchr(LABEL_CHARS, param[*pos])) // !IMPORTANT à remplacer sur l'authenticité complete de la chaine
-		ret = -1; //Label direct définit mais la caractere suivant ne correspond à rien
+		ret = -1; //Erreur de définition
 	return (ret);
 }
 
@@ -108,6 +108,11 @@ static int		cw_check_dir_legality(int i, char *param, t_instruct *inst)
 	return (ret);
 }
 
+/*
+** Ajout de la gestion de paramettre direct (mais qui ne sont pas des label)
+** Condirion à ajouter à la suite des précédentes
+*/
+
 extern int		cw_insert_param(char *param, t_instruct **inst, int i)
 {
 	int		ret;
@@ -116,7 +121,7 @@ extern int		cw_insert_param(char *param, t_instruct **inst, int i)
 	if (param != 0)
 		ft_strsanitalize(param, " ");
 	if (param == 0)
-		return (ret); //Potentiel car d'erreur non traité pour le moment
+		return (ret); //Potentiel car d'erreur non traité pour le moment (nombre de param inférieur à l'instruction
 	if (ret > 0 && param[0] == 'r')
 		ret = cw_check_reg_legality(i, *inst, param);
 	else if (ret > 0 && param[0] == DIRECT_CHAR)

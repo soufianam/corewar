@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:13:05 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/20 14:43:14 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 16:11:29 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ static int		cw_count_param(char **param)
 	return (i);
 }
 
+/*
+** A vérifier si une erreur survient lorsque moins paramettre de ce dans l'op
+** tab sont définit.
+*/
+
 extern int		cw_parse_param(t_instruct **inst, char **param)
 {
 	int		nb_param;
@@ -41,7 +46,7 @@ extern int		cw_parse_param(t_instruct **inst, char **param)
 	if (param == 0)
 		return (1);
 	if ((nb_param = cw_count_param(param)) > optab[(*inst)->id].nb_param)
-		return (-1); //Plus de paranettre que ce que l'instruction est capable d'accepter
+		return (-1); //Plus de paramettre que ce que l'instruction est capable d'accepter
 	i = 0;
 	ret = 1;
 	while (i < MAX_ARGS_NUMBER)
