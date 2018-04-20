@@ -6,11 +6,22 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 17:12:39 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 11:53:34 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/20 11:56:39 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static int		cw_ocp(int ocp)
+{
+	if (ocp != 0xd0 && ocp != 0x90)
+	{
+		if (DEBUG)
+			ft_printf("ld: bad ocp %02x\n", ocp);
+		return (0);
+	}
+	return (ocp);
+}
 
 int		cw_ld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 {
@@ -22,7 +33,8 @@ int		cw_ld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 	i = -1;
 	offset = 1;
 	check = 1;
-	ocp = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
+	if (!(ocp = cw_ocp(vm->vm[(process->pc + process->entrypoint) % MEM_SIZE])))
+		return (0);
 	while (++i < 2)
 	{
 		if (!(ret[i] = cw_read_ocp(vm, process, &param[i], ocp)))
@@ -33,7 +45,7 @@ int		cw_ld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 		offset += ret[i];
 		if (ret[i] == 2)
 			param[i] = cw_get_4(&(vm->vm[(process->pc + process->entrypoint
-							- offset + ((short)param[i] % IDX_MOD)) % MEM_SIZE]));
+						- offset + ((short)param[i] % IDX_MOD)) % MEM_SIZE]));
 		ocp = ocp << 2;
 	}
 	return (check);
@@ -53,8 +65,6 @@ int		cw_ld(t_vm *vm, t_process *process)
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
 	if (DEBUG)
-	{
 		ft_printf("--cycle %d--\nld: %d -> %d\n", vm->cycle, param[0], param[1]);
-	}
 	return (1);
 }

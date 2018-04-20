@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 19:59:31 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/19 16:00:30 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/20 11:01:06 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 // ---------- //
 # define DEBUG 1
 # define OP_TAB_SIZE 17
+# define O_DIR 2
+# define O_IND 3
+# define O_REG 1
 
 typedef struct		s_champion
 {
