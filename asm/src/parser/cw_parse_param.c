@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:13:05 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/20 16:11:29 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 17:51:10 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ static int		cw_count_param(char **param)
 	while (param[i] != '\0')
 		i++;
 	return (i);
+}
+
+static int		cw_insert_param(char *param, t_instruct **inst, int i)
+{
+	int		ret;
+
+	ret = 1;
+	if (param != 0)
+		ft_strsanitalize(param, " ");
+	if (param == 0)
+		return (ret); //Potentiel car d'erreur non traité pour le moment (nombre de param inférieur à l'instruction
+	if (ret > 0 && param[0] == 'r')
+		ret = cw_parse_param_reg(i, *inst, param);
+	else if (ret > 0 && param[0] == DIRECT_CHAR)
+		ret = cw_parse_param_dir(i, param, *inst);
+	else if (ret > 0)
+		ret = cw_parse_param_ind(i, param, *inst);
+	return (ret);
 }
 
 /*
