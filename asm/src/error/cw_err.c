@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 11:50:55 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/20 16:37:55 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 17:26:01 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,12 @@
 ** code = -12 => Message = Plus de paramettre que ce que l'instruction accepte.
 **		fichier = cw_parse_param => line = 49
 **
-** code = -13 => Message = L'instruction n'attends par de registre a cette emplacement
-**		fichier = cw_parse_param_aux => line = 35
-** code = -14 => Message = Flag registre définit mais rien ne suit
-**		fichier = cw_parse_param_aux => line = 27
-** code = -15 => Message = Erreur de définition du registre (que des chiffre)
-**		fichier = cw_parse_param_aux => line = 29
-** code = -16 => Message = L'instruction n'attend pas de label indirect a cette emplacement
-**		fichier = cw_parse_param_aux => line = 58
-** code = -17 => Message = Flag label définit mais rien ne suit
-**		fichier = cw_parse_param_aux => line = 47
-** code = -18 => Message = Erreur de définition du label (Autre que LABEL_CHARS)
-**		fichier = cw_parse_param_aux => line = 29
-** code = -19 => Message = L'instruction n'attend pas de paramettre direct a cette emplacement
-**		fichier = cw_parse_param_aux => line = 107
-** code = -20 => Message = Flag direct définit mais rien ne suit
-**		fichier = cw_parse_param_aux => line = 68
-** code = -21 => Message = Erreur de définition du label (Autre que LABEL_CHARS)
-**		fichier = cw_parse_param_aux => line = 29
+**
+**
+**
+**
+**
+**
 **
 ** code = -22 => Message =  Duplicata de label dans le .s.
 **		fichier = cw_parse => line = 71
