@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 14:49:39 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/20 16:26:03 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		cw_sti(t_vm *vm, t_process *process)
 	cw_wait_process(vm, process);
 	if (DEBUG)
 	{
-		printf("--cycle %d--\nsti: r%d (%x) -> %d + %d\n", vm->cycle, param[0], cw_get_4(process->registries[param[0] - 1]), param[1], param[2]);
+		ft_printf("--cycle %d--\nsti: r%d (%x) -> %d + %d\n", vm->cycle, param[0], cw_get_4(process->registries[param[0] - 1]), param[1], param[2]);
 	}
 	return (1);
 }
