@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 18:26:21 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/04/09 15:43:35 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/20 10:09:11 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int		cw_load_champion(t_setting *setting, char *file, int i, int id)
 	if ((fd = open(file, O_RDONLY)) == -1)
 		cw_error_custom("Error: can't read file");
 	bin = cw_read_champion_header(fd, &size_bin);
-	if (!bin || size_bin == -1 || cw_check_champion_id(setting, id) == -1)
+	if (cw_check_champion_id(setting, id) == -1)
+		cw_error_custom("Error: same player number used twice");
+	if (!bin || size_bin == -1)
 	{
 		if (bin)
 			free(bin);
@@ -85,7 +87,7 @@ int		cw_load_settings(t_setting *setting, int ac, char **av)
 
 	cw_init_setting(setting);
 	i = cw_init_dump(setting, ac, av);
-	if (i != 1 && i != 3)
+	if ((i != 1 && i != 3) || ac == 1)
 		cw_error(ERR_USAGE);
 	while (i < ac && i != -1)
 		i = cw_init_champion(setting, ac, av, i);
