@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:55:17 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/19 14:55:19 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/20 11:21:52 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		cw_lld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 	ocp = vm->vm[(process->pc + process->entrypoint) % MEM_SIZE];
 	while (++i < 2)
 	{
-		if (!(ret[i] = cw_read_ocp_short(vm, process, &param[i], ocp)))
+		if (!(ret[i] = cw_read_ocp(vm, process, &param[i], ocp)))
 		{
 			ret[i] += 1;
 			check = 0;
