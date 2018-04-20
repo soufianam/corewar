@@ -1,5 +1,9 @@
 corewar/corewar
 asm/asm
+
+#corewar files
+*.cor
+
 sites
 .tmp
 *.d
