@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 17:26:19 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 16:06:04 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 
 extern t_op		optab[OP_TAB_SIZE];
 
+
+/*
+** Fonction à modifier pour la gestion des free en cas d'erreur 
+** ret < 0
+*/
 static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 {
 	char		**instruct;
@@ -29,7 +34,7 @@ static int		cw_parse_line_aux(char *line, t_list **list, t_instruct **ins)
 	if (ret == 1 && (ret = cw_parse_instruct(instruct[1], ins, &param)) < 0)
 		return (ret);
 	else if (ret == 0 && (ret = cw_parse_instruct(line, ins, &param)) < 0)
-			return (ret);
+		return (ret);
 	if ((ret = cw_parse_param(ins, param)) < 0)
 		return (ret);
 	if (instruct != 0)
@@ -51,7 +56,7 @@ static int		cw_parse_line(char *line, t_list **list, header_t *head, int line_nb
 	if ((ret = cw_parse_header(line, head)) <= 0 || ret == 2)
 		return (ret);
 	if (!(ins = (t_instruct *)ft_memalloc(sizeof(t_instruct))))
-		return (-1);
+		return (-1); //Allocation error
 	ins->line = line_nb;
 	ret = cw_parse_line_aux(line, list, &ins);
 	cw_parse_update_pc(&ins, list);
@@ -63,9 +68,9 @@ static int		cw_parse_line(char *line, t_list **list, header_t *head, int line_nb
 static int		cw_final_check(t_list *list)
 {
 	if (cw_check_duplicates_label(list) == -1)
-		return (-20);   // Duplicata d'un label dans le .s
+		return (-1);   // Duplicata d'un label dans le .s
 	if (cw_label_init(list) == -1)
-		return (-21);   // Un label n'existe pas
+		return (-1);   // Un label n'existe pas
 	return (1);
 }
 
@@ -91,6 +96,8 @@ extern int		cw_parse(char *file, t_list **list, header_t *head)
 		ft_putchar('\n');
 		ft_strdel((char **)&line);
 	}
+	cw_display_header(*head);
+	ft_lstiter(*list, &cw_display_instruct);
 	if (line)
 		ft_strdel((char **)&line);
 	if (ret <= 0)
