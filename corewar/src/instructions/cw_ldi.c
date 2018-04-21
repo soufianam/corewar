@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 11:47:28 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 14:40:31 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/21 16:00:29 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int		cw_ldi(t_vm *vm, t_process *process)
 	{
 		ft_memcpy(process->registries[param[2] - 1], &(vm->vm[(process->pc
 			+ process->entrypoint + ((param[0] + param[1]) % IDX_MOD) - offset) % MEM_SIZE]), REG_SIZE);
-		process->carry = !param[0] ? 1 : 0;
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
