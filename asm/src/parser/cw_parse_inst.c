@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:12:37 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 17:33:51 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 16:03:44 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ extern int		cw_parse_instruct(char *instruct, t_instruct **inst, char ***param)
 	if ((id = cw_isset_instruct(ins[0])) == -1)
 		return (-1); //L'instruction n'existe pas
 	(*inst)->id = id;
-	(*param) = ft_strsplit(instruct, SEPARATOR_CHAR);
+	if (((*param) = ft_strsplit(instruct, SEPARATOR_CHAR)) == 0)
+		return (-1); //Alloc error
 	cw_clear_first_param(**param);
 	return (1);
 }

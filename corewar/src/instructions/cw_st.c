@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 18:32:07 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 12:23:30 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/21 16:00:21 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int		cw_st(t_vm *vm, t_process *process)
 			ft_memcpy(&(vm->vm[(process->pc + process->entrypoint + 
 				((short)param[1] % IDX_MOD) - ret[1] - 2) % MEM_SIZE]),
 					process->registries[param[0] - 1], REG_SIZE);
-		process->carry = !(param[0]) ? 1 : 0;
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);

@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 12:11:09 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/19 17:26:39 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/20 15:47:44 by pprikazs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ static int		cw_parse_header_checkname(char *line, header_t *head, char **buff, i
 			ft_strdel((char **)buff);
 			*stat = 0;
 		}
-		//si ret == -qqchose
-			//alors ret vaut: flag .name définit mais pas de définition
 		return (ret);
 }
 
@@ -100,8 +98,6 @@ static int		cw_parse_header_checkcomment(char *line, header_t *head, char **buff
 			ft_strdel((char **)buff);
 			*stat = 0;
 		}
-		//si ret == -qqchose
-			//alors ret vaut: flag .comment définit mais pas de définition
 		return (ret);
 }
 

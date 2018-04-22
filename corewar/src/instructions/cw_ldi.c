@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 11:47:28 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 12:08:26 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/21 16:00:29 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int		cw_ocp(int ocp)
 {
-	if (ocp != 0x54 && ocp != 0x64 && ocp != 0x74 &&\
-			ocp != 0x58 && ocp != 0x68 && ocp != 0x78)
+	if (ocp != 0x54 && ocp != 0xd4 && ocp != 0x94 &&\
+			ocp != 0x64 && ocp != 0xe4 && ocp != 0xa4)
 	{
 		if (DEBUG)
 			ft_printf("ldi: bad ocp %02x\n", ocp);
@@ -48,7 +48,7 @@ int		cw_ldi_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		else if (ret[i] == 2)
 			param[i] = cw_get_4(&(vm->vm[(process->pc + process->entrypoint
-							- offset + ((short)param[i] % IDX_MOD)) % MEM_SIZE]));
+							- offset + (param[i] % IDX_MOD)) % MEM_SIZE]));
 		ret[i] = ret[i] == 4 ? 2 : ret[i];
 		ocp = ocp << 2;
 	}
@@ -66,7 +66,6 @@ int		cw_ldi(t_vm *vm, t_process *process)
 	{
 		ft_memcpy(process->registries[param[2] - 1], &(vm->vm[(process->pc
 			+ process->entrypoint + ((param[0] + param[1]) % IDX_MOD) - offset) % MEM_SIZE]), REG_SIZE);
-		process->carry = !param[0] ? 1 : 0;
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);

@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 12:19:52 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/20 15:00:52 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			cw_xor(t_vm *vm, t_process *process)
 	cw_wait_process(vm, process);
 	if (DEBUG)
 	{
-		printf("--cycle %d--\nxor: %d ^ %d (%d) -> r%d\n", vm->cycle, param[0], param[1], param[0] ^ param[1], param[2]);
+		ft_printf("--cycle %d--\nxor: %d ^ %d (%d) -> r%d\n", vm->cycle, param[0], param[1], param[0] ^ param[1], param[2]);
 	}
 	return (1);
 }

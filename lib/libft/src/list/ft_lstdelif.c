@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 09:45:33 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/21 09:51:24 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/21 18:59:26 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ void	ft_lstdelif(t_list **begin_list, void *content_ref, int (*cmp)())
 				*begin_list = head->next;
 			else
 				prev->next = head->next;
-			free(head);
+			ft_memdel((void**)&head);
 		}
 		prev = head;
-		head = head->next;
+		if (head)
+			head = head->next;
 	}
 }

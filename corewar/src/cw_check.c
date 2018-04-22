@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 09:21:32 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/03/22 11:24:01 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/20 13:42:18 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	cw_check_process(t_vm *vm)
 	live = 0;
 	while (curr)
 	{
-		live += ((t_process*)curr)->live;
-		((t_process*)curr)->live = 0;
+		live += ((t_process*)curr->content)->live;
+		((t_process*)curr->content)->live = 0;
 		curr = curr->next;
 	}
+	ft_printf("%d\n", live);
 	if (live == 0)
 		cw_game_over(vm);
 	if (live > NBR_LIVE)

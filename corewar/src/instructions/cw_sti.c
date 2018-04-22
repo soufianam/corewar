@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 12:37:30 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/21 16:00:38 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		cw_sti_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		else if (ret[i] == 2)
 			param[i] = cw_get_2(&(vm->vm[(process->pc + process->entrypoint
-							- offset + ((short)param[i] % IDX_MOD)) % MEM_SIZE]));
+							- offset + (param[i] % IDX_MOD)) % MEM_SIZE]));
 		ret[i] = ret[i] == 4 ? 2 : ret[i];
 		ocp = ocp << 2;
 	}
@@ -66,13 +66,12 @@ int		cw_sti(t_vm *vm, t_process *process)
 	{
 		ft_memcpy(&(vm->vm[(process->pc + process->entrypoint + ((param[1] + param[2])
 			% IDX_MOD) - offset) % MEM_SIZE]), process->registries[param[0] - 1], REG_SIZE);
-		process->carry = !process->registries[param[0] - 1] ? 1 : 0;
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
 	if (DEBUG)
 	{
-		printf("--cycle %d--\nsti: r%d (%d) -> %d + %d\n", vm->cycle, param[0], cw_get_4(process->registries[param[0] - 1]), param[1], param[2]);
+		ft_printf("--cycle %d--\nsti: r%d (%x) -> %d + %d\n", vm->cycle, param[0], cw_get_4(process->registries[param[0] - 1]), param[1], param[2]);
 	}
 	return (1);
 }

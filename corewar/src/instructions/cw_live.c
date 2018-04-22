@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 16:52:37 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/18 18:02:59 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/20 13:39:45 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int			cw_live(t_vm *vm, t_process *process)
 		ft_printf("Player %s (%d) has been reported alive.\n", champ->name, id);
 		vm->loop.last_live.index = id;
 		vm->loop.last_live.cycle = vm->cycle;
-		process->live += 1;
 	}
+	process->live += 1;
 	cw_wait_process(vm, process);
 	if (DEBUG)
 	{
