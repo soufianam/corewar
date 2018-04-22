@@ -13,6 +13,18 @@
 #include "op.h"
 #include "asm.h"
 
+static void		cw_trim_line(char *line)
+{
+	int		i;
+
+	i = ft_strlen(line);
+	while (i >= 0 && (line[i] == '\0' || line[i] == ' ' || line[i] == '\t'))
+	{
+		*(line + i) = '\0';
+		i--;
+	}
+}
+
 extern void		cw_parse_comment(char *line)
 {
 	char		*tmp;
@@ -28,4 +40,5 @@ extern void		cw_parse_comment(char *line)
 				*tmp ='\0';
 		}
 	}
+	cw_trim_line(line);
 }

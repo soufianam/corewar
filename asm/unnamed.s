@@ -3,8 +3,8 @@
 
 	   .name  "lol"  #i
 
-l2: sti r1,%:live,%1
+l2:			sti		r10,%:live,%1
 and r1,%0,r1
 
 live: live %1
-zjmp %:live
+zjmp %:l2

@@ -54,7 +54,7 @@ static int		cw_check_dir_legality(int i, char *param, t_instruct *inst)
 	}
 	if ((ret = ((optab[inst->id].param[i] & T_DIR) == T_DIR)))
 	{
-		if (ft_strisdigit(&(param[2])))
+		if (ft_strisdigit(&(param[1])))
 			inst->param[i].val = ft_atoi(&(param[1]));
 		else
 			inst->param[i].link = ft_strdup(&param[2]);
