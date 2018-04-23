@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 15:00:52 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:15:29 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ int		cw_xor_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 		if (ret[i] == 1 && i < 2)
 			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		else if (ret[i] == 2)
-			param[i] = cw_get_4(&(vm->vm[(process->pc + process->entrypoint
-							- offset + ((short)param[i] % IDX_MOD)) % MEM_SIZE]));
+			param[i] = cw_get_4(&(vm->vm[(unsigned int)(process->pc + process->entrypoint - offset + ((short)param[i] % IDX_MOD)) % MEM_SIZE]));
 		ocp = ocp << 2;
 	}
 	return (check);
