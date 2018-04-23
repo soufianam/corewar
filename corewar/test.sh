@@ -6,7 +6,7 @@ else
 	./../resources/corewar -d $2 -v 30 .champs/$1.cor | tail -n 64 > .b
 	if [[ $(cat .b | grep cycles | wc -l) -eq 0 ]]
 	then
-		./corewar -dump $2 .champs/$1.cor | grep -A 63 0000 > .a
+		./corewar -dump $2 .champs/$1.cor | grep -A 63 '0x0000' > .a
 		res=$(diff .a .b)
 		rm .a .b
 		if [[ -z "$res" ]]
