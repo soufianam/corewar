@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/21 16:10:52 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:15:51 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int			cw_zjump(t_vm *vm, t_process *process)
 	if (process->carry)
 	{
 		param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
-		process->pc = (process->pc + param) % MEM_SIZE;
+		process->pc = (unsigned int)(process->pc + param) % MEM_SIZE;
 	}
 	else
 		process->pc = (process->pc + 3) % MEM_SIZE;

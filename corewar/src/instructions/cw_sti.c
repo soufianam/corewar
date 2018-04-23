@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/21 16:00:38 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:18:07 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ int		cw_sti_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 		if (ret[i] == 1 && i > 0)
 			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		else if (ret[i] == 2)
-			param[i] = cw_get_2(&(vm->vm[(process->pc + process->entrypoint
-							- offset + (param[i] % IDX_MOD)) % MEM_SIZE]));
+			param[i] = cw_get_2(&(vm->vm[(unsigned int)(process->pc + process->entrypoint - offset + (param[i] % IDX_MOD)) % MEM_SIZE]));
 		ret[i] = ret[i] == 4 ? 2 : ret[i];
 		ocp = ocp << 2;
 	}
@@ -64,8 +63,7 @@ int		cw_sti(t_vm *vm, t_process *process)
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	if ((offset = cw_sti_param(vm, process, param, ret)))
 	{
-		ft_memcpy(&(vm->vm[(process->pc + process->entrypoint + ((param[1] + param[2])
-			% IDX_MOD) - offset) % MEM_SIZE]), process->registries[param[0] - 1], REG_SIZE);
+		ft_memcpy(&(vm->vm[(unsigned int)(process->pc + process->entrypoint + ((param[1] + param[2]) % IDX_MOD) - offset) & (MEM_SIZE - 1)]), process->registries[param[0] - 1], REG_SIZE);
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	cw_wait_process(vm, process);
