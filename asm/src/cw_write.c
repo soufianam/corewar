@@ -6,7 +6,7 @@
 /*   By: cmaxime <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 14:47:51 by cmaxime           #+#    #+#             */
-/*   Updated: 2018/04/18 13:47:45 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/23 12:12:30 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		cw_write(char *name, header_t head, char *bin)
 	fd = open(new_name, O_CREAT | O_RDWR, 0666);
 	if (fd > 0)
 		cw_write_header(head, fd, bin);
+	ft_printf("Writing output program to %s\n", new_name);
 	free(new_name);
 	return (0);
 }

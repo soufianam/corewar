@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/23 11:48:54 by cmaxime          ###   ########.fr       */
+/*   Updated: 2018/04/23 12:21:21 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,14 @@ extern int		cw_parse(char *file, t_list **list, header_t *head)
 	while (ft_gnl(fd, &line) > 0 && ret >= 0)
 	{
 		line_nb++;
-		ft_putnbr(line_nb);
-		ft_putstr(line);
+	//	ft_putnbr(line_nb);
+	//	ft_putstr(line);
 		ret = cw_parse_line(line, list, head, line_nb);
-		ft_putchar('\n');
+	//	ft_putchar('\n');
 		ft_strdel((char **)&line);
 	}
-	cw_display_header(*head);
-	ft_lstiter(*list, &cw_display_instruct);
+	//cw_display_header(*head);
+	//ft_lstiter(*list, &cw_display_instruct);
 	if (line)
 		ft_strdel((char **)&line);
 	if (ret <= 0)
