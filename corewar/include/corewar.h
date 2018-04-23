@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 19:59:31 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/20 11:01:06 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:12:00 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct		s_process
 {
 	unsigned char	registries[REG_NUMBER][REG_SIZE]; //r1 = player id
 	int				entrypoint; //entrypoint
-	int				pc; //init a 0
+	unsigned int	pc; //init a 0
 	int				carry; //init a 0
 	int				next_cycle; //init a 0
 	int				live; //init a 0

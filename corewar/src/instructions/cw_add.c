@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 16:22:47 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/20 12:01:31 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:30:09 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		cw_add(t_vm *vm, t_process *process)
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	if ((cw_add_param(vm, process, param, ret)))
 	{
-		cw_rev_get(process->registries[param[2] - 1], (param[0] + param[1]));
+		cw_rev_get(process->registries[param[2] - 1], (unsigned int)(param[0] + param[1]));
 		process->carry = !(param[0] + param[1]) ? 1 : 0;
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
