@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 11:47:28 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/21 16:00:29 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:27:39 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		cw_ldi_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 		if (ret[i] == 1 && i < 2)
 			param[i] = cw_get_4(process->registries[param[i] - 1]);
 		else if (ret[i] == 2)
-			param[i] = cw_get_4(&(vm->vm[(process->pc + process->entrypoint
+			param[i] = cw_get_4(&(vm->vm[(unsigned int)(process->pc + process->entrypoint
 							- offset + (param[i] % IDX_MOD)) % MEM_SIZE]));
 		ret[i] = ret[i] == 4 ? 2 : ret[i];
 		ocp = ocp << 2;
@@ -64,7 +64,7 @@ int		cw_ldi(t_vm *vm, t_process *process)
 	process->pc = (process->pc + 1) % MEM_SIZE;
 	if ((offset = cw_ldi_param(vm, process, param, ret)))
 	{
-		ft_memcpy(process->registries[param[2] - 1], &(vm->vm[(process->pc
+		ft_memcpy(process->registries[param[2] - 1], &(vm->vm[(unsigned int)(process->pc
 			+ process->entrypoint + ((param[0] + param[1]) % IDX_MOD) - offset) % MEM_SIZE]), REG_SIZE);
 	}
 	process->pc = (process->pc + 1) % MEM_SIZE;
