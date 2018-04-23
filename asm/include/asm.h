@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:09:49 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/20 17:50:47 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:31:56 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,7 @@ int				cw_label_init(t_list *list);
 int				cw_prog_builder(t_list *list, char **bin);
 
 int				cw_write(char *name, header_t head, char *bin);
+
+char			*ft_cleaner(char *line);
 
 #endif

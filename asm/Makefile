@@ -6,7 +6,7 @@
 #    By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:26:31 by blefeuvr          #+#    #+#              #
-#    Updated: 2018/04/20 17:51:53 by pprikazs         ###   ########.fr        #
+#    Updated: 2018/04/23 11:27:40 by cmaxime          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ endif
 
 # Sources #
 SRC_NAME = main.c \
+		   ft_cleaner.c \
 		   cw_write.c \
 		   cw_label_init.c \
 		   cw_prog_init.c \

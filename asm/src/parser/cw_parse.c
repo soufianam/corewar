@@ -6,7 +6,7 @@
 /*   By: pprikazs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 15:40:26 by pprikazs          #+#    #+#             */
-/*   Updated: 2018/04/20 16:06:04 by pprikazs         ###   ########.fr       */
+/*   Updated: 2018/04/23 11:48:54 by cmaxime          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static int		cw_parse_line(char *line, t_list **list, header_t *head, int line_nb
 	ft_strsanitalize(line, "\t ");
 	if ((ret = cw_parse_header(line, head)) <= 0 || ret == 2)
 		return (ret);
+	line = ft_cleaner(line);
 	if (!(ins = (t_instruct *)ft_memalloc(sizeof(t_instruct))))
 		return (-1); //Allocation error
 	ins->line = line_nb;
