@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 15:08:22 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/21 16:10:52 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/23 10:49:00 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			cw_zjump(t_vm *vm, t_process *process)
 {
-	short		param;
+	unsigned short		param;
 
 	param  = 0;
 	if (process->carry)

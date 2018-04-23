@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 16:48:08 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/20 12:02:13 by blefeuvr         ###   ########.fr       */
+/*   Updated: 2018/04/23 10:48:30 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int		cw_ocp(int ocp)
 	return (ocp);
 }
 
-int		cw_sub_param(t_vm *vm, t_process *process, int param[3], int ret[3])
+int		cw_sub_param(t_vm *vm, t_process *process, unsigned int param[3],
+		int ret[3])
 {
 	int				i;
 	int				check;
@@ -49,7 +50,7 @@ int		cw_sub_param(t_vm *vm, t_process *process, int param[3], int ret[3])
 
 int		cw_sub(t_vm *vm, t_process *process)
 {
-	int				param[3];
+	unsigned int	param[3];
 	int				ret[3];
 
 	process->pc = (process->pc + 1) % MEM_SIZE;
