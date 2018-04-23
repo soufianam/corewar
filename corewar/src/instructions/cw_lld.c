@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:55:17 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/23 10:41:53 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/20 11:29:21 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static int	cw_ocp(int ocp)
 	return (ocp);
 }
 
-int		cw_lld_param(t_vm *vm, t_process *process, unsigned int param[2],
-		int ret[2])
+int		cw_lld_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 {
 	int				i;
 	int				check;
@@ -54,7 +53,7 @@ int		cw_lld_param(t_vm *vm, t_process *process, unsigned int param[2],
 
 int		cw_lld(t_vm *vm, t_process *process)
 {
-	unsigned int	param[2];
+	int				param[2];
 	int				ret[2];
 
 	process->pc = (process->pc + 1) % MEM_SIZE;

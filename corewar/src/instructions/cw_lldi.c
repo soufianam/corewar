@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 11:48:05 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/23 10:42:12 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/20 14:40:50 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static int		cw_ocp(int ocp)
 	return (ocp);
 }
 
-int		cw_lldi_param(t_vm *vm, t_process *process, unsigned int param[2],
-		int ret[2])
+int		cw_lldi_param(t_vm *vm, t_process *process, int param[2], int ret[2])
 {
 	int				i;
 	int				check;
@@ -58,7 +57,7 @@ int		cw_lldi_param(t_vm *vm, t_process *process, unsigned int param[2],
 
 int		cw_lldi(t_vm *vm, t_process *process)
 {
-	unsigned int	param[3];
+	int				param[3];
 	int				ret[3];
 	int				offset;
 

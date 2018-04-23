@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:05:10 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/23 10:35:16 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/20 14:48:35 by tdeborde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	cw_rev_get(unsigned char *registries, int nb)
 	}
 }
 
-int			cw_read_ocp(t_vm *vm, t_process *process, unsigned int *param,
+int			cw_read_ocp(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc)
 {
 	if ((ocp_trunc & 128) && (ocp_trunc & 64))
@@ -63,7 +63,7 @@ int			cw_read_ocp(t_vm *vm, t_process *process, unsigned int *param,
 	}
 }
 
-int			cw_read_ocp_short(t_vm *vm, t_process *process, unsigned int *param,
+int			cw_read_ocp_short(t_vm *vm, t_process *process, int *param,
 		unsigned char ocp_trunc)
 {
 	if (ocp_trunc & 128)

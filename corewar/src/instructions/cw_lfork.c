@@ -6,7 +6,7 @@
 /*   By: tdeborde <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 13:43:19 by tdeborde          #+#    #+#             */
-/*   Updated: 2018/04/23 10:40:49 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/19 17:11:36 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		cw_lfork(t_vm *vm, t_process *process)
 {
-	t_list			*new;
-	unsigned int	param;
-	int				old_pc;
+	t_list	*new;
+	int		param;
+	int		old_pc;
 
 	param = cw_get_2(&(vm->vm[(process->pc + process->entrypoint + 1) % MEM_SIZE]));
 	old_pc = process->pc;

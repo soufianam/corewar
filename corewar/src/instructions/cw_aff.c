@@ -6,7 +6,7 @@
 /*   By: blefeuvr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/18 15:41:19 by blefeuvr          #+#    #+#             */
-/*   Updated: 2018/04/23 10:36:59 by tdeborde         ###   ########.fr       */
+/*   Updated: 2018/04/18 15:41:22 by blefeuvr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int			cw_aff(t_vm *vm, t_process *process)
 {
-	unsigned int	param;
-	char			aff;
+	int		param;
+	char	aff;
 
 	param = cw_get_1(&(vm->vm[(process->pc + process->entrypoint + 2) % MEM_SIZE]));
 	aff = cw_get_4(process->registries[param - 1]) % 256;
